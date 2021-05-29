@@ -2,7 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_webapp/home/widgets/widgets.dart';
 
-final _animationDuration = const Duration(milliseconds: 250);
+const _animationDuration = Duration(milliseconds: 250);
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,9 +11,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const HomeView(),
-    );
+    return const HomeView();
   }
 }
 
@@ -23,7 +21,6 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
       appBar: AppBar(
         title: Image.asset(
           'images/header-logo.png',
@@ -31,15 +28,14 @@ class HomeView extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 1600,
-              child: AnimatedMainLogo(),
-            ),
-            const AnimatedHomeText(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              AnimatedMainLogo(),
+              AnimatedHomeText(),
+            ],
+          ),
         ),
       ),
       backgroundColor: Theme.of(context).backgroundColor,

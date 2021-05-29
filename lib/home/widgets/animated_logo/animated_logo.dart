@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class AnimatedMainLogo extends StatefulWidget {
-  AnimatedMainLogo({Key? key}) : super(key: key);
+  const AnimatedMainLogo({Key? key}) : super(key: key);
 
   @override
   _AnimatedMainLogoState createState() => _AnimatedMainLogoState();
@@ -44,30 +44,33 @@ class _AnimatedMainLogoState extends State<AnimatedMainLogo> {
   Widget build(BuildContext context) {
     return FractionallySizedBox(
       widthFactor: 4 / 5,
-      child: Stack(
-        children: [
-          AnimatedPadding(
-            duration: const Duration(seconds: 1),
-            padding: insets1,
-            child: const Image(
-              image: AssetImage('images/logo-wbg.png'),
-              color: Colors.white,
-              colorBlendMode: BlendMode.modulate,
+      child: AspectRatio(
+        aspectRatio: 8 / 5,
+        child: Stack(
+          children: [
+            AnimatedPadding(
+              duration: const Duration(seconds: 1),
+              padding: insets1,
+              child: const Image(
+                image: AssetImage('images/logo-wbg.png'),
+                color: Colors.white,
+                colorBlendMode: BlendMode.modulate,
+              ),
             ),
-          ),
-          AnimatedPadding(
-            duration: const Duration(seconds: 1),
-            padding: insets2,
-            child: const Image(
-              image: AssetImage('images/logo-wbg.png'),
-              color: Colors.white,
-              colorBlendMode: BlendMode.modulate,
+            AnimatedPadding(
+              duration: const Duration(seconds: 1),
+              padding: insets2,
+              child: const Image(
+                image: AssetImage('images/logo-wbg.png'),
+                color: Colors.white,
+                colorBlendMode: BlendMode.modulate,
+              ),
             ),
-          ),
-          const Image(
-            image: AssetImage('images/logo-outline.png'),
-          ),
-        ],
+            const Image(
+              image: AssetImage('images/logo-outline.png'),
+            ),
+          ],
+        ),
       ),
     );
   }
