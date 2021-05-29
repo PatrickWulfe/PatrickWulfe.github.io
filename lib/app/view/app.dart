@@ -9,9 +9,9 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:portfolio_webapp/app/app.dart';
 import 'package:portfolio_webapp/app/theme.dart';
 import 'package:portfolio_webapp/l10n/l10n.dart';
+import '../app.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);

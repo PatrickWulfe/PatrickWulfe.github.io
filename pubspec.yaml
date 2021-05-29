@@ -15,22 +15,19 @@ dependencies:
   bloc: ^7.0.0
   flow_builder: ^0.0.2
   flutter_bloc: ^7.0.0
-  flutter_svg: ^0.22.0
   google_fonts: ^2.1.0
   intl: ^0.17.0
-  peanut: ^4.0.1
-  rive: ^0.7.10
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   bloc_test: ^8.0.0
   mocktail: ^0.1.0
-  very_good_analysis: ^2.0.0
+  very_good_analysis: ^2.1.0
 
 flutter:
   uses-material-design: true
   generate: true
 
   assets:
-    - ./assets/images/
+    - assets/

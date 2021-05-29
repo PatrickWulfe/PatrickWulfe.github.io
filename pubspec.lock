@@ -57,13 +57,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  build_cli_annotations:
-    dependency: transitive
-    description:
-      name: build_cli_annotations
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   characters:
     dependency: transitive
     description:
@@ -78,13 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  checked_yaml:
-    dependency: transitive
-    description:
-      name: checked_yaml
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   cli_util:
     dependency: transitive
     description:
@@ -172,25 +158,11 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_svg:
-    dependency: "direct main"
-    description:
-      name: flutter_svg
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.22.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
-  git:
-    dependency: transitive
-    description:
-      name: git
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   glob:
     dependency: transitive
     description:
@@ -205,13 +177,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  graphs:
-    dependency: transitive
-    description:
-      name: graphs
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   http:
     dependency: transitive
     description:
@@ -254,13 +219,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
-  json_annotation:
-    dependency: transitive
-    description:
-      name: json_annotation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.1"
   logging:
     dependency: transitive
     description:
@@ -324,20 +282,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
-  path_drawing:
-    dependency: transitive
-    description:
-      name: path_drawing
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.5.1"
-  path_parsing:
-    dependency: transitive
-    description:
-      name: path_parsing
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.1"
   path_provider:
     dependency: transitive
     description:
@@ -373,13 +317,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  peanut:
-    dependency: "direct main"
-    description:
-      name: peanut
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.1"
   pedantic:
     dependency: transitive
     description:
@@ -387,13 +324,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.11.0"
-  petitparser:
-    dependency: transitive
-    description:
-      name: petitparser
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.1.0"
   platform:
     dependency: transitive
     description:
@@ -436,13 +366,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
-  rive:
-    dependency: "direct main"
-    description:
-      name: rive
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.7.10"
   shelf:
     dependency: transitive
     description:
@@ -566,7 +489,7 @@ packages:
       name: very_good_analysis
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.3"
+    version: "2.1.0"
   vm_service:
     dependency: transitive
     description:
@@ -609,13 +532,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
-  xml:
-    dependency: transitive
-    description:
-      name: xml
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.1.1"
   yaml:
     dependency: transitive
     description:
@@ -625,4 +541,4 @@ packages:
     version: "3.1.0"
 sdks:
   dart: ">=2.13.0 <3.0.0"
-  flutter: ">=1.24.0-7.0"
+  flutter: ">=1.22.0"
