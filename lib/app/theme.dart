@@ -8,8 +8,14 @@ var portfolioTheme = ThemeData(
   primaryColor: Colors.cyan,
   accentColor: Colors.pinkAccent,
   textTheme: TextTheme(
+    headline1: GoogleFonts.firaCode(
+      color: Colors.white,
+    ),
     headline2: GoogleFonts.firaCode(
       color: Colors.white,
+    ),
+    headline3: GoogleFonts.ibmPlexSans(
+      color: Colors.black,
     ),
   ),
 );

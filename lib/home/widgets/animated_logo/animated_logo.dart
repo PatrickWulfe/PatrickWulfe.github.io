@@ -12,8 +12,8 @@ class AnimatedMainLogo extends StatefulWidget {
 
 class _AnimatedMainLogoState extends State<AnimatedMainLogo> {
   var random = Random();
-  final _scale1 = 10;
-  final _scale2 = 7;
+  final _scale1 = 12;
+  final _scale2 = 12;
   var insets1 = EdgeInsets.zero;
   var insets2 = EdgeInsets.zero;
 
@@ -42,34 +42,27 @@ class _AnimatedMainLogoState extends State<AnimatedMainLogo> {
 
   @override
   Widget build(BuildContext context) {
-    return FractionallySizedBox(
-      widthFactor: 4 / 5,
-      child: AspectRatio(
-        aspectRatio: 8 / 5,
-        child: Stack(
-          children: [
-            AnimatedPadding(
-              duration: const Duration(seconds: 1),
-              padding: insets1,
-              child: const Image(
-                image: AssetImage('images/logo-wbg.png'),
-                color: Colors.white,
-                colorBlendMode: BlendMode.modulate,
+    return Container(
+      constraints: const BoxConstraints(maxWidth: 1600),
+      child: FractionallySizedBox(
+        widthFactor: 4 / 5,
+        child: AspectRatio(
+          aspectRatio: 8 / 5,
+          child: Stack(
+            children: [
+              AnimatedPadding(
+                duration: const Duration(seconds: 1),
+                padding: insets1,
+                child: const Image(image: AssetImage('images/logo-wbg.png')),
               ),
-            ),
-            AnimatedPadding(
-              duration: const Duration(seconds: 1),
-              padding: insets2,
-              child: const Image(
-                image: AssetImage('images/logo-wbg.png'),
-                color: Colors.white,
-                colorBlendMode: BlendMode.modulate,
+              AnimatedPadding(
+                duration: const Duration(seconds: 1),
+                padding: insets2,
+                child: const Image(image: AssetImage('images/logo-wbg.png')),
               ),
-            ),
-            const Image(
-              image: AssetImage('images/logo-outline.png'),
-            ),
-          ],
+              const Image(image: AssetImage('images/logo-outline.png')),
+            ],
+          ),
         ),
       ),
     );

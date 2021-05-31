@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio_webapp/app/app.dart';
 import 'package:portfolio_webapp/home/widgets/widgets.dart';
 
 const _animationDuration = Duration(milliseconds: 250);
@@ -7,11 +8,13 @@ const _animationDuration = Duration(milliseconds: 250);
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  static Page page() => const MaterialPage<void>(child: HomePage());
+  static Page page() => const MaterialPage<void>(
+        child: HomePage(),
+      );
 
   @override
   Widget build(BuildContext context) {
-    return const HomeView();
+    return const FlipDrawer(child: HomeView());
   }
 }
 
@@ -20,25 +23,30 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Image.asset(
-          'images/header-logo.png',
-          fit: BoxFit.contain,
-        ),
+    return Container(
+      decoration: const BoxDecoration(
+        boxShadow: [BoxShadow(color: Colors.black)],
       ),
-      body: Center(
+      child: Center(
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               AnimatedMainLogo(),
-              AnimatedHomeText(),
+              Padding(
+                padding: EdgeInsets.only(bottom: 100.0),
+                child: AnimatedHomeText(),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Text(
+                  '[Click Here]',
+                ),
+              ),
             ],
           ),
         ),
       ),
-      backgroundColor: Theme.of(context).backgroundColor,
     );
   }
 }
