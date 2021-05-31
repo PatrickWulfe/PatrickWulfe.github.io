@@ -14,6 +14,7 @@ const RESOURCES = {
 "assets/images/logo-wbg.svg": "fc851ca7b4adc116a1128f8cd376af46",
 "assets/images/logo.png": "cb9e4dd46c77439b8aee9b52fd5e998e",
 "assets/images/logo.svg": "022b4460fc508c6a4c8c628c6154f36d",
+"assets/images/nyan.gif": "7e982f6859d7d5c600d1506ce82cf52e",
 "assets/images/pw-logo.png": "77c65e2380b9e259c168e08f4a33a724",
 "assets/images/pw-logo.svg": "1b366d7e438bd39fff8bec934b9e426f",
 "assets/NOTICES": "8133cac9eb7314aaaae728df69a4d662",
@@ -21,8 +22,8 @@ const RESOURCES = {
 "icons/favicon.png": "fa7fde306a35e196516bf8b1d6100f14",
 "icons/Icon-192.png": "8afa706053b186edf013b6c9880872f9",
 "icons/Icon-512.png": "70dd4c7d62910514def11f21e23d99f8",
-"index.html": "616aa61614448d3dae26c09e1e0ae573",
-"/": "616aa61614448d3dae26c09e1e0ae573",
+"index.html": "9d41a6668bec8749c0e4809781838455",
+"/": "9d41a6668bec8749c0e4809781838455",
 "main.dart.js": "abe78afaabfe612225bf0620f56298d7",
 "manifest.json": "ef22af793dc356468ea258e68a06f25c",
 "version.json": "0323328b10ae5e701c91561f7e8a8f65"
