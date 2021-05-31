@@ -54409,7 +54409,7 @@ H:function(a,b){var s=null,r=t.D
 return M.W6(s,E.a83(T.fC(T.dQ(H.a([V.dD(T.dQ(H.a([V.dD(L.jE("Education:",K.aE(b).aa.c,s,s),s),C.LG,C.Pr],r),C.ar),s)],r),C.ar),s,s)))}}
 V.CK.prototype={
 H:function(a,b){var s=null,r=t.D
-return V.dD(T.dQ(H.a([V.dD(T.dQ(H.a([L.jE("Portland State Univeristy",K.aE(b).aa.Q,s,s),C.wo,C.uf],r),C.ar),s)],r),C.ar),s)}}
+return V.dD(T.dQ(H.a([V.dD(T.dQ(H.a([L.jE("Portland State Univeristy",K.aE(b).aa.Q,s,s),C.wp,C.uf],r),C.ar),s)],r),C.ar),s)}}
 V.El.prototype={
 H:function(a,b){var s=null,r=t.D
 return V.dD(T.dQ(H.a([V.dD(T.dQ(H.a([L.jE("Southern Oregon Univeristy",K.aE(b).aa.Q,s,s),C.wn,C.ug],r),C.ar),s)],r),C.ar),s)}}
@@ -54438,7 +54438,7 @@ return P.a2($async$vG,r)},
 aU:function(){this.bg()
 P.ac9(C.bx,this.gVe())},
 H:function(a,b){var s=null
-return M.cE(s,T.a7k(new T.xP(1.6,T.fi(C.aK,H.a([G.a9W(C.jW,C.bx,this.r),G.a9W(C.jW,C.bx,this.x),C.wp],t.D),C.aH),s),0.8),s,C.t9,s,s,s,s,s)}}
+return M.cE(s,T.a7k(new T.xP(1.6,T.fi(C.aK,H.a([G.a9W(C.jW,C.bx,this.r),G.a9W(C.jW,C.bx,this.x),C.wq],t.D),C.aH),s),0.8),s,C.t9,s,s,s,s,s)}}
 E.a_r.prototype={
 $0:function(){var s=this.a,r=s.d
 s.r=new V.b_(r.iv()*12,r.iv()*12,r.iv()*12,r.iv()*12)
@@ -54484,7 +54484,7 @@ s.toString
 return M.cE(r,r,r,r,new S.cU(r,r,r,r,r,new T.il(C.aA,0.5,C.aS,r,0,H.a([q,s],t.bk),r,r),C.a8),r,r,r,r)}}
 G.lb.prototype={
 H:function(a,b){var s=null,r=new Y.dC(C.jF,3,C.a7),q=t.D
-return D.qG(s,V.dD(M.cE(s,T.dQ(H.a([V.dD(T.fC(new T.eB(C.aX,L.jE(this.c,K.aE(b).aa.e,s,s),s),s,s),C.e2),new T.zm(1,C.hr,V.dD(new T.eB(C.vR,T.dQ(H.a([T.dQ(H.a([C.wq,L.jE("Nyan cat as a placeholder until I figure out what I want here",K.aE(b).aa.Q,s,s)],q),C.ar),M.cE(s,L.jE(this.d,K.aE(b).aa.y,s,s),s,s,s,s,s,C.aX,s)],q),C.ar),s),C.e2),s)],q),C.ar),s,s,new S.cU(s,s,new F.cD(r,r,r,r),s,s,s,C.a8),s,s,C.vO,s),C.d2),C.au,!1,s,s,s,s,s,s,s,s,s,s,s,this.gQN(),s,s,s,s,s)},
+return D.qG(s,V.dD(M.cE(s,T.dQ(H.a([V.dD(T.fC(new T.eB(C.aX,L.jE(this.c,K.aE(b).aa.e,s,s),s),s,s),C.e2),new T.zm(1,C.hr,V.dD(new T.eB(C.vR,T.dQ(H.a([T.dQ(H.a([C.wo,L.jE("Nyan cat as a placeholder until I figure out what I want here",K.aE(b).aa.Q,s,s)],q),C.ar),M.cE(s,L.jE(this.d,K.aE(b).aa.y,s,s),s,s,s,s,s,C.aX,s)],q),C.ar),s),C.e2),s)],q),C.ar),s,s,new S.cU(s,s,new F.cD(r,r,r,r),s,s,s,C.a8),s,s,C.vO,s),C.d2),C.au,!1,s,s,s,s,s,s,s,s,s,s,s,this.gQN(),s,s,s,s,s)},
 lW:function(){var s=0,r=P.a3(t.z),q=this,p
 var $async$lW=P.Z(function(a,b){if(a===1)return P.a0(b,r)
 while(true)switch(s){case 0:p=q.e
@@ -57259,14 +57259,14 @@ C.wm=new X.mO("ImageRepeat.repeatY")
 C.db=new X.mO("ImageRepeat.noRepeat")
 C.rT=new L.fB("images/sou.jpg",null,null)
 C.wn=new U.fN(C.rT,null,null)
+C.rU=new L.fB("assets/images/nyan.gif",null,null)
+C.wo=new U.fN(C.rU,null,null)
 C.rS=new L.fB("images/logo-wbg.png",null,null)
 C.jW=new U.fN(C.rS,null,null)
 C.rR=new L.fB("images/psu.jpg",null,null)
-C.wo=new U.fN(C.rR,null,null)
+C.wp=new U.fN(C.rR,null,null)
 C.rV=new L.fB("images/logo-outline.png",null,null)
-C.wp=new U.fN(C.rV,null,null)
-C.rU=new L.fB("images/nyan.gif",null,null)
-C.wq=new U.fN(C.rU,null,null)
+C.wq=new U.fN(C.rV,null,null)
 C.ws=new Z.mW(0,0.1,C.b9)
 C.jY=new Z.mW(0.5,1,C.d4)
 C.wv=new P.S2(null)
