@@ -59,6 +59,7 @@ class ProjectsView extends StatelessWidget {
                             items: getProjectTiles(),
                             options: CarouselOptions(
                               aspectRatio: 4 / 3,
+                              height: 700,
                             ),
                           ),
                         ],
@@ -79,7 +80,8 @@ class ProjectsView extends StatelessWidget {
       ProjectTile(
           title: 'PatrickWulfe.github.io',
           description: 'This webapp you are exploring right now!',
-          url: 'https://github.com/PatrickWulfe/PatrickWulfe.github.io'),
+          url:
+              'https://github.com/PatrickWulfe/PatrickWulfe.github.io/tree/master'),
       ProjectTile(
           title: 'mumen_finder',
           description:

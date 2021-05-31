@@ -1,6 +1,8 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:portfolio_webapp/app/app.dart';
+import 'package:wave/config.dart';
+import 'package:wave/wave.dart';
 
 class FlipDrawer extends StatefulWidget {
   const FlipDrawer({required this.child, Key? key}) : super(key: key);
@@ -47,11 +49,34 @@ class _FlipDrawerState extends State<FlipDrawer>
           return Stack(
             children: [
               Transform.translate(
+                offset:
+                    Offset(maxSlide * 3 * (_animationController.value - 1), 0),
+                child: RotatedBox(
+                  quarterTurns: 1,
+                  child: WaveWidget(
+                    config: CustomConfig(
+                      blur: const MaskFilter.blur(BlurStyle.inner, 10),
+                      heightPercentages: [.5, .52, .53],
+                      durations: [35000, 13370, 19440],
+                      gradients: [
+                        [Colors.cyan.withAlpha(200), Colors.cyanAccent],
+                        [Colors.black26, Colors.cyanAccent],
+                        [Colors.purple.withAlpha(150), Colors.purpleAccent],
+                      ],
+                    ),
+                    size: const Size(
+                      double.infinity,
+                      double.infinity,
+                    ),
+                  ),
+                ),
+              ),
+              Transform.translate(
                 offset: Offset(maxSlide * (_animationController.value - 1), 0),
                 child: Transform(
-                  transform: Matrix4.identity()
-                    ..setEntry(3, 2, .001)
-                    ..rotateY(math.pi / 2 * (1 - _animationController.value)),
+                  transform: Matrix4.identity(),
+                  //..setEntry(3, 2, .001)
+                  //..rotateY(math.pi / 2 * (1 - _animationController.value)),
                   alignment: Alignment.centerRight,
                   child: NavDrawer(
                     animationController: _animationController,

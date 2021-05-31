@@ -46,11 +46,25 @@ class ProjectTile extends StatelessWidget {
                   color: Colors.black12,
                   child: Padding(
                     padding: const EdgeInsets.all(30.0),
-                    child: Center(
-                      child: Text(
-                        description,
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
+                    child: Column(
+                      children: [
+                        Column(
+                          children: [
+                            const Image(image: AssetImage('images/nyan.gif')),
+                            Text(
+                              'Nyan cat as a placeholder until I figure out what I want here',
+                              style: Theme.of(context).textTheme.caption,
+                            ),
+                          ],
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            description,
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

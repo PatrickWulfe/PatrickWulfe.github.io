@@ -29,21 +29,24 @@ class HomeView extends StatelessWidget {
       ),
       child: Center(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              AnimatedMainLogo(),
-              Padding(
-                padding: EdgeInsets.only(bottom: 100.0),
-                child: AnimatedHomeText(),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Text(
-                  '[Click Here]',
+          child: FractionallySizedBox(
+            widthFactor: 2 / 3,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                AnimatedMainLogo(),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 100.0),
+                  child: AnimatedHomeText(),
                 ),
-              ),
-            ],
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
+                    '[Click Here]',
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

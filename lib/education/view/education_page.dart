@@ -7,9 +7,7 @@ class EducationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const EducationView(),
-    );
+    return const EducationView();
   }
 }
 
@@ -19,24 +17,93 @@ class EducationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 100,
-              width: 100,
-              child: Center(
-                child: Stack(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Card(
+                child: Column(
                   children: [
-                    const Text('Patrick Wulfe'),
+                    Card(
+                      child: Text(
+                        'Education:',
+                        style: Theme.of(context).textTheme.headline3,
+                      ),
+                    ),
+                    const PSUTile(),
+                    const SOUTile(),
                   ],
                 ),
               ),
-            ),
-            const Text('Software Engineer'),
-          ],
+            ],
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class PSUTile extends StatelessWidget {
+  const PSUTile({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Column(
+        children: [
+          Card(
+            child: Column(
+              children: [
+                Text(
+                  'Portland State Univeristy',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                const Image(
+                  image: AssetImage(
+                    'images/psu.jpg',
+                  ),
+                ),
+                const Card(
+                  child: Text(
+                      'I got my masters here, going to add more deets laterz'),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SOUTile extends StatelessWidget {
+  const SOUTile({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Column(
+        children: [
+          Card(
+            child: Column(
+              children: [
+                Text(
+                  'Southern Oregon Univeristy',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                const Image(
+                  image: AssetImage(
+                    'images/sou.jpg',
+                  ),
+                ),
+                const Card(
+                  child: Text(
+                      'I got my bachelors here, going to add more deets later'),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

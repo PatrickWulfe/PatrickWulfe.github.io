@@ -5,15 +5,12 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'dart:math' as math;
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:portfolio_webapp/app/theme.dart';
 import 'package:portfolio_webapp/l10n/l10n.dart';
-import 'package:wave/config.dart';
-import 'package:wave/wave.dart';
 import '../app.dart';
 
 class App extends StatelessWidget {
@@ -73,24 +70,6 @@ class Background extends StatelessWidget {
     return Stack(
       children: [
         Container(color: Colors.white),
-        RotatedBox(
-          quarterTurns: 1,
-          child: WaveWidget(
-            config: CustomConfig(
-              heightPercentages: [.4, .42, .43],
-              durations: [35000, 13370, 19440],
-              gradients: [
-                [Colors.cyan.withAlpha(200), Colors.cyanAccent],
-                [Colors.black26, Colors.cyanAccent],
-                [Colors.purple.withAlpha(150), Colors.purpleAccent],
-              ],
-            ),
-            size: const Size(
-              double.infinity,
-              double.infinity,
-            ),
-          ),
-        ),
       ],
     );
   }
