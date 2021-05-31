@@ -29,7 +29,7 @@ class _NavDrawerState extends State<NavDrawer> {
                 child: ListTile(
                   title: const Text('Home'),
                   onTap: () {
-                    context.flow<String>().update((str) => '/');
+                    return;
                   },
                 ),
               ),
