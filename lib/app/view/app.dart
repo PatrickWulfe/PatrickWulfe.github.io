@@ -5,7 +5,6 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -19,7 +18,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => AppBloc(),
+      create: (_) => AppBloc()..add(AppInit()),
       child: const AppView(),
     );
   }
@@ -49,12 +48,22 @@ class AppView extends StatelessWidget {
           ),
         ),
         body: Stack(
-          children: const [
-            Background(),
-            FlowBuilder<String>(
-              state: '/',
-              onGeneratePages: onGenerateAppViewPages,
-            ),
+          children: [
+            const Background(),
+            BlocBuilder<AppBloc, AppState>(builder: (_, state) {
+              if (state is AppPageDisplayed) {
+                return state.currentPage;
+              } else if (state is AppPageTransitioning) {
+                return PageRoller(
+                  previousPage: state.currentPage,
+                  nextPage: state.newPage,
+                );
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            }),
           ],
         ),
       ),

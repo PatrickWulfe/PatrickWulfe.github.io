@@ -5,7 +5,7 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class FlipDrawer extends StatefulWidget {
-  const FlipDrawer({required this.child, Key? key}) : super(key: key);
+  const FlipDrawer({Key? key, required this.child}) : super(key: key);
 
   final Widget child;
 
@@ -56,7 +56,7 @@ class _FlipDrawerState extends State<FlipDrawer>
                   child: WaveWidget(
                     config: CustomConfig(
                       blur: const MaskFilter.blur(BlurStyle.inner, 10),
-                      heightPercentages: [.5, .52, .53],
+                      heightPercentages: [.4, .42, .43],
                       durations: [35000, 13370, 19440],
                       gradients: [
                         [Colors.cyan.withAlpha(200), Colors.cyanAccent],
@@ -81,6 +81,7 @@ class _FlipDrawerState extends State<FlipDrawer>
                   child: NavDrawer(
                     animationController: _animationController,
                     width: maxSlide.toDouble(),
+                    parent: widget,
                   ),
                 ),
               ),

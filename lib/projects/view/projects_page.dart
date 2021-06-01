@@ -85,8 +85,17 @@ class ProjectsView extends StatelessWidget {
       ProjectTile(
           title: 'mumen_finder',
           description:
-              'An app meant to help users find what streaming services are hosting various anime from their "anime list" from MyAnimeList.',
+              'An app meant to help users find what streaming services are'
+              'hosting various anime from their "anime list" from MyAnimeList.',
           url: 'https://github.com/PatrickWulfe/mumen_finder'),
+      ProjectTile(
+        title: 'music_toolbox',
+        description: 'Literally just a concept at this point.  Going to '
+            'essenitally be a swiss army knife for musicians.  Will have a '
+            'tuner, drum machine, sampler, recorder, basic synth, chord chart, '
+            'music calculator, etc. all in one convenient app.',
+        url: '',
+      )
     ];
   }
 }
