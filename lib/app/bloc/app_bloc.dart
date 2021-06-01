@@ -12,17 +12,12 @@ part 'app_state.dart';
 class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc() : super(const AppPageDisplayed(currentPage: HomePage()));
 
-  final Key homeKey = UniqueKey();
-
   @override
   Stream<AppState> mapEventToState(
     AppEvent event,
   ) async* {
     if (event is AppInit) {
-      yield AppPageDisplayed(
-          currentPage: HomePage(
-        key: homeKey,
-      ));
+      yield const AppPageDisplayed(currentPage: HomePage());
     } else if (event is AppPageSelected) {
       yield AppPageTransitioning(
         currentPage: event.prevPage,
@@ -31,10 +26,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     } else if (event is AppPageTransitionComplete) {
       yield AppPageDisplayed(currentPage: event.currentPage);
     } else {
-      yield AppPageDisplayed(
-          currentPage: HomePage(
-        key: homeKey,
-      ));
+      yield const AppPageDisplayed(currentPage: HomePage());
     }
   }
 }

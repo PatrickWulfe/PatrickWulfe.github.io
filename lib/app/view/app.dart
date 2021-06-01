@@ -48,22 +48,9 @@ class AppView extends StatelessWidget {
           ),
         ),
         body: Stack(
-          children: [
-            const Background(),
-            BlocBuilder<AppBloc, AppState>(builder: (_, state) {
-              if (state is AppPageDisplayed) {
-                return state.currentPage;
-              } else if (state is AppPageTransitioning) {
-                return PageRoller(
-                  previousPage: state.currentPage,
-                  nextPage: state.newPage,
-                );
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            }),
+          children: const [
+            Background(),
+            PageCube(),
           ],
         ),
       ),

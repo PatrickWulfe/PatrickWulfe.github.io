@@ -2,7 +2,6 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_webapp/app/app.dart';
-import 'package:portfolio_webapp/projects/projects.dart';
 
 class NavDrawer extends StatefulWidget {
   const NavDrawer({
@@ -45,11 +44,6 @@ class _NavDrawerState extends State<NavDrawer> {
                   title: const Text('Projects'),
                   onTap: () {
                     // context.flow<String>().update((e) => '/projects');
-                    widget.parent.createState().close();
-                    appBloc.add(AppPageSelected(
-                      prevPage: appBloc.state.currentPage,
-                      newPage: const ProjectsPage(),
-                    ));
                   },
                 ),
               ),

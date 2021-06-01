@@ -48,35 +48,31 @@ class _FlipDrawerState extends State<FlipDrawer>
         builder: (context, child) {
           return Stack(
             children: [
-              Transform.translate(
-                offset:
-                    Offset(maxSlide * 3 * (_animationController.value - 1), 0),
-                child: RotatedBox(
-                  quarterTurns: 1,
-                  child: WaveWidget(
-                    config: CustomConfig(
-                      blur: const MaskFilter.blur(BlurStyle.inner, 10),
-                      heightPercentages: [.4, .42, .43],
-                      durations: [35000, 13370, 19440],
-                      gradients: [
-                        [Colors.cyan.withAlpha(200), Colors.cyanAccent],
-                        [Colors.black26, Colors.cyanAccent],
-                        [Colors.purple.withAlpha(150), Colors.purpleAccent],
-                      ],
-                    ),
-                    size: const Size(
-                      double.infinity,
-                      double.infinity,
-                    ),
+              RotatedBox(
+                quarterTurns: 1,
+                child: WaveWidget(
+                  config: CustomConfig(
+                    blur: const MaskFilter.blur(BlurStyle.inner, 10),
+                    heightPercentages: [.4, .42, .43],
+                    durations: [35000, 13370, 19440],
+                    gradients: [
+                      [Colors.cyan.withAlpha(200), Colors.cyanAccent],
+                      [Colors.black26, Colors.cyanAccent],
+                      [Colors.purple.withAlpha(150), Colors.purpleAccent],
+                    ],
+                  ),
+                  size: const Size(
+                    double.infinity,
+                    double.infinity,
                   ),
                 ),
               ),
               Transform.translate(
                 offset: Offset(maxSlide * (_animationController.value - 1), 0),
                 child: Transform(
-                  transform: Matrix4.identity(),
-                  //..setEntry(3, 2, .001)
-                  //..rotateY(math.pi / 2 * (1 - _animationController.value)),
+                  transform: Matrix4.identity()
+                    ..setEntry(3, 2, .001)
+                    ..rotateY(math.pi / 2 * (1 - _animationController.value)),
                   alignment: Alignment.centerRight,
                   child: NavDrawer(
                     animationController: _animationController,

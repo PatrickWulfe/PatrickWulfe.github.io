@@ -5,7 +5,9 @@ import 'package:portfolio_webapp/projects/projects.dart';
 class ProjectsPage extends StatelessWidget {
   const ProjectsPage({Key? key}) : super(key: key);
 
-  static Page page() => const MaterialPage<void>(child: ProjectsPage());
+  static Page page() => const MaterialPage<void>(
+        child: ProjectsPage(),
+      );
 
   @override
   Widget build(BuildContext context) {
