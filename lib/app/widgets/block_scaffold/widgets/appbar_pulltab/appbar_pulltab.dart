@@ -26,7 +26,7 @@ class _AppBarPulltabState extends State<AppBarPulltab> {
         onHorizontalDragUpdate: _onDragUpdate,
         onTap: toggle,
         child: const LogoSlider(
-          width: maxSlide + 100, //widget.headerLogo.width!,),
+          width: maxSlide + 1000, //widget.headerLogo.width!,),
         ));
   }
 

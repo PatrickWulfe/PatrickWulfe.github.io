@@ -32,71 +32,78 @@ class _FlipDrawerState extends State<FlipDrawer> {
   Widget build(BuildContext context) {
     widget.animationController =
         BlocProvider.of<BlockScaffoldCubit>(context).toggleAnimationController!;
-    return GestureDetector(
-      onHorizontalDragStart: _onDragStart,
-      onHorizontalDragEnd: _onDragEnd,
-      onHorizontalDragUpdate: _onDragUpdate,
-      onTap: toggle,
-      child: AnimatedBuilder(
-        animation: CurvedAnimation(
-          parent: widget.animationController!,
-          curve: Curves.bounceInOut,
+    return PhysicalModel(
+      elevation: 10,
+      color: Colors.black,
+      child: GestureDetector(
+        onHorizontalDragStart: _onDragStart,
+        onHorizontalDragEnd: _onDragEnd,
+        onHorizontalDragUpdate: _onDragUpdate,
+        onTap: toggle,
+        child: AnimatedBuilder(
+          animation: CurvedAnimation(
+            parent: widget.animationController!,
+            curve: Curves.bounceInOut,
+          ),
+          builder: (context, child) {
+            return Stack(
+              children: [
+                RotatedBox(
+                  quarterTurns: 1,
+                  child: WaveWidget(
+                    config: CustomConfig(
+                      blur: const MaskFilter.blur(BlurStyle.inner, 10),
+                      heightPercentages: [.4, .42, .43],
+                      durations: [35000, 13370, 19440],
+                      gradients: [
+                        [Colors.cyan.withAlpha(200), Colors.cyanAccent],
+                        [Colors.black26, Colors.cyanAccent],
+                        [Colors.purple.withAlpha(150), Colors.purpleAccent],
+                      ],
+                    ),
+                    size: const Size(
+                      double.infinity,
+                      double.infinity,
+                    ),
+                  ),
+                ),
+                Transform.translate(
+                  offset: Offset(
+                      maxSlide * (widget.animationController!.value - 1), 0),
+                  child: Transform(
+                    transform: Matrix4.identity()
+                      ..setEntry(3, 2, .001)
+                      ..rotateY(math.pi /
+                          2 *
+                          (1 - widget.animationController!.value)),
+                    alignment: Alignment.centerRight,
+                    child: NavDrawer(
+                      animationController: widget.animationController!,
+                      width: maxSlide.toDouble(),
+                      parent: widget,
+                    ),
+                  ),
+                ),
+                Transform.translate(
+                  offset:
+                      Offset(maxSlide * widget.animationController!.value, 0),
+                  child: Transform(
+                    transform: Matrix4.identity()
+                      ..setEntry(3, 2, .001)
+                      ..rotateY(
+                          -math.pi / 2 * widget.animationController!.value),
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      color: Colors.black,
+                      child: child,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+          child: widget.child,
         ),
-        builder: (context, child) {
-          return Stack(
-            children: [
-              RotatedBox(
-                quarterTurns: 1,
-                child: WaveWidget(
-                  config: CustomConfig(
-                    blur: const MaskFilter.blur(BlurStyle.inner, 10),
-                    heightPercentages: [.4, .42, .43],
-                    durations: [35000, 13370, 19440],
-                    gradients: [
-                      [Colors.cyan.withAlpha(200), Colors.cyanAccent],
-                      [Colors.black26, Colors.cyanAccent],
-                      [Colors.purple.withAlpha(150), Colors.purpleAccent],
-                    ],
-                  ),
-                  size: const Size(
-                    double.infinity,
-                    double.infinity,
-                  ),
-                ),
-              ),
-              Transform.translate(
-                offset: Offset(
-                    maxSlide * (widget.animationController!.value - 1), 0),
-                child: Transform(
-                  transform: Matrix4.identity()
-                    ..setEntry(3, 2, .001)
-                    ..rotateY(
-                        math.pi / 2 * (1 - widget.animationController!.value)),
-                  alignment: Alignment.centerRight,
-                  child: NavDrawer(
-                    animationController: widget.animationController!,
-                    width: maxSlide.toDouble(),
-                    parent: widget,
-                  ),
-                ),
-              ),
-              Transform.translate(
-                offset: Offset(maxSlide * widget.animationController!.value, 0),
-                child: Transform(
-                  transform: Matrix4.identity()
-                    ..setEntry(3, 2, .001)
-                    ..rotateY(-math.pi / 2 * widget.animationController!.value),
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    color: Colors.black,
-                    child: child,
-                  ),
-                ),
-              ),
-            ],
-          );
-        },
-        child: widget.child,
       ),
     );
   }

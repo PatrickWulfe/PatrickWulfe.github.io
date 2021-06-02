@@ -7,8 +7,8 @@ abstract class CubeBodyEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class PageSelected extends CubeBodyEvent {
-  const PageSelected({required this.selectedIndex});
+class CubePageSelected extends CubeBodyEvent {
+  const CubePageSelected({required this.selectedIndex});
 
   final int selectedIndex;
 
@@ -16,8 +16,8 @@ class PageSelected extends CubeBodyEvent {
   List<Object> get props => [selectedIndex];
 }
 
-class AnimationComplete extends CubeBodyEvent {
-  const AnimationComplete({required this.currentIndex});
+class CubeAnimationComplete extends CubeBodyEvent {
+  const CubeAnimationComplete({required this.currentIndex});
 
   final int currentIndex;
 

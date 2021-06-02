@@ -5,6 +5,7 @@ import 'package:portfolio_webapp/experience/experience.dart';
 import 'package:portfolio_webapp/home/home.dart';
 import 'package:portfolio_webapp/projects/projects.dart';
 
+import '../../../../../app.dart';
 import '../../../block_scaffold.dart';
 
 class CubeBody extends StatelessWidget {
@@ -30,21 +31,22 @@ class CubeBodyWidget extends StatefulWidget {
 class _CubeBodyState extends State<CubeBodyWidget> {
   @override
   Widget build(BuildContext context) {
-    var _padding = 0.0;
-    return BlocListener<CubeBodyBloc, CubeBodyState>(
+    var cubeBloc = BlocProvider.of<CubeBodyBloc>(context);
+    return BlocListener<AppBloc, AppState>(
       listener: (context, state) {
-        if (state is AnimatingTransition) {
-          _padding = state.zoomedOut ? 20.0 : 0.0;
+        if (state is AppPageTransitioning) {
+          // _padding = state.zoomedOut ? 20.0 : 0.0;
+          cubeBloc.add(CubePageSelected(selectedIndex: 0));
         }
       },
       child: AnimatedPadding(
-        padding: EdgeInsets.all(_padding),
+        padding: EdgeInsets.all(0),
         duration: zoomDuration,
         child: Stack(
           children: const [
-            ExperiencePage(),
-            EducationPage(),
-            ProjectsPage(),
+            // ExperiencePage(),
+            // EducationPage(),
+            // ProjectsPage(),
             HomePage(),
           ],
         ),

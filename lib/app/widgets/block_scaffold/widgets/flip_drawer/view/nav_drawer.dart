@@ -2,6 +2,8 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_webapp/app/app.dart';
+import 'package:portfolio_webapp/app/widgets/block_scaffold/block_scaffold.dart';
+import 'package:portfolio_webapp/projects/projects.dart';
 
 import '../flip_drawer.dart';
 
@@ -46,6 +48,8 @@ class _NavDrawerState extends State<NavDrawer> {
                   title: const Text('Projects'),
                   onTap: () {
                     // context.flow<String>().update((e) => '/projects');
+                    appBloc.add(AppPageSelected(
+                        prevPage: widget, newPage: const ProjectsPage()));
                   },
                 ),
               ),

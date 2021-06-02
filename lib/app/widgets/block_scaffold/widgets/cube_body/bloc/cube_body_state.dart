@@ -20,11 +20,11 @@ class AnimatingTransition extends CubeBodyState {
   const AnimatingTransition({
     required int currentIndex,
     required this.goalIndex,
-    required this.zoomedOut,
+    required this.zoomValue,
   }) : super(currentIndex: currentIndex);
   final int goalIndex;
-  final bool zoomedOut;
+  final double zoomValue;
 
   @override
-  List<Object> get props => [currentIndex, goalIndex];
+  List<Object> get props => [currentIndex, goalIndex, zoomValue];
 }

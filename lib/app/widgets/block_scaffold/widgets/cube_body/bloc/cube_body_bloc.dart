@@ -13,16 +13,16 @@ class CubeBodyBloc extends Bloc<CubeBodyEvent, CubeBodyState> {
   Stream<CubeBodyState> mapEventToState(
     CubeBodyEvent event,
   ) async* {
-    if (event is PageSelected) {
+    if (event is CubePageSelected) {
       if (state is PageDisplayed) {
         if (event.selectedIndex != state.currentIndex) {
           yield AnimatingTransition(
               currentIndex: state.currentIndex,
               goalIndex: event.selectedIndex,
-              zoomedOut: false);
+              zoomValue: 10);
         }
       }
-    } else if (event is AnimationComplete) {
+    } else if (event is CubeAnimationComplete) {
       yield PageDisplayed(currentIndex: event.currentIndex);
     }
   }
