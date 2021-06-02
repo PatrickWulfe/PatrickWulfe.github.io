@@ -71,11 +71,9 @@ class _FlipDrawerState extends State<FlipDrawer> {
                   offset: Offset(
                       maxSlide * (widget.animationController!.value - 1), 0),
                   child: Transform(
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, .001)
-                      ..rotateY(math.pi /
-                          2 *
-                          (1 - widget.animationController!.value)),
+                    transform: Matrix4.identity(),
+                    // ..setEntry(3, 2, .001)
+                    // ..rotateY(math.pi / 2 * (1 - widget.animationController!.value)),
                     alignment: Alignment.centerRight,
                     child: NavDrawer(
                       animationController: widget.animationController!,

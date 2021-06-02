@@ -1,10 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/animation.dart';
+import 'package:flutter/material.dart';
+import 'package:portfolio_webapp/home/home.dart';
 
 part 'block_scaffold_state.dart';
 
 class BlockScaffoldCubit extends Cubit<BlockScaffoldState> {
-  BlockScaffoldCubit() : super(BlockScaffoldState());
+  BlockScaffoldCubit()
+      : super(BlockScaffoldState(pageStack: const [HomePage()]));
 
   AnimationController? toggleAnimationController;
   AnimationController? zoomAnimationController;
@@ -20,4 +23,7 @@ class BlockScaffoldCubit extends Cubit<BlockScaffoldState> {
       zoomAnimationController = controller;
   void setRollController(AnimationController controller) =>
       rollAnimationController = controller;
+
+  void setPageStack(List<Widget> stack) =>
+      emit(BlockScaffoldState(pageStack: stack));
 }

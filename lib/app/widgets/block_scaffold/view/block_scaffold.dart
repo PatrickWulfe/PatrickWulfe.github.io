@@ -43,9 +43,7 @@ class _BlockScaffoldWidgetState extends State<BlockScaffoldWidget>
       appBar: AppBar(
         title: const AppBarPulltab(),
       ),
-      body: FlipDrawer(
-        child: const CubeBody(),
-      ),
+      body: const CubeBody(),
     );
   }
 }
