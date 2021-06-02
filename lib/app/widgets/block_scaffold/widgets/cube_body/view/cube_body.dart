@@ -17,6 +17,7 @@ class _CubeBodyState extends State<CubeBody> {
   @override
   Widget build(BuildContext context) {
     var cubit = BlocProvider.of<BlockScaffoldCubit>(context);
+    var appBloc = BlocProvider.of<AppBloc>(context);
     var _zoomAnimationController = cubit.zoomAnimationController!;
     var _rollAnimationController = cubit.rollAnimationController!;
     var _toggleAnimationController = cubit.toggleAnimationController!;
@@ -25,10 +26,14 @@ class _CubeBodyState extends State<CubeBody> {
         if (state is AppPageTransitioning) {
           // _padding = state.zoomedOut ? 20.0 : 0.0;
           cubit.setPageStack([state.currentPage, state.newPage]);
-          _zoomAnimationController.forward();
+          _zoomAnimationController.repeat(reverse: true);
           _rollAnimationController.forward();
-          _zoomAnimationController.reverse();
           _toggleAnimationController.reverse();
+          _updateBloc(appBloc, state.newPage);
+        } else if (state is AppPageDisplayed) {
+          cubit.setPageStack([state.currentPage]);
+          _toggleAnimationController.reverse();
+          _zoomAnimationController.repeat(reverse: true);
         }
       },
       child: AnimatedBuilder(
@@ -37,7 +42,7 @@ class _CubeBodyState extends State<CubeBody> {
           return Transform.rotate(
             angle: math.pi * _rollAnimationController.value,
             child: Transform.scale(
-              scale: 1 - (.25 * _zoomAnimationController.value),
+              scale: 1 - (.5 * _zoomAnimationController.value),
               child: FlipDrawer(
                 // child: Stack(children: cubit.state.pageStack),
                 child: _getChildStack(),
@@ -47,6 +52,11 @@ class _CubeBodyState extends State<CubeBody> {
         },
       ),
     );
+  }
+
+  void _updateBloc(AppBloc bloc, Widget page) async {
+    await Future.delayed(const Duration(seconds: 1));
+    bloc.add(AppPageTransitionComplete(bloc.state.currentPage));
   }
 
   Widget _getChildStack() {
