@@ -17,14 +17,14 @@ const RESOURCES = {
 "assets/images/nyan.gif": "7e982f6859d7d5c600d1506ce82cf52e",
 "assets/images/pw-logo.png": "77c65e2380b9e259c168e08f4a33a724",
 "assets/images/pw-logo.svg": "1b366d7e438bd39fff8bec934b9e426f",
-"assets/NOTICES": "8133cac9eb7314aaaae728df69a4d662",
+"assets/NOTICES": "4141117a192cb09e3aff07b676a293ba",
 "favicon.png": "fa7fde306a35e196516bf8b1d6100f14",
 "icons/favicon.png": "fa7fde306a35e196516bf8b1d6100f14",
 "icons/Icon-192.png": "8afa706053b186edf013b6c9880872f9",
 "icons/Icon-512.png": "70dd4c7d62910514def11f21e23d99f8",
-"index.html": "066296bd33d3c079710cf8f2e2270410",
-"/": "066296bd33d3c079710cf8f2e2270410",
-"main.dart.js": "705cd45abe9e9d17afee9603148007b7",
+"index.html": "1126f1b0d8884a9c189b6bfc38395de9",
+"/": "1126f1b0d8884a9c189b6bfc38395de9",
+"main.dart.js": "75bfc2af7a787e2387ff0f6de5500a89",
 "manifest.json": "ef22af793dc356468ea258e68a06f25c",
 "version.json": "0323328b10ae5e701c91561f7e8a8f65"
 };
