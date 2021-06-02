@@ -5,34 +5,33 @@ import 'package:portfolio_webapp/experience/experience.dart';
 import 'package:portfolio_webapp/home/home.dart';
 import 'package:portfolio_webapp/projects/projects.dart';
 
-import '../page_cube.dart';
+import '../../../block_scaffold.dart';
 
-class PageCube extends StatelessWidget {
-  const PageCube({Key? key}) : super(key: key);
+class CubeBody extends StatelessWidget {
+  const CubeBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => PageCubeBloc(),
-      child: const PageCubeWidget(),
+      create: (_) => CubeBodyBloc(),
+      child: const CubeBodyWidget(),
     );
   }
 }
 
-class PageCubeWidget extends StatefulWidget {
-  const PageCubeWidget({Key? key}) : super(key: key);
+class CubeBodyWidget extends StatefulWidget {
+  const CubeBodyWidget({Key? key}) : super(key: key);
 
   @override
-  _PageCubeState createState() => _PageCubeState();
+  _CubeBodyState createState() => _CubeBodyState();
 }
 
 /// Basic idea is to have it zoom out and rotate to whichever page like a cube
-class _PageCubeState extends State<PageCubeWidget>
-    with SingleTickerProviderStateMixin {
+class _CubeBodyState extends State<CubeBodyWidget> {
   @override
   Widget build(BuildContext context) {
     var _padding = 0.0;
-    return BlocListener<PageCubeBloc, PageCubeState>(
+    return BlocListener<CubeBodyBloc, CubeBodyState>(
       listener: (context, state) {
         if (state is AnimatingTransition) {
           _padding = state.zoomedOut ? 20.0 : 0.0;

@@ -1,40 +1,37 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:portfolio_webapp/app/app.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
+import '../../../block_scaffold.dart';
+import '../flip_drawer.dart';
+
 class FlipDrawer extends StatefulWidget {
-  const FlipDrawer({Key? key, required this.child}) : super(key: key);
+  FlipDrawer({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
   final Widget child;
+  late AnimationController? animationController;
 
   @override
   _FlipDrawerState createState() => _FlipDrawerState();
 }
 
-class _FlipDrawerState extends State<FlipDrawer>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
+class _FlipDrawerState extends State<FlipDrawer> {
   bool _canBeDragged = true;
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    widget.animationController =
+        BlocProvider.of<BlockScaffoldCubit>(context).toggleAnimationController!;
     return GestureDetector(
       onHorizontalDragStart: _onDragStart,
       onHorizontalDragEnd: _onDragEnd,
@@ -42,7 +39,7 @@ class _FlipDrawerState extends State<FlipDrawer>
       onTap: toggle,
       child: AnimatedBuilder(
         animation: CurvedAnimation(
-          parent: _animationController,
+          parent: widget.animationController!,
           curve: Curves.bounceInOut,
         ),
         builder: (context, child) {
@@ -68,25 +65,27 @@ class _FlipDrawerState extends State<FlipDrawer>
                 ),
               ),
               Transform.translate(
-                offset: Offset(maxSlide * (_animationController.value - 1), 0),
+                offset: Offset(
+                    maxSlide * (widget.animationController!.value - 1), 0),
                 child: Transform(
                   transform: Matrix4.identity()
                     ..setEntry(3, 2, .001)
-                    ..rotateY(math.pi / 2 * (1 - _animationController.value)),
+                    ..rotateY(
+                        math.pi / 2 * (1 - widget.animationController!.value)),
                   alignment: Alignment.centerRight,
                   child: NavDrawer(
-                    animationController: _animationController,
+                    animationController: widget.animationController!,
                     width: maxSlide.toDouble(),
                     parent: widget,
                   ),
                 ),
               ),
               Transform.translate(
-                offset: Offset(maxSlide * _animationController.value, 0),
+                offset: Offset(maxSlide * widget.animationController!.value, 0),
                 child: Transform(
                   transform: Matrix4.identity()
                     ..setEntry(3, 2, .001)
-                    ..rotateY(-math.pi / 2 * _animationController.value),
+                    ..rotateY(-math.pi / 2 * widget.animationController!.value),
                   alignment: Alignment.centerLeft,
                   child: Container(
                     color: Colors.black,
@@ -102,14 +101,14 @@ class _FlipDrawerState extends State<FlipDrawer>
     );
   }
 
-  void toggle() => _animationController.isDismissed
-      ? _animationController.forward()
-      : _animationController.reverse();
+  void toggle() => widget.animationController!.isDismissed
+      ? widget.animationController!.forward()
+      : widget.animationController!.reverse();
 
   void _onDragStart(DragStartDetails details) {
-    var isDragOpenFromLeft = _animationController.isDismissed &&
+    var isDragOpenFromLeft = widget.animationController!.isDismissed &&
         details.globalPosition.dx < minDragStartEdge;
-    var isDragCloseFromRight = _animationController.isCompleted &&
+    var isDragCloseFromRight = widget.animationController!.isCompleted &&
         details.globalPosition.dx > maxDragStartEdge;
 
     _canBeDragged = isDragOpenFromLeft || isDragCloseFromRight;
@@ -118,20 +117,21 @@ class _FlipDrawerState extends State<FlipDrawer>
   void _onDragUpdate(DragUpdateDetails details) {
     if (_canBeDragged) {
       var delta = details.primaryDelta! / maxSlide;
-      _animationController.value += delta;
+      widget.animationController!.value += delta;
     }
   }
 
   void _onDragEnd(DragEndDetails details) {
-    if (_animationController.isDismissed || _animationController.isCompleted) {
+    if (widget.animationController!.isDismissed ||
+        widget.animationController!.isCompleted) {
       return;
     }
     if (details.velocity.pixelsPerSecond.dx.abs() >= 365.0) {
       var visualVelocity = details.velocity.pixelsPerSecond.dx /
           MediaQuery.of(context).size.width;
 
-      _animationController.fling(velocity: visualVelocity);
-    } else if (_animationController.value < .5) {
+      widget.animationController!.fling(velocity: visualVelocity);
+    } else if (widget.animationController!.value < .5) {
       close();
     } else {
       open();
@@ -139,10 +139,10 @@ class _FlipDrawerState extends State<FlipDrawer>
   }
 
   void close() {
-    if (_canBeDragged && _animationController.isCompleted) toggle();
+    if (_canBeDragged && widget.animationController!.isCompleted) toggle();
   }
 
   void open() {
-    if (_canBeDragged && _animationController.isDismissed) toggle();
+    if (_canBeDragged && widget.animationController!.isDismissed) toggle();
   }
 }

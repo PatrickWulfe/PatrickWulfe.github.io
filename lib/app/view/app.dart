@@ -36,24 +36,7 @@ class AppView extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () => true,
-          ),
-          title: Image.asset(
-            'images/header-logo.png',
-            fit: BoxFit.contain,
-          ),
-        ),
-        body: Stack(
-          children: const [
-            Background(),
-            PageCube(),
-          ],
-        ),
-      ),
+      home: const BlockScaffold(),
     );
   }
 }

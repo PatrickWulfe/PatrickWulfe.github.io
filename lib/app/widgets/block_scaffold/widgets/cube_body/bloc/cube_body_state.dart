@@ -1,14 +1,14 @@
-part of 'page_cube_bloc.dart';
+part of 'cube_body_bloc.dart';
 
-abstract class PageCubeState extends Equatable {
-  const PageCubeState({required this.currentIndex});
+abstract class CubeBodyState extends Equatable {
+  const CubeBodyState({required this.currentIndex});
 
   final int currentIndex;
   @override
   List<Object> get props => [];
 }
 
-class PageDisplayed extends PageCubeState {
+class PageDisplayed extends CubeBodyState {
   const PageDisplayed({required int currentIndex})
       : super(currentIndex: currentIndex);
 
@@ -16,7 +16,7 @@ class PageDisplayed extends PageCubeState {
   List<Object> get props => [currentIndex];
 }
 
-class AnimatingTransition extends PageCubeState {
+class AnimatingTransition extends CubeBodyState {
   const AnimatingTransition({
     required int currentIndex,
     required this.goalIndex,

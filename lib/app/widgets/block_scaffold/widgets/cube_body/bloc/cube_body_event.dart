@@ -1,13 +1,13 @@
-part of 'page_cube_bloc.dart';
+part of 'cube_body_bloc.dart';
 
-abstract class PageCubeEvent extends Equatable {
-  const PageCubeEvent();
+abstract class CubeBodyEvent extends Equatable {
+  const CubeBodyEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class PageSelected extends PageCubeEvent {
+class PageSelected extends CubeBodyEvent {
   const PageSelected({required this.selectedIndex});
 
   final int selectedIndex;
@@ -16,7 +16,7 @@ class PageSelected extends PageCubeEvent {
   List<Object> get props => [selectedIndex];
 }
 
-class AnimationComplete extends PageCubeEvent {
+class AnimationComplete extends CubeBodyEvent {
   const AnimationComplete({required this.currentIndex});
 
   final int currentIndex;

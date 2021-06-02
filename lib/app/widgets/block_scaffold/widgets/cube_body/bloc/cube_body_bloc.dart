@@ -3,15 +3,15 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-part 'page_cube_event.dart';
-part 'page_cube_state.dart';
+part 'cube_body_event.dart';
+part 'cube_body_state.dart';
 
-class PageCubeBloc extends Bloc<PageCubeEvent, PageCubeState> {
-  PageCubeBloc() : super(const PageDisplayed(currentIndex: 0));
+class CubeBodyBloc extends Bloc<CubeBodyEvent, CubeBodyState> {
+  CubeBodyBloc() : super(const PageDisplayed(currentIndex: 0));
 
   @override
-  Stream<PageCubeState> mapEventToState(
-    PageCubeEvent event,
+  Stream<CubeBodyState> mapEventToState(
+    CubeBodyEvent event,
   ) async* {
     if (event is PageSelected) {
       if (state is PageDisplayed) {
