@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_webapp/app/widgets/block_scaffold/block_scaffold.dart';
+import 'package:simple_animations/simple_animations.dart';
 
 class AppBarPulltab extends StatefulWidget {
-  const AppBarPulltab({Key? key}) : super(key: key);
+  const AppBarPulltab({
+    Key? key,
+    required this.controller,
+    required this.animation,
+  }) : super(key: key);
 
   final headerLogo = const Image(image: AssetImage('images/header-logo.png'));
+  final AnimationController controller;
+  final Animation<TimelineValue<DrawerAniProps>> animation;
 
   @override
   _AppBarPulltabState createState() => _AppBarPulltabState();
@@ -14,41 +20,41 @@ class AppBarPulltab extends StatefulWidget {
 class _AppBarPulltabState extends State<AppBarPulltab> {
   double sliderValue = 0;
   bool _canBeDragged = true;
-  late AnimationController _animationController;
 
   @override
   Widget build(BuildContext context) {
-    _animationController =
-        BlocProvider.of<BlockScaffoldCubit>(context).toggleAnimationController!;
     return GestureDetector(
-        onHorizontalDragStart: _onDragStart,
-        onHorizontalDragEnd: _onDragEnd,
-        onHorizontalDragUpdate: _onDragUpdate,
-        onTap: toggle,
-        child: const LogoSlider(
-          width: maxSlide + 1000, //widget.headerLogo.width!,),
-        ));
+      onHorizontalDragStart: _onDragStart,
+      onHorizontalDragEnd: _onDragEnd,
+      onHorizontalDragUpdate: _onDragUpdate,
+      onTap: toggle,
+      child: LogoSlider(
+        animation: widget.animation,
+        controller: widget.controller,
+        width: maxSlide + 200, //widget.headerLogo.width!,),
+      ),
+    );
   }
 
   void _onDragStart(DragStartDetails details) {
-    var isDragOpenFromLeft = _animationController.isDismissed &&
+    var isDragOpenFromLeft = widget.controller.isDismissed &&
         details.globalPosition.dx < minDragStartEdge;
-    var isDragClosedFromRight = _animationController.isCompleted &&
+    var isDragClosedFromRight = widget.controller.isCompleted &&
         details.globalPosition.dx > maxDragStartEdge;
 
     _canBeDragged = isDragOpenFromLeft || isDragClosedFromRight;
   }
 
   void _onDragEnd(DragEndDetails details) {
-    if (_animationController.isDismissed || _animationController.isCompleted) {
+    if (widget.controller.isDismissed || widget.controller.isCompleted) {
       return;
     }
     if (details.velocity.pixelsPerSecond.dx.abs() >= 365.0) {
       var visualVelocity = details.velocity.pixelsPerSecond.dx /
           MediaQuery.of(context).size.width;
 
-      _animationController.fling(velocity: visualVelocity);
-    } else if (_animationController.value < .5) {
+      widget.controller.fling(velocity: visualVelocity);
+    } else if (widget.controller.value < .5) {
       close();
     } else {
       open();
@@ -58,39 +64,59 @@ class _AppBarPulltabState extends State<AppBarPulltab> {
   void _onDragUpdate(DragUpdateDetails details) {
     if (_canBeDragged) {
       var delta = details.primaryDelta! / maxSlide;
-      _animationController.value += delta;
+      widget.controller.value += delta;
     }
   }
 
   void close() {
-    if (_canBeDragged && _animationController.isCompleted) toggle();
+    if (_canBeDragged && widget.controller.isCompleted) toggle();
   }
 
   void open() {
-    if (_canBeDragged && _animationController.isDismissed) toggle();
+    if (_canBeDragged && widget.controller.isDismissed) toggle();
   }
 
-  void toggle() => _animationController.isDismissed
-      ? _animationController.forward()
-      : _animationController.reverse();
+  void toggle() => widget.controller.isDismissed
+      ? widget.controller.forward()
+      : widget.controller.reverse();
 }
 
 class LogoSlider extends StatelessWidget {
-  const LogoSlider({Key? key, required this.width}) : super(key: key);
+  const LogoSlider({
+    Key? key,
+    required this.width,
+    required this.animation,
+    required this.controller,
+  }) : super(key: key);
 
   final double width;
+  final Animation<TimelineValue<DrawerAniProps>> animation;
+  final AnimationController controller;
 
   @override
   Widget build(BuildContext context) {
-    var controller =
-        BlocProvider.of<BlockScaffoldCubit>(context).toggleAnimationController!;
-    return AnimatedBuilder(
-        animation: controller,
-        builder: (context, _) {
-          return Transform.translate(
-            offset: Offset(maxSlide * controller.value, 0),
-            child: const Image(image: AssetImage('images/header-logo.png')),
-          );
-        });
+    return Row(
+      children: [
+        AnimatedIcon(
+          icon: AnimatedIcons.menu_arrow,
+          progress: controller,
+        ),
+        Container(
+          padding: const EdgeInsets.only(left: 12),
+          alignment: Alignment.centerLeft,
+          width: width,
+          child: AnimatedBuilder(
+              animation: animation,
+              builder: (context, _) {
+                return Transform.translate(
+                  offset: Offset(
+                      maxSlide * animation.value.get(DrawerAniProps.slide), 0),
+                  child:
+                      const Image(image: AssetImage('images/header-logo.png')),
+                );
+              }),
+        ),
+      ],
+    );
   }
 }

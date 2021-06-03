@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio_webapp/app/app.dart';
 import 'package:portfolio_webapp/home/widgets/widgets.dart';
 
 const _animationDuration = Duration(milliseconds: 250);
@@ -36,12 +35,6 @@ class HomeView extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(bottom: 100.0),
                   child: AnimatedHomeText(),
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(
-                    '[Click Here]',
-                  ),
                 ),
               ],
             ),

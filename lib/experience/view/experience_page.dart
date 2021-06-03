@@ -7,9 +7,7 @@ class ExperiencePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const ExperienceView(),
-    );
+    return const ExperienceView();
   }
 }
 
@@ -28,8 +26,8 @@ class ExperienceView extends StatelessWidget {
               width: 100,
               child: Center(
                 child: Stack(
-                  children: [
-                    const Text('Patrick Wulfe'),
+                  children: const [
+                    Text('Patrick Wulfe'),
                   ],
                 ),
               ),

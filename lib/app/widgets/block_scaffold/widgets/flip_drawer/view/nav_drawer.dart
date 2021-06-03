@@ -34,6 +34,8 @@ class _NavDrawerState extends State<NavDrawer> {
           Column(
             children: [
               Card(
+                shadowColor: Colors.black38,
+                elevation: 8,
                 color: Colors.white10,
                 child: ListTile(
                   title: const Text('Home'),
@@ -43,6 +45,8 @@ class _NavDrawerState extends State<NavDrawer> {
                 ),
               ),
               Card(
+                shadowColor: Colors.black38,
+                elevation: 8,
                 color: Colors.white10,
                 child: ListTile(
                   title: const Text('Projects'),
@@ -54,6 +58,8 @@ class _NavDrawerState extends State<NavDrawer> {
                 ),
               ),
               Card(
+                shadowColor: Colors.black38,
+                elevation: 8,
                 color: Colors.white10,
                 child: ListTile(
                   title: const Text('Education'),
@@ -63,6 +69,8 @@ class _NavDrawerState extends State<NavDrawer> {
                 ),
               ),
               Card(
+                shadowColor: Colors.black38,
+                elevation: 8,
                 color: Colors.white10,
                 child: ListTile(
                   title: const Text('Experience'),
@@ -71,6 +79,17 @@ class _NavDrawerState extends State<NavDrawer> {
                   },
                 ),
               ),
+              Card(
+                shadowColor: Colors.black38,
+                elevation: 8,
+                color: Colors.white10,
+                child: ListTile(
+                  title: const Text('.dotfiles'),
+                  onTap: () {
+                    return;
+                  },
+                ),
+              )
             ],
           ),
         ],

@@ -18,20 +18,25 @@ class _AnimatedMainLogoState extends State<AnimatedMainLogo> {
   var insets2 = EdgeInsets.zero;
 
   void changePosition(Timer t) async {
-    setState(() {
-      insets1 = EdgeInsets.only(
-        left: random.nextDouble() * _scale1,
-        top: random.nextDouble() * _scale1,
-        right: random.nextDouble() * _scale1,
-        bottom: random.nextDouble() * _scale1,
-      );
-      insets2 = EdgeInsets.only(
-        left: random.nextDouble() * _scale2,
-        top: random.nextDouble() * _scale2,
-        right: random.nextDouble() * _scale2,
-        bottom: random.nextDouble() * _scale2,
-      );
-    });
+    try {
+      setState(() {
+        insets1 = EdgeInsets.only(
+          left: random.nextDouble() * _scale1,
+          top: random.nextDouble() * _scale1,
+          right: random.nextDouble() * _scale1,
+          bottom: random.nextDouble() * _scale1,
+        );
+        insets2 = EdgeInsets.only(
+          left: random.nextDouble() * _scale2,
+          top: random.nextDouble() * _scale2,
+          right: random.nextDouble() * _scale2,
+          bottom: random.nextDouble() * _scale2,
+        );
+      });
+      // TODO: throws an exception when this is called after navigating away
+    } catch (e) {
+      return;
+    }
   }
 
   @override
