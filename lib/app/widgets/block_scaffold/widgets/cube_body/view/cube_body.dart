@@ -41,18 +41,16 @@ class _CubeBodyState extends State<CubeBody> {
       listener: (context, state) {
         _getChildStack();
         if (state is AppPageTransitioning) {
-          widget.cubeController.reset();
           widget.cubeController.forward();
           _updateBloc(appBloc, state.newPage);
-        } else if (state is AppPageDisplayed) {
-          widget.cubeController.reset();
-        }
+        } else if (state is AppPageDisplayed) {}
       },
       child: AnimatedBuilder(
         animation: widget.cubeController,
         builder: (context, _) {
           return Transform.rotate(
-            angle: widget.cubeAnimation.value.get(TransitionAniProps.rotation),
+            angle: math.pi *
+                widget.cubeAnimation.value.get(TransitionAniProps.rotation),
             child: Transform.scale(
               scale:
                   1 - widget.cubeAnimation.value.get(TransitionAniProps.scale),
@@ -75,7 +73,9 @@ class _CubeBodyState extends State<CubeBody> {
 
   void _updateBloc(AppBloc bloc, Widget page) async {
     await Future.delayed(const Duration(seconds: 1));
-    bloc.add(AppPageTransitionComplete(bloc.state.currentPage));
+    if (widget.cubeController.isCompleted) {
+      bloc.add(AppPageTransitionComplete(bloc.state.currentPage));
+    }
   }
 
   void _getChildStack() {
@@ -83,10 +83,23 @@ class _CubeBodyState extends State<CubeBody> {
     if (bloc.state is AppPageTransitioning) {
       childStack = Stack(
         children: [
-          bloc.state.currentPage,
-          Transform.rotate(
-            angle: math.pi,
-            child: (bloc.state as AppPageTransitioning).newPage,
+          Transform(
+            transform: Matrix4.identity()
+              ..setEntry(3, 2, .001)
+              ..rotateY((math.pi / 2) *
+                  (1 -
+                      widget.cubeAnimation.value.get(TransitionAniProps.roll))),
+            child: bloc.state.currentPage,
+          ),
+          Transform(
+            transform: Matrix4.identity()
+              ..setEntry(3, 2, .001)
+              ..rotateY((math.pi / 2) *
+                  widget.cubeAnimation.value.get(TransitionAniProps.roll)),
+            child: Transform.rotate(
+              angle: math.pi,
+              child: (bloc.state as AppPageTransitioning).newPage,
+            ),
           )
         ],
       );

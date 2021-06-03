@@ -1,4 +1,3 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:portfolio_webapp/app/widgets/block_scaffold/block_scaffold.dart';
 import 'package:simple_animations/simple_animations.dart';
@@ -59,8 +58,7 @@ class _BlockScaffoldState extends State<BlockScaffold> with AnimationMixin {
           curve: Curves.ease,
         )
         .animate(TransitionAniProps.roll, tween: Tween(begin: 0, end: 1))
-        .animate(TransitionAniProps.rotation,
-            tween: Tween(begin: 0, end: math.pi))
+        .animate(TransitionAniProps.rotation, tween: Tween(begin: 0, end: 1))
         .parent
         .animatedBy(cubeController);
 
