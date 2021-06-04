@@ -36,7 +36,6 @@ class _FlipDrawerState extends State<FlipDrawer> {
       builder: (context, child) {
         return Stack(
           children: [
-            const WaveBackground(),
             Transform.translate(
               offset: Offset(
                 -maxSlide +
