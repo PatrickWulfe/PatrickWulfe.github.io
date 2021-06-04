@@ -1,5 +1,5 @@
-const zoomDuration = Duration(milliseconds: 500);
-const rollDuration = Duration(milliseconds: 1000);
+const zoomDuration = Duration(milliseconds: 1500);
+const rollDuration = Duration(milliseconds: 3000);
 const toggleDuration = Duration(milliseconds: 500);
 const minDragStartEdge = 200;
 const maxDragStartEdge = 200;

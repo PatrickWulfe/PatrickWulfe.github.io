@@ -2,7 +2,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 
-import '../../../block_scaffold.dart';
+import '../../../../../app.dart';
 import '../flip_drawer.dart';
 
 class FlipDrawer extends StatefulWidget {
@@ -36,6 +36,7 @@ class _FlipDrawerState extends State<FlipDrawer> {
       builder: (context, child) {
         return Stack(
           children: [
+            const WaveBackground(),
             Transform.translate(
               offset: Offset(
                 -maxSlide +

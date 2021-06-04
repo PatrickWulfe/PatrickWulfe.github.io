@@ -1,1 +1,1 @@
-export 'block_scaffold/view/block_scaffold.dart';
+export 'block_scaffold/block_scaffold.dart';

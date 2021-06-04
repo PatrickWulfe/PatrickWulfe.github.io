@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_webapp/app/widgets/block_scaffold/block_scaffold.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
+import '../../../app.dart';
 
 enum TransitionAniProps {
   scale,

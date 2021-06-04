@@ -49,7 +49,7 @@ class _NavDrawerState extends State<NavDrawer> {
                 elevation: 8,
                 color: Colors.white10,
                 child: ListTile(
-                  title: const Text('Projects'),
+                  title: const Text('Projects (working)'),
                   onTap: () {
                     // context.flow<String>().update((e) => '/projects');
                     appBloc.add(AppPageSelected(

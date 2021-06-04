@@ -18,9 +18,9 @@ class AppPageSelected extends AppEvent {
 }
 
 class AppPageTransitionComplete extends AppEvent {
-  AppPageTransitionComplete(this.currentPage);
-  final Widget currentPage;
+  AppPageTransitionComplete(this.newPage);
+  final Widget newPage;
 
   @override
-  List<Object?> get props => [currentPage];
+  List<Object?> get props => [newPage];
 }

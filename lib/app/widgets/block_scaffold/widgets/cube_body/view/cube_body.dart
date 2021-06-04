@@ -29,85 +29,90 @@ class CubeBody extends StatefulWidget {
 
 /// Basic idea is to have it zoom out and rotate to whichever page like a cube
 class _CubeBodyState extends State<CubeBody> {
-  Widget childStack = const SizedBox(
-    height: 20,
-    width: 20,
-    child: Center(child: CircularProgressIndicator()),
-  );
   @override
   Widget build(BuildContext context) {
-    var appBloc = BlocProvider.of<AppBloc>(context);
-    return BlocListener<AppBloc, AppState>(
-      listener: (context, state) {
-        _getChildStack();
+    return BlocBuilder<AppBloc, AppState>(
+      builder: (context, state) {
         if (state is AppPageTransitioning) {
+          widget.cubeController.reset();
+          widget.drawerController.reverse();
           widget.cubeController.forward();
-          _updateBloc(appBloc, state.newPage);
-        } else if (state is AppPageDisplayed) {}
-      },
-      child: AnimatedBuilder(
-        animation: widget.cubeController,
-        builder: (context, _) {
-          return Transform.rotate(
-            angle: math.pi *
-                widget.cubeAnimation.value.get(TransitionAniProps.rotation),
-            child: Transform.scale(
-              scale:
-                  1 - widget.cubeAnimation.value.get(TransitionAniProps.scale),
-              child: Stack(
-                children: [
-                  const WaveBackground(),
-                  FlipDrawer(
-                    animationController: widget.drawerController,
-                    animation: widget.drawerAnimation,
-                    child: childStack,
+          return AnimatedBuilder(
+            animation: widget.cubeController,
+            builder: (context, _) {
+              return Transform.rotate(
+                angle: math.pi *
+                    widget.cubeAnimation.value.get(TransitionAniProps.rotation),
+                child: Transform.scale(
+                  scale: 1 -
+                      widget.cubeAnimation.value.get(TransitionAniProps.scale),
+                  child: Stack(
+                    children: [
+                      Transform.translate(
+                        offset: Offset(
+                            maxSlide *
+                                (1 -
+                                    widget.cubeAnimation.value
+                                        .get(TransitionAniProps.roll)),
+                            0),
+                        child: Transform(
+                          transform: Matrix4.identity()
+                            ..setEntry(3, 2, .001)
+                            ..rotateY((-math.pi / 2) *
+                                (1 -
+                                    widget.cubeAnimation.value
+                                        .get(TransitionAniProps.roll))),
+                          alignment: Alignment.centerLeft,
+                          child: Stack(
+                            children: [
+                              RotatedBox(
+                                quarterTurns: 2,
+                                child: state.newPage,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Transform.translate(
+                        offset: Offset(
+                            maxSlide *
+                                -1 *
+                                widget.cubeAnimation.value
+                                    .get(TransitionAniProps.roll),
+                            0),
+                        child: Transform(
+                          transform: Matrix4.identity()
+                            ..setEntry(3, 2, .001)
+                            ..rotateY((math.pi / 2) *
+                                widget.cubeAnimation.value
+                                    .get(TransitionAniProps.rotation)),
+                          alignment: Alignment.centerRight,
+                          child: Transform.rotate(
+                            angle: math.pi,
+                            child: state.currentPage,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              );
+            },
+          );
+        } else {
+          return FlipDrawer(
+            animationController: widget.drawerController,
+            animation: widget.drawerAnimation,
+            child: Stack(
+              children: [
+                state.currentPage,
+              ],
             ),
           );
-        },
-      ),
-    );
-  }
-
-  void _updateBloc(AppBloc bloc, Widget page) async {
-    await Future.delayed(const Duration(seconds: 1));
-    if (widget.cubeController.isCompleted) {
-      bloc.add(AppPageTransitionComplete(bloc.state.currentPage));
-    }
-  }
-
-  void _getChildStack() {
-    var bloc = BlocProvider.of<AppBloc>(context);
-    if (bloc.state is AppPageTransitioning) {
-      childStack = Stack(
-        children: [
-          Transform(
-            transform: Matrix4.identity()
-              ..setEntry(3, 2, .001)
-              ..rotateY((math.pi / 2) *
-                  (1 -
-                      widget.cubeAnimation.value.get(TransitionAniProps.roll))),
-            child: bloc.state.currentPage,
-          ),
-          Transform(
-            transform: Matrix4.identity()
-              ..setEntry(3, 2, .001)
-              ..rotateY((math.pi / 2) *
-                  widget.cubeAnimation.value.get(TransitionAniProps.roll)),
-            child: Transform.rotate(
-              angle: math.pi,
-              child: (bloc.state as AppPageTransitioning).newPage,
-            ),
-          )
-        ],
-      );
-    }
-    childStack = Stack(
-      children: [
-        bloc.state.currentPage,
-      ],
+          // return childStack;
+        }
+      },
+      buildWhen: (previous, current) => previous != current,
     );
   }
 }
