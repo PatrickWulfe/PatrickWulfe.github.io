@@ -93,7 +93,7 @@ class ProjectsView extends StatelessWidget {
       ProjectTile(
         title: 'music_toolbox',
         description: 'Literally just a concept at this point.  Going to '
-            'essenitally be a swiss army knife for musicians.  Will have a '
+            'essentially be a swiss army knife for musicians.  Will have a '
             'tuner, drum machine, sampler, recorder, basic synth, chord chart, '
             'music calculator, etc. all in one convenient app.',
         url: '',

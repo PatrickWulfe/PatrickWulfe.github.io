@@ -14,6 +14,7 @@ import 'package:portfolio_webapp/app/app.dart';
 import 'package:portfolio_webapp/app/app_bloc_observer.dart';
 
 void main() {
+
   Bloc.observer = AppBlocObserver();
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);

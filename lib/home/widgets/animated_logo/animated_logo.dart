@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:portfolio_webapp/app/app.dart';
 
 class AnimatedMainLogo extends StatefulWidget {
   const AnimatedMainLogo({Key? key}) : super(key: key);
@@ -16,33 +17,35 @@ class _AnimatedMainLogoState extends State<AnimatedMainLogo> {
   final _scale2 = 12;
   var insets1 = EdgeInsets.zero;
   var insets2 = EdgeInsets.zero;
+  late Timer tmr;
 
   void changePosition(Timer t) async {
-    try {
-      setState(() {
-        insets1 = EdgeInsets.only(
-          left: random.nextDouble() * _scale1,
-          top: random.nextDouble() * _scale1,
-          right: random.nextDouble() * _scale1,
-          bottom: random.nextDouble() * _scale1,
-        );
-        insets2 = EdgeInsets.only(
-          left: random.nextDouble() * _scale2,
-          top: random.nextDouble() * _scale2,
-          right: random.nextDouble() * _scale2,
-          bottom: random.nextDouble() * _scale2,
-        );
-      });
-      // TODO: throws an exception when this is called after navigating away
-    } catch (e) {
-      return;
-    }
+    setState(() {
+      insets1 = EdgeInsets.only(
+        left: random.nextDouble() * _scale1,
+        top: random.nextDouble() * _scale1,
+        right: random.nextDouble() * _scale1,
+        bottom: random.nextDouble() * _scale1,
+      );
+      insets2 = EdgeInsets.only(
+        left: random.nextDouble() * _scale2,
+        top: random.nextDouble() * _scale2,
+        right: random.nextDouble() * _scale2,
+        bottom: random.nextDouble() * _scale2,
+      );
+    });
   }
 
   @override
   void initState() {
     super.initState();
-    Timer.periodic(const Duration(seconds: 1), changePosition);
+    tmr = Timer.periodic(const Duration(seconds: 1), changePosition);
+  }
+
+  @override
+  void dispose() {
+    tmr.cancel();
+    super.dispose();
   }
 
   @override

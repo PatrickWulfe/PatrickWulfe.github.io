@@ -1,8 +1,10 @@
-import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_webapp/app/app.dart';
 import 'package:portfolio_webapp/app/widgets/block_scaffold/block_scaffold.dart';
+import 'package:portfolio_webapp/dotfiles/dotfiles.dart';
+import 'package:portfolio_webapp/education/education.dart';
+import 'package:portfolio_webapp/experience/experience.dart';
 import 'package:portfolio_webapp/projects/projects.dart';
 
 import '../flip_drawer.dart';
@@ -34,59 +36,60 @@ class _NavDrawerState extends State<NavDrawer> {
           Column(
             children: [
               Card(
-                shadowColor: Colors.black38,
-                elevation: 8,
                 color: Colors.white10,
                 child: ListTile(
                   title: const Text('Home'),
                   onTap: () {
-                    return;
+                    widget.animationController.reverse();
                   },
                 ),
               ),
               Card(
-                shadowColor: Colors.black38,
-                elevation: 8,
                 color: Colors.white10,
                 child: ListTile(
-                  title: const Text('Projects (working)'),
+                  title: const Text('Projects'),
                   onTap: () {
-                    // context.flow<String>().update((e) => '/projects');
                     appBloc.add(AppPageSelected(
-                        prevPage: widget, newPage: const ProjectsPage()));
+                      prevPage: widget,
+                      newPage: const ProjectsPage(),
+                    ));
                   },
                 ),
               ),
               Card(
-                shadowColor: Colors.black38,
-                elevation: 8,
                 color: Colors.white10,
                 child: ListTile(
                   title: const Text('Education'),
                   onTap: () {
-                    context.flow<String>().update((e) => '/education');
+                    appBloc.add(AppPageSelected(
+                      prevPage: widget,
+                      newPage: const EducationPage(),
+                    ));
                   },
                 ),
               ),
               Card(
-                shadowColor: Colors.black38,
-                elevation: 8,
+                // context.flow<String>().update((e) => '/projects');
                 color: Colors.white10,
                 child: ListTile(
                   title: const Text('Experience'),
                   onTap: () {
-                    context.flow<String>().update((e) => '/experience');
+                    appBloc.add(AppPageSelected(
+                      prevPage: widget,
+                      newPage: const ExperiencePage(),
+                    ));
                   },
                 ),
               ),
               Card(
-                shadowColor: Colors.black38,
-                elevation: 8,
                 color: Colors.white10,
                 child: ListTile(
                   title: const Text('.dotfiles'),
                   onTap: () {
-                    return;
+                    appBloc.add(AppPageSelected(
+                      prevPage: widget,
+                      newPage: const DotfilesPage(),
+                    ));
                   },
                 ),
               )
