@@ -19,6 +19,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   google_fonts: ^4.0.4
   intl: ^0.17.0
+  simple_animations: ^5.0.0+3
 
 dev_dependencies:
   bloc_test: ^9.1.1
@@ -35,3 +36,4 @@ flutter:
   generate: true
   assets:
     - assets/
+    - assets/images/

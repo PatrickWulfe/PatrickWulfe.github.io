@@ -15,10 +15,22 @@ class InterestsPage extends StatelessWidget {
 }
 
 class InterestsView extends StatelessWidget {
-  const InterestsView({Key? key}) : super(key: key);
+  const InterestsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Interests'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            const Text('Under Construction'),
+            Image.asset('assets/images/nyan.gif'),
+          ],
+        ),
+      ),
+    );
   }
 }

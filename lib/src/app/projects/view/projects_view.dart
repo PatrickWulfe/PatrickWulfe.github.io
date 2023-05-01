@@ -19,6 +19,18 @@ class ProjectsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Projects'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            const Text('Under Construction'),
+            Image.asset('assets/images/nyan.gif'),
+          ],
+        ),
+      ),
+    );
   }
 }

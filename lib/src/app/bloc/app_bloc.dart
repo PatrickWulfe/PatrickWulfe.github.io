@@ -7,7 +7,7 @@ part 'app_event.dart';
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc() : super(_Initial(themeCubit: ThemeCubit(useLightTheme: true))) {
+  AppBloc() : super(_Initial(themeCubit: ThemeCubit(useLightTheme: false))) {
     on<AppEvent>((event, emit) {
       // TODO: implement event handler
     });
