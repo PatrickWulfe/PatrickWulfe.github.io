@@ -30,7 +30,7 @@ class AppView extends StatelessWidget {
             '/interests': (context) => const InterestsPage(),
             '/projects': (context) => const ProjectsPage(),
           },
-          theme: state.themeCubit.currentTheme,
+          theme: state.themeName.themeData,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
         );

@@ -5,7 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class AnimatedLogo extends HookWidget {
-  const AnimatedLogo({super.key});
+  const AnimatedLogo({
+    super.key,
+    this.height,
+    this.width,
+  });
+
+  final double? height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +38,10 @@ class AnimatedLogo extends HookWidget {
     );
 
     return Container(
-      constraints: const BoxConstraints(maxHeight: 200, maxWidth: 800),
+      constraints: BoxConstraints(
+        maxHeight: height ?? 256,
+        maxWidth: width ?? 800,
+      ),
       child: AspectRatio(
         aspectRatio: 8 / 5,
         child: Stack(
