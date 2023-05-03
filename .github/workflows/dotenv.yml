@@ -1,0 +1,26 @@
+name: Create .Env File
+
+on: [ push ]
+
+jobs:
+
+  create-envfile:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create assets folder
+      run: |
+        mkdir -p assets
+    - name: Make envfile
+      uses: DeveloperRic/action-create-env@v1.0.2
+      with:
+        full_text: |
+          GH_USERNAME=PatrickWulfe
+        directory: ${{ github.workspace }}/assets
+        include_env_vars: true
+      env:
+        ACTION_CREATE_ENV_GH_PASSWORD: ${{ secrets.GH_PASSWORD }}
+        ACTION_CREATE_ENV_GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
