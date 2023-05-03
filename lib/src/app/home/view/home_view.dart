@@ -121,6 +121,7 @@ class _DesktopHomeView extends StatelessWidget {
               ),
               const SizedBox.square(dimension: 16),
               Wrap(
+                alignment: WrapAlignment.center,
                 children: children
                     .map(
                       (e) => Container(
@@ -137,27 +138,6 @@ class _DesktopHomeView extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _CircleImage extends StatelessWidget {
-  const _CircleImage({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-      ),
-      constraints: const BoxConstraints(maxWidth: 400),
-      clipBehavior: Clip.antiAlias,
-      child: Image.asset(
-        'assets/images/avatar_pic.jpg',
-        fit: BoxFit.fitWidth,
       ),
     );
   }
@@ -183,6 +163,7 @@ class _MobileHomeView extends StatelessWidget {
             const AnimatedLogo(),
             const SizedBox.square(dimension: 16),
             Wrap(
+              alignment: WrapAlignment.center,
               children: children
                   .map(
                     (e) => Container(
@@ -199,6 +180,27 @@ class _MobileHomeView extends StatelessWidget {
             const SizedBox.square(dimension: 16),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _CircleImage extends StatelessWidget {
+  const _CircleImage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+      ),
+      constraints: const BoxConstraints(maxWidth: 400),
+      clipBehavior: Clip.antiAlias,
+      child: Image.asset(
+        'assets/images/avatar_pic.jpg',
+        fit: BoxFit.fitWidth,
       ),
     );
   }

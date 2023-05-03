@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.2
+  flutter_dotenv: ^5.0.2
   flutter_hooks: ^0.18.6
   flutter_localizations:
     sdk: flutter
@@ -36,5 +37,6 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
+    - .env
     - assets/
     - assets/images/
