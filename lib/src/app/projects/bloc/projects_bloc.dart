@@ -19,17 +19,22 @@ class ProjectsBloc extends Bloc<ProjectsEvent, ProjectsState> {
     });
   }
 
-  void _onStarted(ProjectsEvent event, Emitter<ProjectsState> emit) async {
+  Future<void> _onStarted(
+    ProjectsEvent event,
+    Emitter<ProjectsState> emit,
+  ) async {
+    final userData = await githubRepo.getMyUserData();
     final repos = await githubRepo.getMyProjects();
     emit(
-      state.copyWith(
-        user: await githubRepo.getMyUserData(),
-        repositories: await githubRepo.getMyProjects(),
+      ProjectsState(
+        user: userData,
+        repositories: repos,
+        // repositories: [],
       ),
     );
   }
 
-  void _onRepoAdded(
+  Future<void> _onRepoAdded(
     ProjectsEvent event,
     Emitter<ProjectsState> emit,
     Repository repo,

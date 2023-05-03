@@ -44,8 +44,8 @@ class HomeView extends HookWidget {
           HomeCard(
             cardIcon: CommunityMaterialIcons.github,
             title: 'Projects',
-            description:
-                "Here you can find a list of various things I'm working on.",
+            description: '''
+Here you can find a list of various things I'm working on.  Currently building a project tracker for this page.''',
             buttonText: 'Click Here',
             onButtonPress: () => Navigator.pushNamed(context, '/projects'),
           ),
