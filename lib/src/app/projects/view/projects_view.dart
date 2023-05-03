@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:github/github.dart' as gh;
 import 'package:portfolio_project/src/app/app_index.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -11,16 +10,16 @@ class ProjectsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     late gh.GitHub github;
-    if (dotenv.isEveryDefined(['GH_USERNAME', 'GH_PASSWORD'])) {
-      github = gh.GitHub(
-        auth: gh.Authentication.basic(
-          dotenv.env['GH_USERNAME'],
-          dotenv.env['GH_PASSWORD'],
-        ),
-      );
-    } else {
-      github = gh.GitHub(auth: gh.Authentication.anonymous());
-    }
+    // if (dotenv.isEveryDefined(['GH_USERNAME', 'GH_TOKEN'])) {
+    // github = gh.GitHub(
+    // auth: gh.Authentication.basic(
+    //   dotenv.env['GH_USERNAME'],
+    //   dotenv.env['GH_PASSWORD'],
+    // ),
+    // );
+    // } else {
+    github = gh.GitHub(auth: gh.Authentication.anonymous());
+    // }
     return BlocProvider(
       create: (context) =>
           ProjectsBloc(githubRepo: GithubRepositoryImpl(github))

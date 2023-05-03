@@ -1,9 +1,6 @@
 name: Create .Env File
 
-on:
-  push:
-    branches:
-      - gh-pages
+on: [ push ]
 
 jobs:
 
@@ -12,14 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
     - name: Create assets folder
       run: |
         mkdir -p assets
     - name: Make envfile
       uses: DeveloperRic/action-create-env@v1.0.2
       with:
+        full_text: |
+          GH_USERNAME=PatrickWulfe
         directory: ${{ github.workspace }}/assets
         include_env_vars: true
       env:

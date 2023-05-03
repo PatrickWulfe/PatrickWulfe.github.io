@@ -30,15 +30,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.3.2
-  github_pages: ^1.0.0
   mocktail: ^0.3.0
-  peanut: ^4.3.1
   very_good_analysis: ^4.0.0+1
 
 flutter:
   uses-material-design: true
   generate: true
   assets:
-    - assets/.env
+    # - .env
     - assets/
     - assets/images/
