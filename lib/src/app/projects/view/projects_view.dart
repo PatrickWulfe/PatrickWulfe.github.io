@@ -1,3 +1,4 @@
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github/github.dart' as gh;
@@ -47,33 +48,55 @@ class ProjectsView extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }
-          return ListView.builder(
+          return ListView.separated(
             itemCount: (state.repositories ?? []).length,
+            separatorBuilder: (_, __) => const Divider(),
             itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                title: Text(state.repositories![index].name),
-                // onTap: () =>
-                //     _launchUrl(Uri.parse(state.repositories![index].htmlUrl)),
+              final element = state.repositories![index];
+              return ProjectTile(
+                title: element.name,
+                subtitle: element.description,
+                onTap: () =>
+                    _launchUrl(Uri.parse(state.repositories![index].htmlUrl)),
               );
             },
           );
-          // return Center(
-          //   child: Column(
-          //     children: [
-          //       const Text('Under Construction'),
-          //       Image.asset('assets/images/nyan.gif'),
-          //       Text(''),
-          //     ],
-          //   ),
-          // );
         },
       ),
     );
   }
 }
 
+class ProjectTile extends StatelessWidget {
+  const ProjectTile({
+    super.key,
+    required this.title,
+    this.subtitle,
+    this.onTap,
+  });
+
+  final String title;
+  final String? subtitle;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final appTheme = Theme.of(context);
+    return ListTile(
+      leading: const Icon(CommunityMaterialIcons.github),
+      title: Text(title),
+      subtitle: Text(
+        subtitle ?? '',
+        softWrap: true,
+      ),
+      onTap: onTap,
+      tileColor: appTheme.colorScheme.surfaceVariant,
+    );
+  }
+}
+
 Future<void> _launchUrl(Uri url) async {
   if (!await launchUrl(url)) {
-    throw Exception('Could not launch $url');
+    // throw Exception('Could not launch $url');
   }
 }
