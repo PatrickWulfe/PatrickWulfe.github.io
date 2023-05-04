@@ -1,1 +1,1 @@
-export 'github_repository_impl.dart';
+export 'github_repository.dart';
