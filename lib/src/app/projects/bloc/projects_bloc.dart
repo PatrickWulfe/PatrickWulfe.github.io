@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:github/github.dart';
-import 'package:portfolio_project/src/app/projects/data/repository/github_repository.dart';
+import 'package:portfolio_project/src/app/projects/domain/repository/github_repository.dart';
 
 part 'projects_bloc.freezed.dart';
 part 'projects_event.dart';
