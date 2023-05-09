@@ -33,6 +33,7 @@ class ProjectsBloc extends Bloc<ProjectsEvent, ProjectsState> {
         // repositories: [],
       ),
     );
+    add(ProjectsEvent.sortChanged(sort: state.sort));
   }
 
   Future<void> _onRepoAdded(

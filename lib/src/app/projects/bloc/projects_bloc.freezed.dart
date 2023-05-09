@@ -469,7 +469,7 @@ abstract class _SortChanged implements ProjectsEvent {
 mixin _$ProjectsState {
   User? get user => throw _privateConstructorUsedError;
   List<Repository>? get repositories => throw _privateConstructorUsedError;
-  RepoSort? get sort => throw _privateConstructorUsedError;
+  RepoSort get sort => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProjectsStateCopyWith<ProjectsState> get copyWith =>
@@ -482,7 +482,7 @@ abstract class $ProjectsStateCopyWith<$Res> {
           ProjectsState value, $Res Function(ProjectsState) then) =
       _$ProjectsStateCopyWithImpl<$Res, ProjectsState>;
   @useResult
-  $Res call({User? user, List<Repository>? repositories, RepoSort? sort});
+  $Res call({User? user, List<Repository>? repositories, RepoSort sort});
 }
 
 /// @nodoc
@@ -500,7 +500,7 @@ class _$ProjectsStateCopyWithImpl<$Res, $Val extends ProjectsState>
   $Res call({
     Object? user = freezed,
     Object? repositories = freezed,
-    Object? sort = freezed,
+    Object? sort = null,
   }) {
     return _then(_value.copyWith(
       user: freezed == user
@@ -511,10 +511,10 @@ class _$ProjectsStateCopyWithImpl<$Res, $Val extends ProjectsState>
           ? _value.repositories
           : repositories // ignore: cast_nullable_to_non_nullable
               as List<Repository>?,
-      sort: freezed == sort
+      sort: null == sort
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
-              as RepoSort?,
+              as RepoSort,
     ) as $Val);
   }
 }
@@ -527,7 +527,7 @@ abstract class _$$_ProjectsStateCopyWith<$Res>
       __$$_ProjectsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User? user, List<Repository>? repositories, RepoSort? sort});
+  $Res call({User? user, List<Repository>? repositories, RepoSort sort});
 }
 
 /// @nodoc
@@ -543,7 +543,7 @@ class __$$_ProjectsStateCopyWithImpl<$Res>
   $Res call({
     Object? user = freezed,
     Object? repositories = freezed,
-    Object? sort = freezed,
+    Object? sort = null,
   }) {
     return _then(_$_ProjectsState(
       user: freezed == user
@@ -554,10 +554,10 @@ class __$$_ProjectsStateCopyWithImpl<$Res>
           ? _value._repositories
           : repositories // ignore: cast_nullable_to_non_nullable
               as List<Repository>?,
-      sort: freezed == sort
+      sort: null == sort
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
-              as RepoSort?,
+              as RepoSort,
     ));
   }
 }
@@ -585,7 +585,7 @@ class _$_ProjectsState implements _ProjectsState {
 
   @override
   @JsonKey()
-  final RepoSort? sort;
+  final RepoSort sort;
 
   @override
   String toString() {
@@ -618,14 +618,14 @@ abstract class _ProjectsState implements ProjectsState {
   const factory _ProjectsState(
       {final User? user,
       final List<Repository>? repositories,
-      final RepoSort? sort}) = _$_ProjectsState;
+      final RepoSort sort}) = _$_ProjectsState;
 
   @override
   User? get user;
   @override
   List<Repository>? get repositories;
   @override
-  RepoSort? get sort;
+  RepoSort get sort;
   @override
   @JsonKey(ignore: true)
   _$$_ProjectsStateCopyWith<_$_ProjectsState> get copyWith =>
