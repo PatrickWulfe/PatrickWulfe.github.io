@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:github/github.dart';
-import 'package:portfolio_project/src/app/projects/domain/repository/github_repository.dart';
+import 'package:portfolio_project/src/app/app_index.dart';
 
 part 'projects_bloc.freezed.dart';
 part 'projects_event.dart';
@@ -15,6 +15,7 @@ class ProjectsBloc extends Bloc<ProjectsEvent, ProjectsState> {
       await event.when(
         started: () async => _onStarted(event, emit),
         repoAdded: (repo) async => _onRepoAdded(event, emit, repo),
+        sortChanged: (sort) async => _onSortChanged(event, emit, sort),
       );
     });
   }
@@ -40,6 +41,30 @@ class ProjectsBloc extends Bloc<ProjectsEvent, ProjectsState> {
     Repository repo,
   ) async {
     emit(state.copyWith(repositories: [...state.repositories ?? [], repo]));
+  }
+
+  Future<void> _onSortChanged(
+    ProjectsEvent event,
+    Emitter<ProjectsState> emit,
+    RepoSort sort,
+  ) async {
+    var repos = state.repositories;
+    switch (sort) {
+      case RepoSort.lastModified:
+        if (repos != null) {
+          repos = List.from(repos)
+            ..sort((a, b) => b.updatedAt?.compareTo(a.updatedAt!) ?? 0);
+        }
+        break;
+      case RepoSort.name:
+        if (repos != null) {
+          repos = List.from(repos)
+            ..sort(
+              (a, b) => a.name.toUpperCase().compareTo(b.name.toUpperCase()),
+            );
+        }
+    }
+    emit(state.copyWith(sort: sort, repositories: repos));
   }
 
   final GithubRepository githubRepo;

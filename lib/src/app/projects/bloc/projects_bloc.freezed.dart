@@ -20,18 +20,21 @@ mixin _$ProjectsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(Repository repo) repoAdded,
+    required TResult Function(RepoSort sort) sortChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(Repository repo)? repoAdded,
+    TResult? Function(RepoSort sort)? sortChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(Repository repo)? repoAdded,
+    TResult Function(RepoSort sort)? sortChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ProjectsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_RepoAdded value) repoAdded,
+    required TResult Function(_SortChanged value) sortChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_RepoAdded value)? repoAdded,
+    TResult? Function(_SortChanged value)? sortChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_RepoAdded value)? repoAdded,
+    TResult Function(_SortChanged value)? sortChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +119,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(Repository repo) repoAdded,
+    required TResult Function(RepoSort sort) sortChanged,
   }) {
     return started();
   }
@@ -122,6 +129,7 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(Repository repo)? repoAdded,
+    TResult? Function(RepoSort sort)? sortChanged,
   }) {
     return started?.call();
   }
@@ -131,6 +139,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(Repository repo)? repoAdded,
+    TResult Function(RepoSort sort)? sortChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,6 +153,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_RepoAdded value) repoAdded,
+    required TResult Function(_SortChanged value) sortChanged,
   }) {
     return started(this);
   }
@@ -153,6 +163,7 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_RepoAdded value)? repoAdded,
+    TResult? Function(_SortChanged value)? sortChanged,
   }) {
     return started?.call(this);
   }
@@ -162,6 +173,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_RepoAdded value)? repoAdded,
+    TResult Function(_SortChanged value)? sortChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -241,6 +253,7 @@ class _$_RepoAdded implements _RepoAdded {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(Repository repo) repoAdded,
+    required TResult Function(RepoSort sort) sortChanged,
   }) {
     return repoAdded(repo);
   }
@@ -250,6 +263,7 @@ class _$_RepoAdded implements _RepoAdded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(Repository repo)? repoAdded,
+    TResult? Function(RepoSort sort)? sortChanged,
   }) {
     return repoAdded?.call(repo);
   }
@@ -259,6 +273,7 @@ class _$_RepoAdded implements _RepoAdded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(Repository repo)? repoAdded,
+    TResult Function(RepoSort sort)? sortChanged,
     required TResult orElse(),
   }) {
     if (repoAdded != null) {
@@ -272,6 +287,7 @@ class _$_RepoAdded implements _RepoAdded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_RepoAdded value) repoAdded,
+    required TResult Function(_SortChanged value) sortChanged,
   }) {
     return repoAdded(this);
   }
@@ -281,6 +297,7 @@ class _$_RepoAdded implements _RepoAdded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_RepoAdded value)? repoAdded,
+    TResult? Function(_SortChanged value)? sortChanged,
   }) {
     return repoAdded?.call(this);
   }
@@ -290,6 +307,7 @@ class _$_RepoAdded implements _RepoAdded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_RepoAdded value)? repoAdded,
+    TResult Function(_SortChanged value)? sortChanged,
     required TResult orElse(),
   }) {
     if (repoAdded != null) {
@@ -309,9 +327,149 @@ abstract class _RepoAdded implements ProjectsEvent {
 }
 
 /// @nodoc
+abstract class _$$_SortChangedCopyWith<$Res> {
+  factory _$$_SortChangedCopyWith(
+          _$_SortChanged value, $Res Function(_$_SortChanged) then) =
+      __$$_SortChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RepoSort sort});
+}
+
+/// @nodoc
+class __$$_SortChangedCopyWithImpl<$Res>
+    extends _$ProjectsEventCopyWithImpl<$Res, _$_SortChanged>
+    implements _$$_SortChangedCopyWith<$Res> {
+  __$$_SortChangedCopyWithImpl(
+      _$_SortChanged _value, $Res Function(_$_SortChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sort = null,
+  }) {
+    return _then(_$_SortChanged(
+      sort: null == sort
+          ? _value.sort
+          : sort // ignore: cast_nullable_to_non_nullable
+              as RepoSort,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SortChanged implements _SortChanged {
+  const _$_SortChanged({required this.sort});
+
+  @override
+  final RepoSort sort;
+
+  @override
+  String toString() {
+    return 'ProjectsEvent.sortChanged(sort: $sort)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SortChanged &&
+            (identical(other.sort, sort) || other.sort == sort));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, sort);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SortChangedCopyWith<_$_SortChanged> get copyWith =>
+      __$$_SortChangedCopyWithImpl<_$_SortChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(Repository repo) repoAdded,
+    required TResult Function(RepoSort sort) sortChanged,
+  }) {
+    return sortChanged(sort);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(Repository repo)? repoAdded,
+    TResult? Function(RepoSort sort)? sortChanged,
+  }) {
+    return sortChanged?.call(sort);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(Repository repo)? repoAdded,
+    TResult Function(RepoSort sort)? sortChanged,
+    required TResult orElse(),
+  }) {
+    if (sortChanged != null) {
+      return sortChanged(sort);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_RepoAdded value) repoAdded,
+    required TResult Function(_SortChanged value) sortChanged,
+  }) {
+    return sortChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_RepoAdded value)? repoAdded,
+    TResult? Function(_SortChanged value)? sortChanged,
+  }) {
+    return sortChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_RepoAdded value)? repoAdded,
+    TResult Function(_SortChanged value)? sortChanged,
+    required TResult orElse(),
+  }) {
+    if (sortChanged != null) {
+      return sortChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SortChanged implements ProjectsEvent {
+  const factory _SortChanged({required final RepoSort sort}) = _$_SortChanged;
+
+  RepoSort get sort;
+  @JsonKey(ignore: true)
+  _$$_SortChangedCopyWith<_$_SortChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ProjectsState {
   User? get user => throw _privateConstructorUsedError;
   List<Repository>? get repositories => throw _privateConstructorUsedError;
+  RepoSort? get sort => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProjectsStateCopyWith<ProjectsState> get copyWith =>
@@ -324,7 +482,7 @@ abstract class $ProjectsStateCopyWith<$Res> {
           ProjectsState value, $Res Function(ProjectsState) then) =
       _$ProjectsStateCopyWithImpl<$Res, ProjectsState>;
   @useResult
-  $Res call({User? user, List<Repository>? repositories});
+  $Res call({User? user, List<Repository>? repositories, RepoSort? sort});
 }
 
 /// @nodoc
@@ -342,6 +500,7 @@ class _$ProjectsStateCopyWithImpl<$Res, $Val extends ProjectsState>
   $Res call({
     Object? user = freezed,
     Object? repositories = freezed,
+    Object? sort = freezed,
   }) {
     return _then(_value.copyWith(
       user: freezed == user
@@ -352,6 +511,10 @@ class _$ProjectsStateCopyWithImpl<$Res, $Val extends ProjectsState>
           ? _value.repositories
           : repositories // ignore: cast_nullable_to_non_nullable
               as List<Repository>?,
+      sort: freezed == sort
+          ? _value.sort
+          : sort // ignore: cast_nullable_to_non_nullable
+              as RepoSort?,
     ) as $Val);
   }
 }
@@ -364,7 +527,7 @@ abstract class _$$_ProjectsStateCopyWith<$Res>
       __$$_ProjectsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User? user, List<Repository>? repositories});
+  $Res call({User? user, List<Repository>? repositories, RepoSort? sort});
 }
 
 /// @nodoc
@@ -380,6 +543,7 @@ class __$$_ProjectsStateCopyWithImpl<$Res>
   $Res call({
     Object? user = freezed,
     Object? repositories = freezed,
+    Object? sort = freezed,
   }) {
     return _then(_$_ProjectsState(
       user: freezed == user
@@ -390,6 +554,10 @@ class __$$_ProjectsStateCopyWithImpl<$Res>
           ? _value._repositories
           : repositories // ignore: cast_nullable_to_non_nullable
               as List<Repository>?,
+      sort: freezed == sort
+          ? _value.sort
+          : sort // ignore: cast_nullable_to_non_nullable
+              as RepoSort?,
     ));
   }
 }
@@ -397,7 +565,10 @@ class __$$_ProjectsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ProjectsState implements _ProjectsState {
-  const _$_ProjectsState({this.user, final List<Repository>? repositories})
+  const _$_ProjectsState(
+      {this.user,
+      final List<Repository>? repositories,
+      this.sort = RepoSort.lastModified})
       : _repositories = repositories;
 
   @override
@@ -413,8 +584,12 @@ class _$_ProjectsState implements _ProjectsState {
   }
 
   @override
+  @JsonKey()
+  final RepoSort? sort;
+
+  @override
   String toString() {
-    return 'ProjectsState(user: $user, repositories: $repositories)';
+    return 'ProjectsState(user: $user, repositories: $repositories, sort: $sort)';
   }
 
   @override
@@ -424,12 +599,13 @@ class _$_ProjectsState implements _ProjectsState {
             other is _$_ProjectsState &&
             (identical(other.user, user) || other.user == user) &&
             const DeepCollectionEquality()
-                .equals(other._repositories, _repositories));
+                .equals(other._repositories, _repositories) &&
+            (identical(other.sort, sort) || other.sort == sort));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, user, const DeepCollectionEquality().hash(_repositories));
+  int get hashCode => Object.hash(runtimeType, user,
+      const DeepCollectionEquality().hash(_repositories), sort);
 
   @JsonKey(ignore: true)
   @override
@@ -441,12 +617,15 @@ class _$_ProjectsState implements _ProjectsState {
 abstract class _ProjectsState implements ProjectsState {
   const factory _ProjectsState(
       {final User? user,
-      final List<Repository>? repositories}) = _$_ProjectsState;
+      final List<Repository>? repositories,
+      final RepoSort? sort}) = _$_ProjectsState;
 
   @override
   User? get user;
   @override
   List<Repository>? get repositories;
+  @override
+  RepoSort? get sort;
   @override
   @JsonKey(ignore: true)
   _$$_ProjectsStateCopyWith<_$_ProjectsState> get copyWith =>

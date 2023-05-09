@@ -12,7 +12,23 @@ class GithubRepositoryImpl implements GithubRepository {
   }
 
   @override
-  Future<List<gh.Repository>> getMyProjects() {
+  Future<List<gh.Repository>> getMyProjects() async {
     return gitHub.repositories.listUserRepositories('PatrickWulfe').toList();
+  }
+}
+
+enum RepoSort {
+  name,
+  lastModified,
+}
+
+extension RepoSortName on RepoSort {
+  String get name {
+    switch (this) {
+      case RepoSort.lastModified:
+        return 'Last Modified';
+      case RepoSort.name:
+        return 'Name';
+    }
   }
 }

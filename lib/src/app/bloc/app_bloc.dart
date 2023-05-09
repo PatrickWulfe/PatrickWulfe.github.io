@@ -7,7 +7,7 @@ part 'app_event.dart';
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc() : super(const _Normal(themeName: ThemeName.light)) {
+  AppBloc() : super(const _Normal(themeName: ThemeName.dark)) {
     on<AppEvent>((event, emit) {
       event.when(
         started: () {},
