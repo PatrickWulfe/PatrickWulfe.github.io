@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:portfolio_project/src/app/app_index.dart';
+import 'package:portfolio_project/app/app_index.dart';
 
 part 'app_bloc.freezed.dart';
 part 'app_event.dart';

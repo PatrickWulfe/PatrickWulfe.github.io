@@ -1,5 +1,5 @@
 import 'package:github/github.dart' as gh;
-import 'package:portfolio_project/src/app/app_index.dart';
+import 'package:portfolio_project/app/app_index.dart';
 
 class GithubRepositoryImpl implements GithubRepository {
   GithubRepositoryImpl(this.gitHub);

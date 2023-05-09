@@ -2,7 +2,7 @@ import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github/github.dart' as gh;
-import 'package:portfolio_project/src/app/app_index.dart';
+import 'package:portfolio_project/app/app_index.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProjectsPage extends StatelessWidget {

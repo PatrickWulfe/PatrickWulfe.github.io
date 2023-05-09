@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:portfolio_project/src/app/app_index.dart';
+import 'package:portfolio_project/app/app_index.dart';
 
 class AboutMePage extends StatelessWidget {
   const AboutMePage({Key? key}) : super(key: key);
