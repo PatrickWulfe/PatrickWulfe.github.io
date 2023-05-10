@@ -8,8 +8,15 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AppBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AppBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ScrollCubit(),
+        ),
+      ],
       child: const AppView(),
     );
   }
@@ -25,10 +32,10 @@ class AppView extends StatelessWidget {
         return MaterialApp(
           initialRoute: '/',
           routes: {
-            '/': (context) => const HomePage(),
-            '/about_me': (context) => const AboutMePage(),
-            '/interests': (context) => const InterestsPage(),
-            '/projects': (context) => const ProjectsPage(),
+            '/': (context) => const RootView(),
+            // '/about_me': (context) => const AboutMePage(),
+            // '/interests': (context) => const InterestsPage(),
+            // '/projects': (context) => const ProjectsPage(),
           },
           theme: state.themeName.themeData,
           localizationsDelegates: AppLocalizations.localizationsDelegates,

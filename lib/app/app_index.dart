@@ -4,4 +4,5 @@ export 'bloc/bloc_index.dart';
 export 'home/home_index.dart';
 export 'interests/interests_index.dart';
 export 'projects/projects_index.dart';
+export 'root/root_index.dart';
 export 'utils/utils_index.dart';

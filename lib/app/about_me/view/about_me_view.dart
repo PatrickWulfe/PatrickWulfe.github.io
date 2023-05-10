@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_project/app/app_index.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class AboutMePage extends StatelessWidget {
-  const AboutMePage({Key? key}) : super(key: key);
+  const AboutMePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,24 +16,34 @@ class AboutMePage extends StatelessWidget {
 }
 
 class AboutMeView extends StatelessWidget {
-  const AboutMeView({Key? key}) : super(key: key);
+  const AboutMeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('About Me'),
-      ),
-      body: Center(
-        child: Container(
-          constraints: const BoxConstraints(maxWidth: 1000),
+    final appTheme = Theme.of(context);
+    return ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        return Container(
+          margin: const EdgeInsets.all(64),
           child: Column(
             children: [
-              const Text(_aboutMe),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'About Me',
+                  style: appTheme.textTheme.displayMedium,
+                ),
+              ),
+              Divider(),
+              const SizedBox.square(dimension: 32),
+              Text(
+                _aboutMe,
+                style: appTheme.textTheme.bodyLarge,
+              ),
             ],
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

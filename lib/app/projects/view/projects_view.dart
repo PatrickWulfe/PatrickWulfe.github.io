@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github/github.dart' as gh;
 import 'package:portfolio_project/app/app_index.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProjectsPage extends StatelessWidget {
@@ -37,28 +38,34 @@ class ProjectsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Projects'),
-      ),
-      body: BlocBuilder<ProjectsBloc, ProjectsState>(
-        builder: (context, state) {
-          if (state.user == null || (state.repositories ?? []).isEmpty) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: const [
-                _ProfileHeader(),
-                _ListSection(),
-              ],
-            ),
+    return BlocBuilder<ProjectsBloc, ProjectsState>(
+      builder: (context, state) {
+        final appTheme = Theme.of(context);
+        if (state.user == null || (state.repositories ?? []).isEmpty) {
+          return const Center(
+            child: CircularProgressIndicator(),
           );
-        },
-      ),
+        }
+        return Container(
+          padding: const EdgeInsets.only(bottom: 128),
+          margin: const EdgeInsets.all(64),
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'My Github Tracker (WIP)',
+                  style: appTheme.textTheme.displayMedium,
+                ),
+              ),
+              const Divider(),
+              const _ProfileHeader(),
+              const _ListSection(),
+              const SizedBox.square(dimension: 16),
+            ],
+          ),
+        );
+      },
     );
   }
 }
@@ -71,63 +78,75 @@ class _ListSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<ProjectsBloc>();
-    return BlocBuilder<ProjectsBloc, ProjectsState>(
-      builder: (context, state) {
-        final appTheme = Theme.of(context);
-        final dropdownItems = RepoSort.values
-            .map<DropdownMenuItem<RepoSort>>(
-              (e) => DropdownMenuItem<RepoSort>(value: e, child: Text(e.name)),
-            )
-            .toList();
-        return Expanded(
-            child: Material(
-          color: appTheme.colorScheme.surface,
-          borderRadius: BorderRadius.circular(8),
-          clipBehavior: Clip.antiAlias,
-          child: Column(
-            children: [
-              Container(
-                color: appTheme.colorScheme.surface,
-                constraints: const BoxConstraints(maxHeight: 48),
-                child: Row(
-                  children: [
-                    const SizedBox(width: 16),
-                    Text(
-                      'Sort By: ',
-                      style: appTheme.textTheme.labelMedium,
+    return ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        return SizedBox(
+          height: sizingInformation.screenSize.height * .8,
+          child: BlocBuilder<ProjectsBloc, ProjectsState>(
+            builder: (context, state) {
+              final appTheme = Theme.of(context);
+              final dropdownItems = RepoSort.values
+                  .map<DropdownMenuItem<RepoSort>>(
+                    (e) => DropdownMenuItem<RepoSort>(
+                      value: e,
+                      child: Text(e.name),
                     ),
-                    DropdownButton<RepoSort>(
-                      value: state.sort,
-                      items: dropdownItems,
-                      onChanged: (sort) {
-                        bloc.add(ProjectsEvent.sortChanged(sort: sort!));
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: ListView.separated(
-                    shrinkWrap: true,
-                    itemCount: (state.repositories ?? []).length,
-                    separatorBuilder: (_, __) =>
-                        const SizedBox.square(dimension: 2),
-                    itemBuilder: (BuildContext context, int index) {
-                      final element = state.repositories![index];
-                      return ProjectTile(
-                        title: element.name,
-                        subtitle: element.description,
-                        onTap: () => _launchUrl(
-                            Uri.parse(state.repositories![index].htmlUrl)),
-                      );
-                    },
+                  )
+                  .toList();
+              return Expanded(
+                child: Material(
+                  color: appTheme.colorScheme.surface,
+                  borderRadius: BorderRadius.circular(8),
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    children: [
+                      Container(
+                        color: appTheme.colorScheme.surface,
+                        constraints: const BoxConstraints(maxHeight: 48),
+                        child: Row(
+                          children: [
+                            const SizedBox(width: 16),
+                            Text(
+                              'Sort By: ',
+                              style: appTheme.textTheme.labelMedium,
+                            ),
+                            DropdownButton<RepoSort>(
+                              value: state.sort,
+                              items: dropdownItems,
+                              onChanged: (sort) {
+                                bloc.add(
+                                    ProjectsEvent.sortChanged(sort: sort!));
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            itemCount: (state.repositories ?? []).length,
+                            separatorBuilder: (_, __) =>
+                                const SizedBox.square(dimension: 2),
+                            itemBuilder: (BuildContext context, int index) {
+                              final element = state.repositories![index];
+                              return ProjectTile(
+                                title: element.name,
+                                subtitle: element.description,
+                                onTap: () => _launchUrl(Uri.parse(
+                                    state.repositories![index].htmlUrl)),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ],
+              );
+            },
           ),
-        ));
+        );
       },
     );
   }

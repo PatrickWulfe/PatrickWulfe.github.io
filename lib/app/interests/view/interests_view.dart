@@ -19,17 +19,22 @@ class InterestsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Interests'),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            const Text('Under Construction'),
-            Image.asset('assets/images/nyan.gif'),
-          ],
-        ),
+    final appTheme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.only(bottom: 64),
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Interests',
+              style: appTheme.textTheme.displayMedium,
+            ),
+          ),
+          const Divider(),
+          const Text('Under Construction'),
+          Image.asset('assets/images/nyan.gif'),
+        ],
       ),
     );
   }

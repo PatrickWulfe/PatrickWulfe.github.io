@@ -16,7 +16,6 @@ class AnimatedLogo extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useAnimationController();
     final random = Random();
     final rand1 = useState<double>(0);
     final rand2 = useState<double>(0);
