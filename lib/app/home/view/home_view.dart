@@ -66,14 +66,15 @@ Here you can find a list of all my GitHub repositories in a tracker I'm building
               title: const Text('Under Construction'),
               centerTitle: true,
               actions: [
-                IconButton(
+                FilledButton.icon(
                   onPressed: () {
                     bloc.add(const AppEvent.themeSwapped());
                   },
                   icon: Icon(
                     Icons.brightness_3,
-                    color: appTheme.colorScheme.onSurface,
+                    color: appTheme.colorScheme.onPrimary,
                   ),
+                  label: const Text('Swap Theme'),
                 ),
                 const SizedBox.square(dimension: 16),
               ],
