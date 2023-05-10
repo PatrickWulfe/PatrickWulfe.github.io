@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:portfolio_project/app/app_index.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -45,7 +46,7 @@ class HomeView extends HookWidget {
             cardIcon: CommunityMaterialIcons.github,
             title: 'Projects',
             description: '''
-Here you can find a list of various things I'm working on.  Currently building a project tracker for this page.''',
+Here you can find a list of all my GitHub repositories in a tracker I'm building.''',
             buttonText: 'Click Here',
             onButtonPress: () => Navigator.pushNamed(context, '/projects'),
           ),
@@ -59,31 +60,43 @@ Here you can find a list of various things I'm working on.  Currently building a
         ];
 
         final bloc = context.read<AppBloc>();
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text('Under Construction'),
-            centerTitle: true,
-            actions: [
-              TextButton.icon(
-                onPressed: () {
-                  bloc.add(const AppEvent.themeSwapped());
-                },
-                icon: Icon(
-                  Icons.brightness_3,
-                  color: appTheme.colorScheme.onSurface,
+        return SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              title: const Text('Under Construction'),
+              centerTitle: true,
+              actions: [
+                TextButton.icon(
+                  onPressed: () {
+                    bloc.add(const AppEvent.themeSwapped());
+                  },
+                  icon: Icon(
+                    Icons.brightness_3,
+                    color: appTheme.colorScheme.onSurface,
+                  ),
+                  label: const Text(''),
                 ),
-                label: const Text(''),
+              ],
+            ),
+            body: Center(
+              child: ResponsiveBuilder(
+                builder: (BuildContext context,
+                    SizingInformation sizingInformation) {
+                  if (sizingInformation.isDesktop) {
+                    return _DesktopHomeView(children: children);
+                  }
+                  if (sizingInformation.isTablet) {
+                    return Row(
+                      children: [
+                        const LeftPane(),
+                        Expanded(child: _MobileHomeView(children: children)),
+                        const RightPane()
+                      ],
+                    );
+                  }
+                  return _MobileHomeView(children: children);
+                },
               ),
-            ],
-          ),
-          body: Center(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                if (constraints.maxWidth > 1023) {
-                  return _DesktopHomeView(children: children);
-                }
-                return _MobileHomeView(children: children);
-              },
             ),
           ),
         );
@@ -104,40 +117,51 @@ class _DesktopHomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return FractionallySizedBox(
       widthFactor: 1,
-      child: SingleChildScrollView(
-        child: Container(
-          constraints: const BoxConstraints(maxWidth: 1800),
-          // padding: const EdgeInsets.symmetric(horizontal: 32),
-          child: Column(
-            children: [
-              const SizedBox.square(dimension: 128),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  AnimatedLogo(),
-                  SizedBox.square(dimension: 16),
-                  _CircleImage(),
-                ],
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox.square(dimension: 16),
+          const LeftPane(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Container(
+                constraints: const BoxConstraints(maxWidth: 1800),
+                // padding: const EdgeInsets.symmetric(horizontal: 32),
+                child: Column(
+                  children: [
+                    const SizedBox.square(dimension: 128),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        AnimatedLogo(),
+                        SizedBox.square(dimension: 16),
+                        _CircleImage(),
+                      ],
+                    ),
+                    const SizedBox.square(dimension: 16),
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      children: children
+                          .map(
+                            (e) => Container(
+                              constraints: const BoxConstraints(
+                                maxWidth: 400,
+                                maxHeight: 300,
+                              ),
+                              padding: const EdgeInsets.all(8),
+                              child: e,
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox.square(dimension: 16),
-              Wrap(
-                alignment: WrapAlignment.center,
-                children: children
-                    .map(
-                      (e) => Container(
-                        constraints: const BoxConstraints(
-                          maxWidth: 400,
-                          maxHeight: 300,
-                        ),
-                        padding: const EdgeInsets.all(8),
-                        child: e,
-                      ),
-                    )
-                    .toList(),
-              ),
-            ],
+            ),
           ),
-        ),
+          const RightPane(),
+          const SizedBox.square(dimension: 16),
+        ],
       ),
     );
   }

@@ -27,7 +27,12 @@ final lightThemeData = ThemeData.light(
   textTheme: getTextTheme(lightColorScheme.onSurface),
 );
 
-const lightColorScheme = ColorScheme.light();
+final lightColorScheme = ColorScheme.fromSeed(
+  seedColor: const Color(0xFF8931B9),
+  background: const Color(0xFF1A1C23),
+  surface: const Color(0xFFFDF0ED),
+  outline: const Color(0xFFF9CEC3),
+);
 
 final darkThemeData = ThemeData.dark(
   useMaterial3: true,
@@ -38,8 +43,11 @@ final darkThemeData = ThemeData.dark(
 );
 
 final darkColorScheme = ColorScheme.fromSeed(
-  seedColor: const Color(0xff00272b),
+  seedColor: const Color(0xFFB877DB),
   brightness: Brightness.dark,
+  background: const Color(0xFF1A1C23),
+  surface: const Color(0xFF2E303E),
+  outline: const Color(0xFF6C6F93),
 );
 
 // Default text color needed for web deployment

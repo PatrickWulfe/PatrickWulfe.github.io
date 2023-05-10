@@ -83,6 +83,7 @@ class _ListSection extends StatelessWidget {
             child: Material(
           color: appTheme.colorScheme.surface,
           borderRadius: BorderRadius.circular(8),
+          clipBehavior: Clip.antiAlias,
           child: Column(
             children: [
               Container(
@@ -90,6 +91,7 @@ class _ListSection extends StatelessWidget {
                 constraints: const BoxConstraints(maxHeight: 48),
                 child: Row(
                   children: [
+                    const SizedBox(width: 16),
                     Text(
                       'Sort By: ',
                       style: appTheme.textTheme.labelMedium,
