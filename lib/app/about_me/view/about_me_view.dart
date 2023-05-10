@@ -1,25 +1,44 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class AboutMePage extends StatelessWidget {
+class AboutMePage extends HookWidget {
   const AboutMePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AboutMeBloc(),
-      child: const AboutMeView(),
+      child: AboutMeView(),
     );
   }
 }
 
-class AboutMeView extends StatelessWidget {
-  const AboutMeView({super.key});
+class AboutMeView extends HookWidget {
+  const AboutMeView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final opacity = useState<double>(0);
+    useEffect(
+      () {
+        final timer = Timer(
+          const Duration(milliseconds: 300),
+          () {
+            opacity.value = 1;
+          },
+        );
+
+        return timer.cancel;
+      },
+      const [],
+    );
     final appTheme = Theme.of(context);
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
@@ -38,9 +57,13 @@ class AboutMeView extends StatelessWidget {
               const SizedBox.square(dimension: 32),
               Expanded(
                 child: SingleChildScrollView(
-                  child: Text(
-                    _aboutMe,
-                    style: appTheme.textTheme.bodyLarge,
+                  child: AnimatedOpacity(
+                    opacity: opacity.value,
+                    duration: const Duration(milliseconds: 400),
+                    child: Text(
+                      _aboutMe,
+                      style: appTheme.textTheme.bodyLarge,
+                    ),
                   ),
                 ),
               ),

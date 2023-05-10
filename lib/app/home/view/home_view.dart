@@ -1,7 +1,6 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -19,7 +18,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class HomeView extends HookWidget {
+class HomeView extends StatelessWidget {
   const HomeView({
     super.key,
     required this.duration,
@@ -88,41 +87,17 @@ class _DesktopHomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
-        return Container(
-          // margin: EdgeInsets.symmetric(
-          //   horizontal: sizingInformation.screenSize.width * .1,
-          // ),
-          padding: const EdgeInsets.only(bottom: 64),
-          child: FractionallySizedBox(
-            widthFactor: 1,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        const SizedBox.square(dimension: 128),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            AnimatedLogo(
-                              width: 300,
-                            ),
-                            SizedBox.square(dimension: 16),
-                            _CircleImage(
-                              width: 300,
-                            ),
-                          ],
-                        ),
-                        const SizedBox.square(dimension: 16),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            AnimatedLogo(
+              width: 300,
             ),
-          ),
+            SizedBox.square(dimension: 16),
+            _CircleImage(
+              width: 300,
+            ),
+          ],
         );
       },
     );
@@ -151,23 +126,6 @@ class _MobileHomeView extends StatelessWidget {
             AnimatedLogo(
               height: 200,
             ),
-            SizedBox.square(dimension: 16),
-            // Wrap(
-            // alignment: WrapAlignment.center,
-            // children: children
-            //     .map(
-            //       (e) => Container(
-            //         constraints: const BoxConstraints(
-            //           maxWidth: 400,
-            //           maxHeight: 300,
-            //         ),
-            //         padding: const EdgeInsets.all(8),
-            //         child: e,
-            //       ),
-            //     )
-            //     .toList(),
-            // ),
-            SizedBox.square(dimension: 16),
           ],
         ),
       ),

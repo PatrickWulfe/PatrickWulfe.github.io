@@ -38,7 +38,7 @@ class AnimatedLogo extends HookWidget {
     final appTheme = Theme.of(context);
 
     return Column(
-      // crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           'Hey I am',
