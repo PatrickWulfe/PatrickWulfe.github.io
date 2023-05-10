@@ -66,7 +66,7 @@ Here you can find a list of all my GitHub repositories in a tracker I'm building
               title: const Text('Under Construction'),
               centerTitle: true,
               actions: [
-                TextButton.icon(
+                IconButton(
                   onPressed: () {
                     bloc.add(const AppEvent.themeSwapped());
                   },
@@ -74,8 +74,8 @@ Here you can find a list of all my GitHub repositories in a tracker I'm building
                     Icons.brightness_3,
                     color: appTheme.colorScheme.onSurface,
                   ),
-                  label: const Text(''),
                 ),
+                const SizedBox.square(dimension: 16),
               ],
             ),
             body: Center(
@@ -183,8 +183,12 @@ class _MobileHomeView extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox.square(dimension: 64),
-            const _CircleImage(),
-            const AnimatedLogo(),
+            const _CircleImage(
+              width: 300,
+            ),
+            const AnimatedLogo(
+              height: 200,
+            ),
             const SizedBox.square(dimension: 16),
             Wrap(
               alignment: WrapAlignment.center,
@@ -212,7 +216,10 @@ class _MobileHomeView extends StatelessWidget {
 class _CircleImage extends StatelessWidget {
   const _CircleImage({
     super.key,
+    this.width,
   });
+
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -220,7 +227,7 @@ class _CircleImage extends StatelessWidget {
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
       ),
-      constraints: const BoxConstraints(maxWidth: 400),
+      constraints: BoxConstraints(maxWidth: width ?? 400),
       clipBehavior: Clip.antiAlias,
       child: Image.asset(
         'assets/images/avatar_pic.jpg',

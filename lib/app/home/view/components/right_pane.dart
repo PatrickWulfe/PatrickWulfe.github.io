@@ -19,10 +19,11 @@ class RightPane extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         IconButton(
-            onPressed: () {
-              _launchUrl(Uri.parse('mailto:wulfep@gmail.com'));
-            },
-            icon: const Icon(Icons.email)),
+          onPressed: () {
+            _launchUrl(Uri.parse('mailto:wulfep@gmail.com'));
+          },
+          icon: const Icon(Icons.email),
+        ),
         const SizedBox(height: 16),
         Expanded(
           child: Container(
