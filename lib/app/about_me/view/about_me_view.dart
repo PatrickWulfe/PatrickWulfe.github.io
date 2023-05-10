@@ -34,11 +34,15 @@ class AboutMeView extends StatelessWidget {
                   style: appTheme.textTheme.displayMedium,
                 ),
               ),
-              Divider(),
+              const Divider(),
               const SizedBox.square(dimension: 32),
-              Text(
-                _aboutMe,
-                style: appTheme.textTheme.bodyLarge,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    _aboutMe,
+                    style: appTheme.textTheme.bodyLarge,
+                  ),
+                ),
               ),
             ],
           ),

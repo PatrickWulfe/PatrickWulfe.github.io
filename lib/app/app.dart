@@ -30,13 +30,7 @@ class AppView extends StatelessWidget {
     return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
         return MaterialApp(
-          initialRoute: '/',
-          routes: {
-            '/': (context) => const RootView(),
-            // '/about_me': (context) => const AboutMePage(),
-            // '/interests': (context) => const InterestsPage(),
-            // '/projects': (context) => const ProjectsPage(),
-          },
+          home: const RootPage(),
           theme: state.themeName.themeData,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,

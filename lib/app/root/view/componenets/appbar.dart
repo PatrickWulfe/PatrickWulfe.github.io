@@ -1,6 +1,6 @@
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
 
 class ActionBar extends StatelessWidget with PreferredSizeWidget {
   const ActionBar({
@@ -11,11 +11,15 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(80);
 
-  final AutoScrollController controller;
+  // final AutoScrollController controller;
+  final PageController controller;
 
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
+    const pageAnimationDuration = Duration(milliseconds: 400);
+    const pageAnimationCurve = Curves.ease;
+
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         if (sizingInformation.isMobile || sizingInformation.isTablet) {
@@ -39,96 +43,75 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    PopupMenuButton(
-                      itemBuilder: (c) => <PopupMenuEntry<String>>[
-                        PopupMenuItem(
-                          child: SizedBox(
-                            width: 84,
-                            child: InkWell(
-                              onTap: () => controller.scrollToIndex(
-                                0,
-                                preferPosition: AutoScrollPosition.begin,
+                    PopupMenuButton<int>(
+                      onSelected: (value) => controller.animateToPage(
+                        value,
+                        duration: pageAnimationDuration,
+                        curve: pageAnimationCurve,
+                      ),
+                      itemBuilder: (c) => <PopupMenuEntry<int>>[
+                        PopupMenuItem<int>(
+                          value: 0,
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.home_rounded,
+                                size: 18,
                               ),
-                              child: Row(
-                                children: [
-                                  const Icon(
-                                    Icons.home_rounded,
-                                    size: 18,
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    'Home',
-                                    style: appTheme.textTheme.labelMedium,
-                                  )
-                                ],
-                              ),
-                            ),
+                              const SizedBox(width: 8),
+                              Text(
+                                'Home',
+                                style: appTheme.textTheme.labelMedium,
+                              )
+                            ],
                           ),
                         ),
                         PopupMenuItem(
-                          child: SizedBox(
-                            width: 84,
-                            child: InkWell(
-                              onTap: () => controller.scrollToIndex(
-                                1,
-                                preferPosition: AutoScrollPosition.begin,
+                          value: 1,
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.account_circle_rounded,
+                                size: 18,
                               ),
-                              child: Row(
-                                children: [
-                                  const Icon(
-                                    Icons.account_circle_rounded,
-                                    size: 18,
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    'About Me',
-                                    style: appTheme.textTheme.labelMedium,
-                                  )
-                                ],
-                              ),
-                            ),
+                              const SizedBox(width: 8),
+                              Text(
+                                'About Me',
+                                style: appTheme.textTheme.labelMedium,
+                              )
+                            ],
                           ),
                         ),
                         PopupMenuItem(
-                          child: InkWell(
-                            onTap: () => controller.scrollToIndex(
-                              2,
-                              preferPosition: AutoScrollPosition.begin,
-                            ),
-                            child: Row(
-                              children: [
-                                const Icon(
-                                  Icons.account_circle_rounded,
-                                  size: 18,
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  'Projects',
-                                  style: appTheme.textTheme.labelMedium,
-                                )
-                              ],
-                            ),
+                          value: 2,
+                          child: Row(
+                            children: [
+                              const Icon(
+                                CommunityMaterialIcons.github,
+                                size: 18,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                'Projects',
+                                style: appTheme.textTheme.labelMedium,
+                              )
+                            ],
                           ),
                         ),
                         PopupMenuItem(
-                          child: InkWell(
-                            onTap: () => controller.scrollToIndex(
-                              3,
-                              preferPosition: AutoScrollPosition.begin,
-                            ),
-                            child: Row(
-                              children: [
-                                const Icon(
-                                  Icons.account_circle_rounded,
-                                  size: 18,
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  'Interests',
-                                  style: appTheme.textTheme.labelMedium,
-                                )
-                              ],
-                            ),
+                          value: 3,
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.lightbulb_rounded,
+                                size: 18,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                'Interests',
+                                style: appTheme.textTheme.labelMedium,
+                              )
+                            ],
                           ),
                         ),
                       ],
@@ -146,22 +129,33 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
           children: [
             const SizedBox.square(dimension: 16),
             Expanded(
-              child: SizedBox(
-                width: sizingInformation.screenSize.width * .07,
-                height: sizingInformation.screenSize.height * .07,
-                child: Image.asset('images/header-logo.png'),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: 16,
+                  top: 12,
+                ),
+                child: Image.asset(
+                  'images/header-logo.png',
+                  width: sizingInformation.screenSize.width * .10,
+                  height: sizingInformation.screenSize.height * .10,
+                ),
               ),
             ),
             Expanded(
-              flex: 9,
+              flex: 3,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   InkWell(
-                    onTap: () => controller.scrollToIndex(
+                    onTap: () => controller.animateToPage(
                       0,
-                      preferPosition: AutoScrollPosition.begin,
+                      duration: pageAnimationDuration,
+                      curve: pageAnimationCurve,
                     ),
+                    // onTap: () => controller.scrollToIndex(
+                    //   0,
+                    //   preferPosition: AutoScrollPosition.begin,
+                    // ),
                     onHover: (hovered) => null,
                     child: Row(
                       children: const [
@@ -171,10 +165,15 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
                     ),
                   ),
                   InkWell(
-                    onTap: () => controller.scrollToIndex(
+                    onTap: () => controller.animateToPage(
                       1,
-                      preferPosition: AutoScrollPosition.begin,
+                      duration: pageAnimationDuration,
+                      curve: pageAnimationCurve,
                     ),
+                    // onTap: () => controller.scrollToIndex(
+                    //   1,
+                    //   preferPosition: AutoScrollPosition.begin,
+                    // ),
                     onHover: (hovered) => null,
                     child: Row(
                       children: const [
@@ -187,10 +186,15 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
                     ),
                   ),
                   InkWell(
-                    onTap: () => controller.scrollToIndex(
+                    onTap: () => controller.animateToPage(
                       2,
-                      preferPosition: AutoScrollPosition.begin,
+                      duration: pageAnimationDuration,
+                      curve: pageAnimationCurve,
                     ),
+                    // onTap: () => controller.scrollToIndex(
+                    //   2,
+                    //   preferPosition: AutoScrollPosition.begin,
+                    // ),
                     onHover: (hovered) => null,
                     child: Row(
                       children: const [
@@ -203,10 +207,15 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
                     ),
                   ),
                   InkWell(
-                    onTap: () => controller.scrollToIndex(
+                    onTap: () => controller.animateToPage(
                       3,
-                      preferPosition: AutoScrollPosition.begin,
+                      duration: pageAnimationDuration,
+                      curve: pageAnimationCurve,
                     ),
+                    // onTap: () => controller.scrollToIndex(
+                    //   3,
+                    //   preferPosition: AutoScrollPosition.begin,
+                    // ),
                     onHover: (hovered) => null,
                     child: Row(
                       children: const [

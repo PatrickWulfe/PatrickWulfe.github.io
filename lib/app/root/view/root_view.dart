@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
 
 class RootPage extends StatelessWidget {
   const RootPage({super.key});
@@ -24,7 +23,6 @@ class RootView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    final controller = AutoScrollController();
     final pages = <Widget>[
       const HomePage(),
       const AboutMePage(),
@@ -33,6 +31,8 @@ class RootView extends HookWidget {
     ];
     final bloc = context.read<AppBloc>();
     final scrollCubit = context.read<ScrollCubit>();
+
+    final pageController = usePageController();
 
     return SafeArea(
       child: Scaffold(
@@ -48,7 +48,6 @@ class RootView extends HookWidget {
           },
           child: ResponsiveBuilder(
             builder: (context, sizingInformation) {
-              final controller = AutoScrollController();
               return Container(
                 height: sizingInformation.screenSize.height,
                 decoration: const BoxDecoration(
@@ -72,7 +71,7 @@ class RootView extends HookWidget {
                           opacity: isScrollingUp ? 1 : 0,
                           duration: const Duration(milliseconds: 400),
                           child: ActionBar(
-                            controller: controller,
+                            controller: pageController,
                           ),
                         );
                       },
@@ -81,40 +80,16 @@ class RootView extends HookWidget {
                     Expanded(
                       child: Row(
                         children: [
-                          if (!sizingInformation.isMobile) const LeftPane(),
+                          _LeftPaneWA(isMobile: sizingInformation.isMobile),
                           Expanded(
-                            flex: 8,
-                            child: ListView(
-                              controller: controller,
-                              children: [
-                                AutoScrollTag(
-                                  key: const ValueKey(0),
-                                  controller: controller,
-                                  index: 0,
-                                  child: const HomePage(),
-                                ),
-                                AutoScrollTag(
-                                  key: const ValueKey(1),
-                                  controller: controller,
-                                  index: 1,
-                                  child: const AboutMePage(),
-                                ),
-                                AutoScrollTag(
-                                  key: const ValueKey(2),
-                                  controller: controller,
-                                  index: 2,
-                                  child: const ProjectsPage(),
-                                ),
-                                AutoScrollTag(
-                                  key: const ValueKey(3),
-                                  controller: controller,
-                                  index: 3,
-                                  child: const InterestsPage(),
-                                ),
-                              ],
+                            flex: 10,
+                            child: PageView(
+                              scrollDirection: Axis.vertical,
+                              controller: pageController,
+                              children: pages,
                             ),
                           ),
-                          if (!sizingInformation.isMobile) const RightPane(),
+                          _RightPaneWA(isMobile: sizingInformation.isMobile),
                         ],
                       ),
                     ),
@@ -126,5 +101,40 @@ class RootView extends HookWidget {
         ),
       ),
     );
+  }
+}
+
+// workarounds to keep page from rebuilding when resizing to mobile view
+class _LeftPaneWA extends StatelessWidget {
+  const _LeftPaneWA({
+    Key? key,
+    required this.isMobile,
+  }) : super(key: key);
+
+  final bool isMobile;
+
+  @override
+  Widget build(BuildContext context) {
+    if (isMobile) {
+      return const SizedBox();
+    }
+    return const LeftPane();
+  }
+}
+
+class _RightPaneWA extends StatelessWidget {
+  const _RightPaneWA({
+    Key? key,
+    required this.isMobile,
+  }) : super(key: key);
+
+  final bool isMobile;
+
+  @override
+  Widget build(BuildContext context) {
+    if (isMobile) {
+      return const SizedBox();
+    }
+    return const RightPane();
   }
 }

@@ -100,22 +100,23 @@ class _DesktopHomeView extends StatelessWidget {
               children: [
                 Expanded(
                   child: SingleChildScrollView(
-                    child: Container(
-                      constraints: const BoxConstraints(maxWidth: 1800),
-                      child: Column(
-                        children: [
-                          const SizedBox.square(dimension: 128),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              AnimatedLogo(),
-                              SizedBox.square(dimension: 16),
-                              _CircleImage(),
-                            ],
-                          ),
-                          const SizedBox.square(dimension: 16),
-                        ],
-                      ),
+                    child: Column(
+                      children: [
+                        const SizedBox.square(dimension: 128),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: const [
+                            AnimatedLogo(
+                              width: 300,
+                            ),
+                            SizedBox.square(dimension: 16),
+                            _CircleImage(
+                              width: 300,
+                            ),
+                          ],
+                        ),
+                        const SizedBox.square(dimension: 16),
+                      ],
                     ),
                   ),
                 ),

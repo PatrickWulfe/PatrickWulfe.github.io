@@ -47,8 +47,7 @@ class ProjectsView extends StatelessWidget {
           );
         }
         return Container(
-          padding: const EdgeInsets.only(bottom: 128),
-          margin: const EdgeInsets.all(64),
+          margin: const EdgeInsets.all(32),
           child: Column(
             children: [
               Align(
@@ -60,7 +59,8 @@ class ProjectsView extends StatelessWidget {
               ),
               const Divider(),
               const _ProfileHeader(),
-              const _ListSection(),
+              const Divider(),
+              const Expanded(child: _ListSection()),
               const SizedBox.square(dimension: 16),
             ],
           ),
@@ -80,72 +80,63 @@ class _ListSection extends StatelessWidget {
     final bloc = context.read<ProjectsBloc>();
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
-        return SizedBox(
-          height: sizingInformation.screenSize.height * .8,
-          child: BlocBuilder<ProjectsBloc, ProjectsState>(
-            builder: (context, state) {
-              final appTheme = Theme.of(context);
-              final dropdownItems = RepoSort.values
-                  .map<DropdownMenuItem<RepoSort>>(
-                    (e) => DropdownMenuItem<RepoSort>(
-                      value: e,
-                      child: Text(e.name),
-                    ),
-                  )
-                  .toList();
-              return Expanded(
-                child: Material(
-                  color: appTheme.colorScheme.surface,
-                  borderRadius: BorderRadius.circular(8),
-                  clipBehavior: Clip.antiAlias,
-                  child: Column(
-                    children: [
-                      Container(
-                        color: appTheme.colorScheme.surface,
-                        constraints: const BoxConstraints(maxHeight: 48),
-                        child: Row(
-                          children: [
-                            const SizedBox(width: 16),
-                            Text(
-                              'Sort By: ',
-                              style: appTheme.textTheme.labelMedium,
-                            ),
-                            DropdownButton<RepoSort>(
-                              value: state.sort,
-                              items: dropdownItems,
-                              onChanged: (sort) {
-                                bloc.add(
-                                    ProjectsEvent.sortChanged(sort: sort!));
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: ListView.separated(
-                            shrinkWrap: true,
-                            itemCount: (state.repositories ?? []).length,
-                            separatorBuilder: (_, __) =>
-                                const SizedBox.square(dimension: 2),
-                            itemBuilder: (BuildContext context, int index) {
-                              final element = state.repositories![index];
-                              return ProjectTile(
-                                title: element.name,
-                                subtitle: element.description,
-                                onTap: () => _launchUrl(Uri.parse(
-                                    state.repositories![index].htmlUrl)),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
+        return BlocBuilder<ProjectsBloc, ProjectsState>(
+          builder: (context, state) {
+            final appTheme = Theme.of(context);
+            final dropdownItems = RepoSort.values
+                .map<DropdownMenuItem<RepoSort>>(
+                  (e) => DropdownMenuItem<RepoSort>(
+                    value: e,
+                    child: Text(e.name),
                   ),
-                ),
-              );
-            },
-          ),
+                )
+                .toList();
+            return Material(
+              color: appTheme.colorScheme.surface,
+              borderRadius: BorderRadius.circular(8),
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                children: [
+                  Container(
+                    color: appTheme.colorScheme.surface,
+                    constraints: const BoxConstraints(maxHeight: 48),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 16),
+                        Text(
+                          'Sort By: ',
+                          style: appTheme.textTheme.labelMedium,
+                        ),
+                        DropdownButton<RepoSort>(
+                          value: state.sort,
+                          items: dropdownItems,
+                          onChanged: (sort) {
+                            bloc.add(ProjectsEvent.sortChanged(sort: sort!));
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView.separated(
+                      itemCount: (state.repositories ?? []).length,
+                      separatorBuilder: (_, __) =>
+                          const SizedBox.square(dimension: 2),
+                      itemBuilder: (BuildContext context, int index) {
+                        final element = state.repositories![index];
+                        return ProjectTile(
+                          title: element.name,
+                          subtitle: element.description,
+                          onTap: () => _launchUrl(
+                              Uri.parse(state.repositories![index].htmlUrl)),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
         );
       },
     );
@@ -160,35 +151,28 @@ class _ProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.all(16),
-      height: 300,
-      child: Card(
-        clipBehavior: Clip.antiAlias,
-        child: BlocBuilder<ProjectsBloc, ProjectsState>(
-          builder: (context, state) {
-            if (state.user != null) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Name & Avatar
-                  _AvatarSection(
-                    avatarUrl: state.user!.avatarUrl!,
-                    name: state.user!.name!,
-                    userName: state.user!.login!,
-                    location: state.user!.location!,
-                    profileUrl: state.user!.htmlUrl!,
-                    hirable: state.user!.hirable,
-                    currentCompany: state.user!.company,
-                  ),
-                ],
-              );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          },
-        ),
-      ),
+    return BlocBuilder<ProjectsBloc, ProjectsState>(
+      builder: (context, state) {
+        if (state.user != null) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // Name & Avatar
+              _AvatarSection(
+                avatarUrl: state.user!.avatarUrl!,
+                name: state.user!.name!,
+                userName: state.user!.login!,
+                location: state.user!.location!,
+                profileUrl: state.user!.htmlUrl!,
+                hirable: state.user!.hirable,
+                currentCompany: state.user!.company,
+              ),
+            ],
+          );
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
 }
@@ -216,31 +200,38 @@ class _AvatarSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    return Row(
-      children: [
-        Image.network(avatarUrl),
-        const SizedBox.square(dimension: 8),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextButton(
-              onPressed: () => _launchUrl(Uri.parse(profileUrl)),
-              child: Text(profileUrl),
+    return SizedBox(
+      height: 300,
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.network(
+              avatarUrl,
             ),
-            Text(
-              name,
-              style: appTheme.textTheme.displayMedium,
-            ),
-            Text(
-              userName,
-              style: appTheme.textTheme.titleLarge,
-            ),
-            if (hirable ?? true) const Text('Ready for work!'),
-            if (!(hirable ?? true) && currentCompany != null)
-              Text('Currently working at ${currentCompany ?? ''}'),
-          ],
-        ),
-      ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextButton(
+                onPressed: () => _launchUrl(Uri.parse(profileUrl)),
+                child: Text(profileUrl),
+              ),
+              Text(
+                name,
+                style: appTheme.textTheme.displayMedium,
+              ),
+              Text(
+                userName,
+                style: appTheme.textTheme.titleLarge,
+              ),
+              if (hirable ?? true) const Text('Ready for work!'),
+              if (!(hirable ?? true) && currentCompany != null)
+                Text('Currently working at ${currentCompany ?? ''}'),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
