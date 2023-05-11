@@ -87,6 +87,22 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
                           child: Row(
                             children: [
                               const Icon(
+                                Icons.assignment_rounded,
+                                size: 18,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                'Experience',
+                                style: appTheme.textTheme.labelMedium,
+                              )
+                            ],
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: 3,
+                          child: Row(
+                            children: [
+                              const Icon(
                                 CommunityMaterialIcons.github,
                                 size: 18,
                               ),
@@ -99,7 +115,7 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
                           ),
                         ),
                         PopupMenuItem(
-                          value: 3,
+                          value: 4,
                           child: Row(
                             children: [
                               const Icon(
@@ -125,6 +141,7 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
           );
         }
         // ELSE
+        final buttonStyle = appTheme.textTheme.labelLarge;
         return Row(
           children: [
             const SizedBox.square(dimension: 16),
@@ -152,11 +169,6 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
                       duration: pageAnimationDuration,
                       curve: pageAnimationCurve,
                     ),
-                    // onTap: () => controller.scrollToIndex(
-                    //   0,
-                    //   preferPosition: AutoScrollPosition.begin,
-                    // ),
-                    onHover: (hovered) => null,
                     child: Row(
                       children: const [
                         SizedBox(width: 32),
@@ -170,18 +182,17 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
                       duration: pageAnimationDuration,
                       curve: pageAnimationCurve,
                     ),
-                    // onTap: () => controller.scrollToIndex(
-                    //   1,
-                    //   preferPosition: AutoScrollPosition.begin,
-                    // ),
-                    onHover: (hovered) => null,
                     child: Row(
-                      children: const [
-                        SizedBox(width: 32),
+                      children: [
+                        const SizedBox(width: 32),
                         Text(
                           '01. ',
+                          style: buttonStyle,
                         ),
-                        Text('About Me'),
+                        Text(
+                          'About Me',
+                          style: buttonStyle,
+                        ),
                       ],
                     ),
                   ),
@@ -191,18 +202,17 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
                       duration: pageAnimationDuration,
                       curve: pageAnimationCurve,
                     ),
-                    // onTap: () => controller.scrollToIndex(
-                    //   2,
-                    //   preferPosition: AutoScrollPosition.begin,
-                    // ),
-                    onHover: (hovered) => null,
                     child: Row(
-                      children: const [
-                        SizedBox(width: 32),
+                      children: [
+                        const SizedBox(width: 32),
                         Text(
                           '02. ',
+                          style: buttonStyle,
                         ),
-                        Text('Projects'),
+                        Text(
+                          'Experience',
+                          style: buttonStyle,
+                        ),
                       ],
                     ),
                   ),
@@ -212,18 +222,37 @@ class ActionBar extends StatelessWidget with PreferredSizeWidget {
                       duration: pageAnimationDuration,
                       curve: pageAnimationCurve,
                     ),
-                    // onTap: () => controller.scrollToIndex(
-                    //   3,
-                    //   preferPosition: AutoScrollPosition.begin,
-                    // ),
-                    onHover: (hovered) => null,
                     child: Row(
-                      children: const [
-                        SizedBox(width: 32),
+                      children: [
+                        const SizedBox(width: 32),
                         Text(
                           '03. ',
+                          style: buttonStyle,
                         ),
-                        Text('Interests'),
+                        Text(
+                          'Projects',
+                          style: buttonStyle,
+                        ),
+                      ],
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => controller.animateToPage(
+                      4,
+                      duration: pageAnimationDuration,
+                      curve: pageAnimationCurve,
+                    ),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 32),
+                        Text(
+                          '04. ',
+                          style: buttonStyle,
+                        ),
+                        Text(
+                          'Interests',
+                          style: buttonStyle,
+                        ),
                       ],
                     ),
                   ),

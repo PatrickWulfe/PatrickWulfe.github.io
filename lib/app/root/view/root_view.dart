@@ -26,10 +26,10 @@ class RootView extends HookWidget {
     final pages = <Widget>[
       const HomePage(),
       const AboutMePage(),
+      const ExperiencePage(),
       const ProjectsPage(),
       const InterestsPage(),
     ];
-    final bloc = context.read<AppBloc>();
     final scrollCubit = context.read<ScrollCubit>();
 
     final pageController = usePageController();
@@ -50,14 +50,18 @@ class RootView extends HookWidget {
             builder: (context, sizingInformation) {
               return Container(
                 height: sizingInformation.screenSize.height,
-                decoration: const BoxDecoration(
+                // Background
+                decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                     colors: [
-                      Color(0xFF16161c),
-                      Color(0xFF1c1e26),
-                      Color(0xFF2e303e),
+                      appTheme.extension<GradientColors>()?.firstColor ??
+                          const Color(0xFF000000),
+                      appTheme.extension<GradientColors>()?.secondColor ??
+                          const Color(0xFF000000),
+                      appTheme.extension<GradientColors>()?.thirdColor ??
+                          const Color(0xFF000000),
                     ],
                   ),
                 ),

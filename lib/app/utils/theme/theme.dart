@@ -40,6 +40,13 @@ final darkThemeData = ThemeData.dark(
   // colorScheme: addCommonColors(darkColorScheme),
   colorScheme: darkColorScheme,
   textTheme: getTextTheme(darkColorScheme.onSurface),
+  extensions: [
+    const GradientColors(
+      firstColor: Color(0xFF16161C),
+      secondColor: Color(0xFF1c1E26),
+      thirdColor: Color(0xFF232530),
+    )
+  ],
 );
 
 final darkColorScheme = ColorScheme.fromSeed(
@@ -104,4 +111,44 @@ ColorScheme addCommonColors(ColorScheme colorScheme) {
     primary: const Color(0xffff2ecc),
     secondary: const Color(0xffff6663),
   );
+}
+
+class GradientColors extends ThemeExtension<GradientColors> {
+  const GradientColors({
+    required this.firstColor,
+    required this.secondColor,
+    required this.thirdColor,
+  });
+
+  final Color? firstColor;
+  final Color? secondColor;
+  final Color? thirdColor;
+
+  @override
+  ThemeExtension<GradientColors> copyWith({
+    Color? firstColor,
+    Color? secondColor,
+    Color? thirdColor,
+  }) {
+    return GradientColors(
+      firstColor: firstColor ?? this.firstColor,
+      secondColor: secondColor ?? this.secondColor,
+      thirdColor: thirdColor ?? this.thirdColor,
+    );
+  }
+
+  @override
+  ThemeExtension<GradientColors> lerp(
+    covariant ThemeExtension<GradientColors>? other,
+    double t,
+  ) {
+    if (other is! GradientColors) {
+      return this;
+    }
+    return GradientColors(
+      firstColor: Color.lerp(firstColor, other.firstColor, t),
+      secondColor: Color.lerp(secondColor, other.secondColor, t),
+      thirdColor: Color.lerp(thirdColor, other.thirdColor, t),
+    );
+  }
 }
