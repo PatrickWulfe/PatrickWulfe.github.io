@@ -102,6 +102,7 @@ class ExperienceTile extends StatelessWidget {
                 );
               },
             ),
+          if (!includeBulletPoints) const Expanded(child: SizedBox()),
           if (!includeBulletPoints)
             Align(
               alignment: Alignment.bottomRight,

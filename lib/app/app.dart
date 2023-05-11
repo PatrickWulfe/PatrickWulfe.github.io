@@ -31,7 +31,6 @@ class AppView extends StatelessWidget {
     return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
         return MaterialApp(
-          useInheritedMediaQuery: true,
           locale: DevicePreview.locale(context),
           builder: DevicePreview.appBuilder,
           localizationsDelegates: AppLocalizations.localizationsDelegates,

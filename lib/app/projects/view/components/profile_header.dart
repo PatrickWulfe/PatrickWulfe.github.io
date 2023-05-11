@@ -6,7 +6,10 @@ import 'package:portfolio_project/app/app_index.dart';
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({
     super.key,
+    required this.height,
   });
+
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +19,14 @@ class ProfileHeader extends StatelessWidget {
         if (state.user != null) {
           final appTheme = Theme.of(context);
           return SizedBox(
-            // height: 300,
+            height: height,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      state.user?.avatarUrl ?? '',
-                    ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.network(
+                    state.user?.avatarUrl ?? '',
                   ),
                 ),
                 const SizedBox.square(dimension: 8),
@@ -43,18 +44,21 @@ class ProfileHeader extends StatelessWidget {
                                 Uri.parse(state.user?.htmlUrl ?? ''),
                               ),
                       ),
-                      // onPressed: () =>
-                      //     pageLaunchUrl(Uri.parse(state.user?.htmlUrl ?? '')),
-                      // child: Text(state.user?.htmlUrl ?? ''),
                     ),
                     Text(
                       state.user?.name ?? '',
                       style: appTheme.textTheme.headlineMedium,
                     ),
+                    const SizedBox.square(dimension: 8),
+                    Text(
+                      'Username:',
+                      style: appTheme.textTheme.labelSmall,
+                    ),
                     Text(
                       state.user?.login ?? '',
                       style: appTheme.textTheme.titleMedium,
                     ),
+                    const Expanded(child: SizedBox()),
                     if (state.user?.hirable ?? true)
                       Text(
                         'Ready for work!',

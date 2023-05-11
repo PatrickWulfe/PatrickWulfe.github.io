@@ -29,7 +29,7 @@ class MobileProjectsView extends StatelessWidget {
                 ),
               ),
               const Divider(),
-              const ProfileHeader(),
+              const ProfileHeader(height: 130),
               const Divider(),
               const Expanded(child: ListSection()),
               const SizedBox.square(dimension: 16),
