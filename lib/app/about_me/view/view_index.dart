@@ -1,1 +1,1 @@
-export 'about_me_view.dart';
+export 'about_me_page.dart';

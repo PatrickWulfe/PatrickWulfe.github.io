@@ -6,6 +6,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+part 'desktop_about_me_view.dart';
+part 'mobile_about_me_view.dart';
+part 'tablet_about_me_view.dart';
+
 class AboutMePage extends HookWidget {
   const AboutMePage({super.key});
 
@@ -13,64 +17,11 @@ class AboutMePage extends HookWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AboutMeBloc(),
-      child: AboutMeView(),
-    );
-  }
-}
-
-class AboutMeView extends HookWidget {
-  const AboutMeView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final opacity = useState<double>(0);
-    useEffect(
-      () {
-        final timer = Timer(
-          const Duration(milliseconds: 300),
-          () {
-            opacity.value = 1;
-          },
-        );
-
-        return timer.cancel;
-      },
-      const [],
-    );
-    final appTheme = Theme.of(context);
-    return ResponsiveBuilder(
-      builder: (context, sizingInformation) {
-        return Container(
-          margin: const EdgeInsets.all(64),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'About Me',
-                  style: appTheme.textTheme.displayMedium,
-                ),
-              ),
-              const Divider(),
-              const SizedBox.square(dimension: 32),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: AnimatedOpacity(
-                    opacity: opacity.value,
-                    duration: const Duration(milliseconds: 400),
-                    child: Text(
-                      _aboutMe,
-                      style: appTheme.textTheme.bodyLarge,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
+      child: ScreenTypeLayout.builder(
+        desktop: (context) => const DesktopAboutMeView(aboutMe: _aboutMe),
+        tablet: (context) => const TabletAboutMeView(aboutMe: _aboutMe),
+        mobile: (context) => const MobileAboutMeView(aboutMe: _aboutMe),
+      ),
     );
   }
 }

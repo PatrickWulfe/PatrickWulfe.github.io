@@ -1,1 +1,1 @@
-export 'interests_view.dart';
+export 'interests_page.dart';
