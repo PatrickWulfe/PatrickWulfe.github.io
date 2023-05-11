@@ -23,7 +23,7 @@ const RESOURCES = {
 "assets/assets/images/soundcloud-logo.png": "cf27c3b6c391144908ba0dd2f9631c11",
 "assets/FontManifest.json": "3f768ae705296be001f7819d2895cc30",
 "assets/fonts/MaterialIcons-Regular.otf": "e7069dfd19b331be16bed984668fe080",
-"assets/NOTICES": "a744c13324658508d180f402711e19c6",
+"assets/NOTICES": "3879b3f6c75647e60989b0a07cfe36c8",
 "assets/packages/community_material_icon/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
 "canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
 "canvaskit/canvaskit.wasm": "3de12d898ec208a5f31362cc00f09b9e",
@@ -34,9 +34,9 @@ const RESOURCES = {
 "icons/favicon.png": "7a26ea9d4e61122fc023b84e5acdb148",
 "icons/Icon-192.png": "12d05db1c0b26d429b54e3f8c946a496",
 "icons/Icon-512.png": "aabba36693aba0ec8d954adf297d3125",
-"index.html": "1e1849db5515c6d8979afe0dc85e6be5",
-"/": "1e1849db5515c6d8979afe0dc85e6be5",
-"main.dart.js": "5ed23655798975bfc4943655f0ab7111",
+"index.html": "414d2bdec2541e1b4b5a7bf3acf6143e",
+"/": "414d2bdec2541e1b4b5a7bf3acf6143e",
+"main.dart.js": "2035d00ccb8ce5cc9ef5e78bf9ba85eb",
 "manifest.json": "8f5426026303f2d7239f1a6aae20eb40",
 "version.json": "5cc9695ee3e8c1f86234c524152ea8f8"
 };
