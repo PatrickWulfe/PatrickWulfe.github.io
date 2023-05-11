@@ -18,13 +18,23 @@ class AboutMePage extends HookWidget {
     return BlocProvider(
       create: (context) => AboutMeBloc(),
       child: ScreenTypeLayout.builder(
-        desktop: (context) => const DesktopAboutMeView(aboutMe: _aboutMe),
-        tablet: (context) => const TabletAboutMeView(aboutMe: _aboutMe),
-        mobile: (context) => const MobileAboutMeView(aboutMe: _aboutMe),
+        desktop: (context) => const DesktopAboutMeView(aboutMe: aboutMe),
+        tablet: (context) => const TabletAboutMeView(aboutMe: aboutMe),
+        mobile: (context) => const MobileAboutMeView(aboutMe: aboutMe),
       ),
     );
   }
 }
+
+const aboutMe = '''
+Highly skilled mobile app developer with expertise in the Flutter framework, Dart, and other programming
+languages, with experience developing high-quality, user-friendly mobile applications. Proven ability to
+design and implement software solutions to meet client needs, and consistently deliver projects on time.
+Extensive experience using Figma and other design tools to create intuitive and visually appealing
+interfaces. Holds a Master of Science in Computer Science with a focus on Programming and
+Languages, as well as a Bachelor of Science in Computer Science. Ready to take on new challenges
+and contribute to the success of a dynamic and innovative team.
+''';
 
 const _aboutMe = '''
 I was born in a city of magic and technology, where wizards and engineers worked together to create wonders and innovations. I had a talent for both fields, and I dreamed of becoming a software developer, a person who could create programs and applications that ran on magical devices.

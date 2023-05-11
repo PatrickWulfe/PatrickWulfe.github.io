@@ -1,3 +1,4 @@
+export 'components/components_index.dart';
 export 'desktop_experience_view.dart';
 export 'experience_page.dart';
 export 'mobile_experience_view.dart';

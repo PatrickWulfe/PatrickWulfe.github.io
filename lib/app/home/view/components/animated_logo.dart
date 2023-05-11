@@ -63,7 +63,8 @@ class AnimatedLogo extends HookWidget {
                     ),
                     duration: const Duration(seconds: 1),
                     child: const Image(
-                        image: AssetImage('assets/images/logo-wbg.png')),
+                      image: AssetImage('assets/images/logo-wbg.png'),
+                    ),
                   ),
                   AnimatedPadding(
                     padding: EdgeInsets.only(
