@@ -27,9 +27,9 @@ class ProjectsPage extends StatelessWidget {
           ProjectsBloc(githubRepo: GithubRepositoryImpl(github))
             ..add(const ProjectsEvent.started()),
       child: ScreenTypeLayout.builder(
-        desktop: (context) => const ProjectsViewDesktop(),
-        tablet: (context) => const ProjectsViewTablet(),
-        mobile: (context) => const ProjectsViewMobile(),
+        desktop: (context) => const DesktopProjectsView(),
+        tablet: (context) => const TabletProjectsView(),
+        mobile: (context) => const MobileProjectsView(),
       ),
     );
   }

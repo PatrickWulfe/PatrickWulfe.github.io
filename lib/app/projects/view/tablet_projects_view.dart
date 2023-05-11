@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
-class ProjectsViewTablet extends StatelessWidget {
-  const ProjectsViewTablet({
+class TabletProjectsView extends StatelessWidget {
+  const TabletProjectsView({
     super.key,
   });
 

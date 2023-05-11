@@ -2,7 +2,7 @@ import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class ActionBar extends StatelessWidget with PreferredSizeWidget {
+class ActionBar extends StatelessWidget implements PreferredSizeWidget {
   const ActionBar({
     super.key,
     required this.controller,

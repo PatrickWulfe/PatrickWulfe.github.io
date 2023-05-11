@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
-class ProjectsViewDesktop extends StatelessWidget {
-  const ProjectsViewDesktop({
+class DesktopProjectsView extends StatelessWidget {
+  const DesktopProjectsView({
     super.key,
   });
 

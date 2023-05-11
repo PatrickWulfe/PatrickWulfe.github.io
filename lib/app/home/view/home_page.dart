@@ -1,5 +1,3 @@
-
-import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_project/app/app_index.dart';
@@ -12,9 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => HomeBloc(),
-      child: const HomeView(
-        duration: Duration(milliseconds: 250),
-      ),
+      child: const HomeView(),
     );
   }
 }
@@ -22,138 +18,14 @@ class HomePage extends StatelessWidget {
 class HomeView extends StatelessWidget {
   const HomeView({
     super.key,
-    required this.duration,
   });
-
-  final Duration duration;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
-      builder: (context, state) {
-        final appTheme = Theme.of(context);
-
-        final children = [
-          HomeCard(
-            cardIcon: Icons.info,
-            title: 'About Me',
-            description: 'This page contains everything you could '
-                'want to know about me and more.',
-            buttonText: 'Click Here',
-            onButtonPress: () => Navigator.pushNamed(context, '/about_me'),
-          ),
-          HomeCard(
-            cardIcon: CommunityMaterialIcons.github,
-            title: 'Projects',
-            description: '''
-Here you can find a list of all my GitHub repositories in a tracker I'm building.''',
-            buttonText: 'Click Here',
-            onButtonPress: () => Navigator.pushNamed(context, '/projects'),
-          ),
-          HomeCard(
-            cardIcon: CommunityMaterialIcons.lightbulb,
-            title: 'Interests',
-            description: 'Some of the things I like to do in my spare time.',
-            buttonText: 'Click Here',
-            onButtonPress: () => Navigator.pushNamed(context, '/interests'),
-          ),
-        ];
-
-        final bloc = context.read<AppBloc>();
-        return Center(
-          child: ResponsiveBuilder(
-            builder:
-                (BuildContext context, SizingInformation sizingInformation) {
-              if (sizingInformation.isDesktop) {
-                return _DesktopHomeView(children: children);
-              }
-              return _MobileHomeView(children: children);
-            },
-          ),
-        );
-      },
-    );
-  }
-}
-
-class _DesktopHomeView extends StatelessWidget {
-  const _DesktopHomeView({
-    super.key,
-    required this.children,
-  });
-
-  final List<HomeCard> children;
-
-  @override
-  Widget build(BuildContext context) {
-    return ResponsiveBuilder(
-      builder: (context, sizingInformation) {
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            AnimatedLogo(
-              width: 300,
-            ),
-            SizedBox.square(dimension: 16),
-            _CircleImage(
-              width: 300,
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-class _MobileHomeView extends StatelessWidget {
-  const _MobileHomeView({
-    super.key,
-    required this.children,
-  });
-
-  final List<HomeCard> children;
-
-  @override
-  Widget build(BuildContext context) {
-    return FractionallySizedBox(
-      widthFactor: 1,
-      child: SingleChildScrollView(
-        child: Column(
-          children: const [
-            SizedBox.square(dimension: 64),
-            _CircleImage(
-              width: 300,
-            ),
-            AnimatedLogo(
-              height: 200,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _CircleImage extends StatelessWidget {
-  const _CircleImage({
-    super.key,
-    this.width,
-  });
-
-  final double? width;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-      ),
-      constraints: BoxConstraints(maxWidth: width ?? 400),
-      clipBehavior: Clip.antiAlias,
-      child: Image.asset(
-        'assets/images/avatar_pic.jpg',
-        fit: BoxFit.fitWidth,
-      ),
+    return ScreenTypeLayout.builder(
+      desktop: (context) => const DesktopHomeView(),
+      tablet: (context) => const TabletHomeView(),
+      mobile: (context) => const MobileHomeView(),
     );
   }
 }

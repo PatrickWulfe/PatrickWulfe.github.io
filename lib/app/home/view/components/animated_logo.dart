@@ -37,54 +37,56 @@ class AnimatedLogo extends HookWidget {
     );
     final appTheme = Theme.of(context);
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          'Hey I am',
-          style: appTheme.textTheme.headlineLarge,
-        ),
-        Container(
-          constraints: BoxConstraints(
-            maxHeight: height ?? 256,
-            maxWidth: width ?? 800,
+    return FittedBox(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Hey I am',
+            style: appTheme.textTheme.headlineLarge,
           ),
-          child: AspectRatio(
-            aspectRatio: 8 / 5,
-            child: Stack(
-              children: [
-                AnimatedPadding(
-                  padding: EdgeInsets.only(
-                    left: rand1.value * 12,
-                    right: rand2.value * 12,
-                    bottom: rand3.value * 12,
-                    top: rand4.value * 12,
+          Container(
+            constraints: BoxConstraints(
+              maxHeight: height ?? 256,
+              maxWidth: width ?? 800,
+            ),
+            child: AspectRatio(
+              aspectRatio: 8 / 5,
+              child: Stack(
+                children: [
+                  AnimatedPadding(
+                    padding: EdgeInsets.only(
+                      left: rand1.value * 12,
+                      right: rand2.value * 12,
+                      bottom: rand3.value * 12,
+                      top: rand4.value * 12,
+                    ),
+                    duration: const Duration(seconds: 1),
+                    child: const Image(
+                        image: AssetImage('assets/images/logo-wbg.png')),
                   ),
-                  duration: const Duration(seconds: 1),
-                  child: const Image(
-                      image: AssetImage('assets/images/logo-wbg.png')),
-                ),
-                AnimatedPadding(
-                  padding: EdgeInsets.only(
-                    left: rand3.value * 12,
-                    right: rand4.value * 12,
-                    bottom: rand1.value * 12,
-                    top: rand2.value * 12,
+                  AnimatedPadding(
+                    padding: EdgeInsets.only(
+                      left: rand3.value * 12,
+                      right: rand4.value * 12,
+                      bottom: rand1.value * 12,
+                      top: rand2.value * 12,
+                    ),
+                    duration: const Duration(seconds: 1),
+                    child: const Image(
+                        image: AssetImage('assets/images/logo-wbg.png')),
                   ),
-                  duration: const Duration(seconds: 1),
-                  child: const Image(
-                      image: AssetImage('assets/images/logo-wbg.png')),
-                ),
-                Image.asset('assets/images/logo-outline.png'),
-              ],
+                  Image.asset('assets/images/logo-outline.png'),
+                ],
+              ),
             ),
           ),
-        ),
-        Text(
-          'Software Engineer',
-          style: appTheme.textTheme.displayMedium,
-        ),
-      ],
+          Text(
+            'Software Engineer',
+            style: appTheme.textTheme.displayMedium,
+          ),
+        ],
+      ),
     );
   }
 }
