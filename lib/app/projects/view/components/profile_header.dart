@@ -34,11 +34,11 @@ class ProfileHeader extends StatelessWidget {
                     ),
                     Text(
                       state.user?.name ?? '',
-                      style: appTheme.textTheme.displayMedium,
+                      style: appTheme.textTheme.headlineMedium,
                     ),
                     Text(
                       state.user?.login ?? '',
-                      style: appTheme.textTheme.titleLarge,
+                      style: appTheme.textTheme.headlineSmall,
                     ),
                     if (state.user?.hirable ?? true)
                       const Text('Ready for work!'),
