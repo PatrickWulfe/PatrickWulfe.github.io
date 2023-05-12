@@ -28,7 +28,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "f1c014b126f2c0ad48115cad3f8fe33c
 "assets/assets/images/soundcloud-logo.png": "cf27c3b6c391144908ba0dd2f9631c11",
 "assets/FontManifest.json": "3f768ae705296be001f7819d2895cc30",
 "assets/fonts/MaterialIcons-Regular.otf": "397756f7c21475fcf123eb862e41bb58",
-"assets/NOTICES": "92f864e5bec0e778501a7c9f9f1fc4b5",
+"assets/NOTICES": "358d6ec0bcdc649d122098e9be2365dc",
 "assets/packages/community_material_icon/fonts/materialdesignicons-webfont.ttf": "84c7bd136590da0a6ed2c21df180c354",
 "assets/shaders/ink_sparkle.frag": "f8b80e740d33eb157090be4e995febdf",
 "canvaskit/canvaskit.js": "76f7d822f42397160c5dfc69cbc9b2de",
@@ -45,9 +45,9 @@ const RESOURCES = {"assets/AssetManifest.bin": "f1c014b126f2c0ad48115cad3f8fe33c
 "icons/favicon.png": "7a26ea9d4e61122fc023b84e5acdb148",
 "icons/Icon-192.png": "12d05db1c0b26d429b54e3f8c946a496",
 "icons/Icon-512.png": "aabba36693aba0ec8d954adf297d3125",
-"index.html": "93a92dfcfdb593300cc4b4e69e23a8ae",
-"/": "93a92dfcfdb593300cc4b4e69e23a8ae",
-"main.dart.js": "1f71006564e7ebace8e8940d5627edd1",
+"index.html": "1fe52434b488b6cf079d23cdfd86ea65",
+"/": "1fe52434b488b6cf079d23cdfd86ea65",
+"main.dart.js": "24ca2d06e9192770aaa83bd0bdf291a8",
 "manifest.json": "8f5426026303f2d7239f1a6aae20eb40",
 "version.json": "5cc9695ee3e8c1f86234c524152ea8f8"};
 // The application shell files that are downloaded before a service worker can
