@@ -13,18 +13,31 @@ class DesktopExperienceView extends StatelessWidget {
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: ExperienceTile.big(
-              experienceModel: experienceModels[0],
-            ),
+          Text(
+            'Experience',
+            style: appTheme.textTheme.displayMedium,
           ),
+          const Divider(),
           const SizedBox.square(dimension: 16),
           Expanded(
-            child: ExperienceTile.big(
-              experienceModel: experienceModels[1],
+            child: Row(
+              children: [
+                Expanded(
+                  child: ExperienceTile.big(
+                    experienceModel: experienceModels[0],
+                  ),
+                ),
+                const SizedBox.square(dimension: 16),
+                Expanded(
+                  child: ExperienceTile.big(
+                    experienceModel: experienceModels[1],
+                  ),
+                ),
+              ],
             ),
           ),
         ],

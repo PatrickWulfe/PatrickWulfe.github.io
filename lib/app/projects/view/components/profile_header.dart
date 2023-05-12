@@ -4,10 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({
+  const ProfileHeader._({
     super.key,
     required this.height,
   });
+
+  const factory ProfileHeader.desktop() = _DesktopProfileHeader;
+  const factory ProfileHeader.tablet() = _TabletProfileHeader;
+  const factory ProfileHeader.mobile() = _MobileProfileHeader;
 
   final double height;
 
@@ -81,4 +85,25 @@ class ProfileHeader extends StatelessWidget {
       },
     );
   }
+}
+
+class _DesktopProfileHeader extends ProfileHeader {
+  const _DesktopProfileHeader()
+      : super._(
+          height: 300,
+        );
+}
+
+class _TabletProfileHeader extends ProfileHeader {
+  const _TabletProfileHeader()
+      : super._(
+          height: 250,
+        );
+}
+
+class _MobileProfileHeader extends ProfileHeader {
+  const _MobileProfileHeader()
+      : super._(
+          height: 150,
+        );
 }

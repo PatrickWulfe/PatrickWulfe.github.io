@@ -28,15 +28,6 @@ class ExperienceTile extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: appTheme.colorScheme.outline),
         borderRadius: BorderRadius.circular(12),
-        // gradient: LinearGradient(
-        //   begin: Alignment.topCenter,
-        //   end: Alignment.bottomCenter,
-        //   colors: [
-        //     appTheme.extension<GradientColors>()!.firstColor!,
-        //     appTheme.extension<GradientColors>()!.secondColor!,
-        //     appTheme.extension<GradientColors>()!.thirdColor!,
-        //   ],
-        // ),
       ),
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -77,30 +68,34 @@ class ExperienceTile extends StatelessWidget {
           ),
           Text(experienceModel.description),
           if (includeBulletPoints)
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: experienceModel.bulletPoints.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 8),
-                        child: Icon(
-                          Icons.circle,
-                          size: 4,
-                        ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: experienceModel.bulletPoints.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(top: 8),
+                            child: Icon(
+                              Icons.circle,
+                              size: 4,
+                            ),
+                          ),
+                          const SizedBox.square(dimension: 8),
+                          Expanded(
+                            child: Text(experienceModel.bulletPoints[index]),
+                          ),
+                        ],
                       ),
-                      const SizedBox.square(dimension: 8),
-                      Expanded(
-                        child: Text(experienceModel.bulletPoints[index]),
-                      ),
-                    ],
-                  ),
-                );
-              },
+                    );
+                  },
+                ),
+              ),
             ),
           if (!includeBulletPoints) const Expanded(child: SizedBox()),
           if (!includeBulletPoints)

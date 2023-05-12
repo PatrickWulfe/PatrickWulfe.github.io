@@ -1,7 +1,7 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:github/github.dart' as gh;
+import 'package:get_it/get_it.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -11,21 +11,9 @@ class ProjectsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late gh.GitHub github;
-    // if (dotenv.isEveryDefined(['GH_USERNAME', 'GH_TOKEN'])) {
-    // github = gh.GitHub(
-    // auth: gh.Authentication.basic(
-    //   dotenv.env['GH_USERNAME'],
-    //   dotenv.env['GH_PASSWORD'],
-    // ),
-    // );
-    // } else {
-    github = gh.GitHub(auth: gh.Authentication.anonymous());
-    // }
     return BlocProvider(
       create: (context) =>
-          ProjectsBloc(githubRepo: GithubRepositoryImpl(github))
-            ..add(const ProjectsEvent.started()),
+          GetIt.I.get<ProjectsBloc>()..add(const ProjectsEvent.started()),
       child: ScreenTypeLayout.builder(
         desktop: (context) => const DesktopProjectsView(),
         tablet: (context) => const TabletProjectsView(),

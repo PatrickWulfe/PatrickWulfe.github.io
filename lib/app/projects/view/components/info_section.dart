@@ -3,7 +3,6 @@ import 'package:portfolio_project/app/app_index.dart';
 
 class _InfoSection extends StatelessWidget {
   const _InfoSection({
-    super.key,
     required this.info,
     required this.buttonText,
     required this.url,

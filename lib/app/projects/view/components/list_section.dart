@@ -62,7 +62,7 @@ class ListSection extends StatelessWidget {
                           title: element.name,
                           subtitle: element.description,
                           onTap: () => _launchUrl(
-                              Uri.parse(state.repositories![index].htmlUrl)),
+                              Uri.parse(state.repositories![index].htmlUrl),),
                         );
                       },
                     ),

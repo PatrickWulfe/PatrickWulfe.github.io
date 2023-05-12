@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_project/app/utils/theme/color_schemes.g.dart';
 
 enum ThemeName {
   light,
@@ -20,18 +21,15 @@ extension SelectedThemeExtension on ThemeName {
   }
 }
 
+final horizonDarkThemeData = ThemeData(
+  useMaterial3: true,
+);
+
 final lightThemeData = ThemeData.light(
   useMaterial3: true,
 ).copyWith(
   colorScheme: lightColorScheme,
   textTheme: getTextTheme(lightColorScheme.onSurface),
-);
-
-final lightColorScheme = ColorScheme.fromSeed(
-  seedColor: const Color(0xFF8931B9),
-  background: const Color(0xFF1A1C23),
-  surface: const Color(0xFFFDF0ED),
-  outline: const Color(0xFFF9CEC3),
 );
 
 final darkThemeData = ThemeData.dark(
@@ -47,14 +45,6 @@ final darkThemeData = ThemeData.dark(
       thirdColor: Color(0xFF232530),
     )
   ],
-);
-
-final darkColorScheme = ColorScheme.fromSeed(
-  seedColor: const Color(0xFFB877DB),
-  brightness: Brightness.dark,
-  background: const Color(0xFF1A1C23),
-  surface: const Color(0xFF2E303E),
-  outline: const Color(0xFF6C6F93),
 );
 
 // Default text color needed for web deployment

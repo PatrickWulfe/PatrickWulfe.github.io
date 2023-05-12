@@ -24,12 +24,12 @@ class DesktopProjectsView extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'My Github Tracker (WIP)',
+                  'Project Tracker',
                   style: appTheme.textTheme.displayMedium,
                 ),
               ),
               const Divider(),
-              const ProfileHeader(height: 300),
+              const ProfileHeader.desktop(),
               const Divider(),
               const Expanded(child: ListSection()),
               const SizedBox.square(dimension: 16),

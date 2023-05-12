@@ -12,20 +12,23 @@ class MobileExperienceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    return Column(
-      children: [
-        Expanded(
-          child: ExperienceTile.small(
-            experienceModel: experienceModels[0],
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        children: [
+          Expanded(
+            child: ExperienceTile.small(
+              experienceModel: experienceModels[0],
+            ),
           ),
-        ),
-        const SizedBox.square(dimension: 8),
-        Expanded(
-          child: ExperienceTile.small(
-            experienceModel: experienceModels[1],
+          const SizedBox.square(dimension: 8),
+          Expanded(
+            child: ExperienceTile.small(
+              experienceModel: experienceModels[1],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

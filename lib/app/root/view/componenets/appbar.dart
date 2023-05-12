@@ -163,98 +163,54 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  InkWell(
-                    onTap: () => controller.animateToPage(
+                  TextButton.icon(
+                    onPressed: () => controller.animateToPage(
                       0,
                       duration: pageAnimationDuration,
                       curve: pageAnimationCurve,
                     ),
-                    child: Row(
-                      children: const [
-                        SizedBox(width: 32),
-                        Icon(Icons.home_rounded),
-                      ],
-                    ),
+                    icon: const Icon(Icons.home_rounded),
+                    label: const Text('Home'),
                   ),
-                  InkWell(
-                    onTap: () => controller.animateToPage(
+                  const SizedBox.square(dimension: 8),
+                  TextButton.icon(
+                    onPressed: () => controller.animateToPage(
                       1,
                       duration: pageAnimationDuration,
                       curve: pageAnimationCurve,
                     ),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 32),
-                        Text(
-                          '01. ',
-                          style: buttonStyle,
-                        ),
-                        Text(
-                          'About Me',
-                          style: buttonStyle,
-                        ),
-                      ],
-                    ),
+                    icon: const Icon(Icons.info),
+                    label: const Text('About Me'),
                   ),
-                  InkWell(
-                    onTap: () => controller.animateToPage(
+                  const SizedBox.square(dimension: 8),
+                  TextButton.icon(
+                    onPressed: () => controller.animateToPage(
                       2,
                       duration: pageAnimationDuration,
                       curve: pageAnimationCurve,
                     ),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 32),
-                        Text(
-                          '02. ',
-                          style: buttonStyle,
-                        ),
-                        Text(
-                          'Experience',
-                          style: buttonStyle,
-                        ),
-                      ],
-                    ),
+                    icon: const Icon(Icons.book_rounded),
+                    label: const Text('Experience'),
                   ),
-                  InkWell(
-                    onTap: () => controller.animateToPage(
+                  const SizedBox.square(dimension: 8),
+                  TextButton.icon(
+                    onPressed: () => controller.animateToPage(
                       3,
                       duration: pageAnimationDuration,
                       curve: pageAnimationCurve,
                     ),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 32),
-                        Text(
-                          '03. ',
-                          style: buttonStyle,
-                        ),
-                        Text(
-                          'Projects',
-                          style: buttonStyle,
-                        ),
-                      ],
-                    ),
+                    icon: const Icon(CommunityMaterialIcons.github),
+                    label: const Text('Projects'),
                   ),
-                  InkWell(
-                    onTap: () => controller.animateToPage(
+                  const SizedBox.square(dimension: 8),
+                  TextButton.icon(
+                    onPressed: () => controller.animateToPage(
                       4,
                       duration: pageAnimationDuration,
                       curve: pageAnimationCurve,
                     ),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 32),
-                        Text(
-                          '04. ',
-                          style: buttonStyle,
-                        ),
-                        Text(
-                          'Interests',
-                          style: buttonStyle,
-                        ),
-                      ],
-                    ),
+                    icon: const Icon(Icons.lightbulb_circle_rounded),
+                    label: const Text('Interests'),
                   ),
                 ],
               ),

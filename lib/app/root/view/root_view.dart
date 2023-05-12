@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get_it/get_it.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -31,6 +32,8 @@ class RootView extends HookWidget {
       const InterestsPage(),
     ];
     final scrollCubit = context.read<ScrollCubit>();
+    // init projects cubit to prevent load times when moving to page.
+    GetIt.I.get<ProjectsBloc>().add(const ProjectsEvent.started());
 
     final pageController = usePageController();
 
@@ -111,9 +114,8 @@ class RootView extends HookWidget {
 // workarounds to keep page from rebuilding when resizing to mobile view
 class _LeftPaneWA extends StatelessWidget {
   const _LeftPaneWA({
-    Key? key,
     required this.isMobile,
-  }) : super(key: key);
+  });
 
   final bool isMobile;
 
@@ -128,9 +130,8 @@ class _LeftPaneWA extends StatelessWidget {
 
 class _RightPaneWA extends StatelessWidget {
   const _RightPaneWA({
-    Key? key,
     required this.isMobile,
-  }) : super(key: key);
+  });
 
   final bool isMobile;
 

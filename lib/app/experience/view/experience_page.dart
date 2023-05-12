@@ -52,7 +52,9 @@ class ExperiencePage extends StatelessWidget {
       desktop: (context) => DesktopExperienceView(
         experienceModels: experienceModels,
       ),
-      tablet: (context) => const TabletExperienceView(),
+      tablet: (context) => TabletExperienceView(
+        experienceModels: experienceModels,
+      ),
       mobile: (context) => MobileExperienceView(
         experienceModels: experienceModels,
       ),
