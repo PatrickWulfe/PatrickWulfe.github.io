@@ -49,7 +49,6 @@ class ProjectTile extends StatelessWidget {
         softWrap: true,
       ),
       onTap: onTap,
-      tileColor: appTheme.colorScheme.surfaceVariant,
     );
   }
 }

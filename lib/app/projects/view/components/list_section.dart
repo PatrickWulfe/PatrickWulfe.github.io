@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -52,21 +53,52 @@ class ListSection extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: ListView.separated(
-                      itemCount: (state.repositories ?? []).length,
-                      separatorBuilder: (_, __) =>
-                          const SizedBox.square(dimension: 2),
-                      itemBuilder: (BuildContext context, int index) {
-                        final element = state.repositories![index];
-                        return ProjectTile(
-                          title: element.name,
-                          subtitle: element.description,
-                          onTap: () => _launchUrl(
-                              Uri.parse(state.repositories![index].htmlUrl),),
-                        );
-                      },
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: AnimateList(
+                          autoPlay: true,
+                          interval: .1.seconds,
+                          effects: [
+                            FadeEffect(
+                              duration: .2.seconds,
+                            )
+                          ],
+                          children: [
+                            if (state.repositories != null &&
+                                state.repositories!.isNotEmpty)
+                              ...state.repositories!.map(
+                                (e) => ProjectTile(
+                                  title: e.name,
+                                  subtitle: e.description,
+                                  onTap: () => _launchUrl(
+                                    Uri.parse(e.htmlUrl),
+                                  ),
+                                ),
+                              )
+                          ],
+                        ),
+                      ),
                     ),
                   ),
+                  // Expanded(
+                  //   child: ListView.separated(
+                  //     itemCount: (state.repositories ?? []).length,
+                  //     separatorBuilder: (_, __) =>
+                  //         const SizedBox.square(dimension: 2),
+                  //     itemBuilder: (BuildContext context, int index) {
+                  //       final element = state.repositories![index];
+                  //       return ProjectTile(
+                  //         title: element.name,
+                  //         subtitle: element.description,
+                  //         onTap: () => _launchUrl(
+                  //           Uri.parse(state.repositories![index].htmlUrl),
+                  //         ),
+                  //       ).animate().fade(
+                  //             delay: (.2 * index).seconds,
+                  //           );
+                  //     },
+                  //   ),
+                  // ),
                 ],
               ),
             );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it/get_it.dart';
@@ -76,7 +77,7 @@ class RootView extends HookWidget {
                         final isScrollingUp = state == ScrollDirection.reverse;
                         return AnimatedOpacity(
                           opacity: isScrollingUp ? 1 : 0,
-                          duration: const Duration(milliseconds: 400),
+                          duration: .4.seconds,
                           child: ActionBar(
                             controller: pageController,
                           ),

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class AnimatedLogo extends HookWidget {
@@ -24,7 +25,7 @@ class AnimatedLogo extends HookWidget {
 
     useEffect(
       () {
-        final timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        final timer = Timer.periodic(1.seconds, (timer) {
           rand1.value = random.nextDouble();
           rand2.value = random.nextDouble();
           rand3.value = random.nextDouble();
@@ -61,7 +62,7 @@ class AnimatedLogo extends HookWidget {
                       bottom: rand3.value * 12,
                       top: rand4.value * 12,
                     ),
-                    duration: const Duration(seconds: 1),
+                    duration: 1.seconds,
                     child: const Image(
                       image: AssetImage('assets/images/logo-wbg.png'),
                     ),
@@ -73,9 +74,10 @@ class AnimatedLogo extends HookWidget {
                       bottom: rand1.value * 12,
                       top: rand2.value * 12,
                     ),
-                    duration: const Duration(seconds: 1),
+                    duration: 1.seconds,
                     child: const Image(
-                        image: AssetImage('assets/images/logo-wbg.png'),),
+                      image: AssetImage('assets/images/logo-wbg.png'),
+                    ),
                   ),
                   Image.asset('assets/images/logo-outline.png'),
                 ],

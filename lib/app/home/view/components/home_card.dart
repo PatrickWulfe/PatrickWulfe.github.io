@@ -1,3 +1,4 @@
+import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 
 class HomeCard extends StatelessWidget {
@@ -43,8 +44,7 @@ class HomeCard extends StatelessWidget {
             ),
             const SizedBox.square(dimension: 16),
             Expanded(
-              child: Container(
-                alignment: Alignment.bottomRight,
+              child: BottomRight(
                 child: FilledButton(
                   onPressed: onButtonPress,
                   child: Text(buttonText),

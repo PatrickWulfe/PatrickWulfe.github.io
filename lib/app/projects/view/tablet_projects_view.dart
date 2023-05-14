@@ -1,3 +1,4 @@
+import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_project/app/app_index.dart';
@@ -21,8 +22,7 @@ class TabletProjectsView extends StatelessWidget {
           margin: const EdgeInsets.all(32),
           child: Column(
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
+              CenterLeft(
                 child: Text(
                   'Project Tracker',
                   style: appTheme.textTheme.displayMedium,

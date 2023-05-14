@@ -29,7 +29,7 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.singleton<_i3.GithubRepository>(_i4.GithubRepositoryImpl());
     gh.factory<_i5.ProjectsBloc>(
-        () => _i5.ProjectsBloc(githubRepo: gh<_i3.GithubRepository>()));
+        () => _i5.ProjectsBloc(githubRepo: gh<_i3.GithubRepository>()),);
     return this;
   }
 }

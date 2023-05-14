@@ -14,7 +14,7 @@ class MobileAboutMeView extends HookWidget {
     useEffect(
       () {
         final timer = Timer(
-          const Duration(milliseconds: 300),
+          .3.seconds,
           () {
             opacity.value = 1;
           },
@@ -31,8 +31,7 @@ class MobileAboutMeView extends HookWidget {
           margin: const EdgeInsets.all(64),
           child: Column(
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
+              CenterLeft(
                 child: Text(
                   'About Me',
                   style: appTheme.textTheme.displaySmall,
@@ -44,7 +43,7 @@ class MobileAboutMeView extends HookWidget {
                 child: SingleChildScrollView(
                   child: AnimatedOpacity(
                     opacity: opacity.value,
-                    duration: const Duration(milliseconds: 400),
+                    duration: .4.seconds,
                     child: Text(
                       aboutMe,
                       style: appTheme.textTheme.bodyMedium,

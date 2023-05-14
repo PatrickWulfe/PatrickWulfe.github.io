@@ -13,5 +13,5 @@ class ExperienceModel {
   final String jobTitle;
   final String dateRange;
   final String description;
-  final List<String> bulletPoints;
+  final String bulletPoints;
 }

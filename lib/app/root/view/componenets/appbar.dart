@@ -1,5 +1,6 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ActionBar extends StatelessWidget implements PreferredSizeWidget {
@@ -17,7 +18,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    const pageAnimationDuration = Duration(milliseconds: 400);
+    final pageAnimationDuration = .4.seconds;
     const pageAnimationCurve = Curves.ease;
 
     return ResponsiveBuilder(

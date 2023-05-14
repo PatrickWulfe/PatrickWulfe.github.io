@@ -14,7 +14,7 @@ class DesktopAboutMeView extends HookWidget {
     useEffect(
       () {
         final timer = Timer(
-          const Duration(milliseconds: 300),
+          .3.seconds,
           () {
             opacity.value = 1;
           },
@@ -31,8 +31,7 @@ class DesktopAboutMeView extends HookWidget {
           margin: const EdgeInsets.all(64),
           child: Column(
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
+              CenterLeft(
                 child: Text(
                   'About Me',
                   style: appTheme.textTheme.displayMedium,
@@ -42,14 +41,13 @@ class DesktopAboutMeView extends HookWidget {
               const SizedBox.square(dimension: 32),
               Expanded(
                 child: SingleChildScrollView(
-                  child: AnimatedOpacity(
-                    opacity: opacity.value,
-                    duration: const Duration(milliseconds: 400),
-                    child: Text(
-                      aboutMe,
-                      style: appTheme.textTheme.bodyLarge,
-                    ),
-                  ),
+                  child: Text(
+                    aboutMe,
+                    style: appTheme.textTheme.bodyLarge,
+                  ).animate().fadeIn(
+                        delay: .2.seconds,
+                        duration: .3.seconds,
+                      ),
                 ),
               ),
             ],

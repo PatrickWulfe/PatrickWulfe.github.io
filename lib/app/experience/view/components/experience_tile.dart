@@ -1,3 +1,4 @@
+import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
@@ -66,41 +67,23 @@ class ExperienceTile extends StatelessWidget {
             experienceModel.jobTitle,
             style: appTheme.textTheme.headlineSmall,
           ),
+          const SizedBox.square(dimension: 8),
           Text(experienceModel.description),
+          const SizedBox.square(dimension: 8),
           if (includeBulletPoints)
-            Expanded(
-              child: SingleChildScrollView(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: experienceModel.bulletPoints.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(top: 8),
-                            child: Icon(
-                              Icons.circle,
-                              size: 4,
-                            ),
-                          ),
-                          const SizedBox.square(dimension: 8),
-                          Expanded(
-                            child: Text(experienceModel.bulletPoints[index]),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
+            Builder(
+              builder: (context) {
+                return Expanded(
+                  child: Text(
+                    experienceModel.bulletPoints,
+                    softWrap: true,
+                  ),
+                );
+              },
             ),
           if (!includeBulletPoints) const Expanded(child: SizedBox()),
           if (!includeBulletPoints)
-            Align(
-              alignment: Alignment.bottomRight,
+            BottomRight(
               child: FilledButton(
                 onPressed: () {},
                 child: const Text('View More...'),
