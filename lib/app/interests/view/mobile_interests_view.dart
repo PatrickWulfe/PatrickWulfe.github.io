@@ -1,4 +1,6 @@
+import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
 class MobileInterestsView extends StatelessWidget {
@@ -11,14 +13,32 @@ class MobileInterestsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Material(
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: interestModels.length,
-          itemBuilder: (BuildContext context, int index) {
-            return InterestTile(interestModel: interestModels[index]);
-          },
+    final appTheme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.all(mobileScreenPadding),
+      child: Center(
+        child: Column(
+          children: [
+            CenterLeft(
+              child: Text(
+                'Interests',
+                style: appTheme.textTheme.displaySmall,
+              ),
+            ),
+            const Divider(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemCount: interestModels.length,
+                  separatorBuilder: (_, __) => const Gap(8),
+                  itemBuilder: (BuildContext context, int index) {
+                    return InterestTile(interestModel: interestModels[index]);
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

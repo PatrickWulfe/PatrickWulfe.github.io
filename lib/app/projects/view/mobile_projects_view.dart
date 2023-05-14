@@ -20,7 +20,7 @@ class MobileProjectsView extends StatelessWidget {
           );
         }
         return Container(
-          margin: const EdgeInsets.all(32),
+          margin: const EdgeInsets.all(mobileScreenPadding),
           child: Column(
             children: [
               CenterLeft(

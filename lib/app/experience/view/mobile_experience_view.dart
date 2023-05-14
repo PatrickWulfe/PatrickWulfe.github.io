@@ -1,3 +1,4 @@
+import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
@@ -14,12 +15,14 @@ class MobileExperienceView extends StatelessWidget {
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(mobileScreenPadding),
       child: Column(
         children: [
-          Text(
-            'Experience',
-            style: appTheme.textTheme.displaySmall,
+          CenterLeft(
+            child: Text(
+              'Experience',
+              style: appTheme.textTheme.displaySmall,
+            ),
           ),
           const Divider(),
           const Gap(8),

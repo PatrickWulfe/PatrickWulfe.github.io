@@ -14,6 +14,7 @@ class DesktopHomeView extends StatelessWidget {
       builder: (context, sizingInformation) {
         return Center(
           child: Container(
+            padding: const EdgeInsets.all(desktopScreenPadding),
             constraints: const BoxConstraints(maxWidth: 1600),
             child: const Row(
               mainAxisSize: MainAxisSize.min,

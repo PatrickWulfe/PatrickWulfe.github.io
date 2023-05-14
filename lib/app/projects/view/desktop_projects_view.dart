@@ -20,7 +20,7 @@ class DesktopProjectsView extends StatelessWidget {
           );
         }
         return Container(
-          margin: const EdgeInsets.all(32),
+          margin: const EdgeInsets.all(desktopScreenPadding),
           child: Column(
             children: [
               CenterLeft(
