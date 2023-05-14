@@ -11,14 +11,16 @@ class MobileInterestsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: interestModels
-          .map(
-            (e) => InterestTile(
-              interestModel: e,
-            ),
-          )
-          .toList(),
+    return Center(
+      child: Material(
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: interestModels.length,
+          itemBuilder: (BuildContext context, int index) {
+            return InterestTile(interestModel: interestModels[index]);
+          },
+        ),
+      ),
     );
   }
 }

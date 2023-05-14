@@ -26,7 +26,7 @@ class MobileProjectsView extends StatelessWidget {
               CenterLeft(
                 child: Text(
                   'Project Tracker',
-                  style: appTheme.textTheme.displayMedium,
+                  style: appTheme.textTheme.displaySmall,
                 ),
               ),
               const Divider(),

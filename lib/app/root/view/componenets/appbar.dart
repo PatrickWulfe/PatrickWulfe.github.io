@@ -34,7 +34,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                     top: 12,
                   ),
                   child: Image.asset(
-                    'images/header-logo.png',
+                    'assets/images/header-logo.png',
                     width: sizingInformation.screenSize.width * .05,
                     height: sizingInformation.screenSize.height * .05,
                   ),
@@ -154,7 +154,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                   top: 12,
                 ),
                 child: Image.asset(
-                  'images/header-logo.png',
+                  'assets/images/header-logo.png',
                   width: sizingInformation.screenSize.width * .10,
                   height: sizingInformation.screenSize.height * .10,
                 ),

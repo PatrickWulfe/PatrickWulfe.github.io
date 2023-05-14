@@ -28,21 +28,22 @@ class ListSection extends StatelessWidget {
                 )
                 .toList();
             return Material(
-              color: appTheme.colorScheme.surface,
+              color: const Color(0x00000000),
               borderRadius: BorderRadius.circular(8),
               clipBehavior: Clip.antiAlias,
               child: Column(
                 children: [
                   Container(
-                    color: appTheme.colorScheme.surface,
+                    color: const Color(0x00000000),
                     constraints: const BoxConstraints(maxHeight: 48),
                     child: Row(
                       children: [
                         const Gap(16),
                         Text(
                           'Sort By: ',
-                          style: appTheme.textTheme.labelMedium,
+                          style: appTheme.textTheme.labelLarge,
                         ),
+                        const Gap(16),
                         DropdownButton<RepoSort>(
                           value: state.sort,
                           items: dropdownItems,

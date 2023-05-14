@@ -13,8 +13,8 @@ class ExperiencePage extends StatelessWidget {
     final experienceModels = [
       ExperienceModel(
         logoAssetName: appTheme.brightness == Brightness.light
-            ? 'images/evosus-logo-dark.png'
-            : 'images/evosus-logo-light.png',
+            ? 'assets/images/evosus-logo-dark.png'
+            : 'assets/images/evosus-logo-light.png',
         companyName: 'Evosus',
         jobTitle: 'Mobile Application Developer',
         dateRange: "Aug '21 - Mar '23",
@@ -37,8 +37,8 @@ class ExperiencePage extends StatelessWidget {
       ),
       ExperienceModel(
         logoAssetName: appTheme.brightness == Brightness.light
-            ? 'images/isoft-logo-dark.png'
-            : 'images/isoft-logo-light.png',
+            ? 'assets/images/isoft-logo-dark.png'
+            : 'assets/images/isoft-logo-light.png',
         companyName: 'iSoft Systems, LLC',
         jobTitle: 'Software Developer',
         dateRange: '2015 - 2017',

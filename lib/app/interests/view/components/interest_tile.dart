@@ -1,6 +1,5 @@
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -32,21 +31,23 @@ class InterestTile extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(
-                  height: 100,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        interestModel.title,
-                        style: appTheme.textTheme.headlineMedium,
+                Row(
+                  children: [
+                    Text(
+                      interestModel.title,
+                      style: appTheme.textTheme.headlineMedium,
+                    ),
+                    Expanded(
+                      child: Container(
+                        constraints: const BoxConstraints(maxHeight: 80),
+                        // child: FittedBox(
+                        //   child: (interestModel.imageAssetName.endsWith('.svg'))
+                        //       ? SvgPicture.asset(interestModel.imageAssetName)
+                        //       : Image.asset(interestModel.imageAssetName),
+                        // ),
                       ),
-                      if (interestModel.imageAssetName.endsWith('.svg'))
-                        SvgPicture.asset(interestModel.imageAssetName)
-                      else
-                        Image.asset(interestModel.imageAssetName),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 const Gap(8),
                 Text(interestModel.description),

@@ -9,6 +9,7 @@ class ExperienceTile extends StatelessWidget {
     required this.experienceModel,
     required this.logoHeight,
     required this.includeBulletPoints,
+    required this.descriptionMaxLines,
   });
 
   const factory ExperienceTile.big({
@@ -22,6 +23,7 @@ class ExperienceTile extends StatelessWidget {
   final ExperienceModel experienceModel;
   final double logoHeight;
   final bool includeBulletPoints;
+  final int descriptionMaxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class ExperienceTile extends StatelessWidget {
               Expanded(
                 child: Text(
                   experienceModel.companyName,
-                  style: appTheme.textTheme.displaySmall,
+                  style: appTheme.textTheme.headlineMedium,
                 ),
               ),
               Padding(
@@ -64,13 +66,19 @@ class ExperienceTile extends StatelessWidget {
               ),
             ],
           ),
-          Text(
-            experienceModel.jobTitle,
-            style: appTheme.textTheme.headlineSmall,
+          FittedBox(
+            child: Text(
+              experienceModel.jobTitle,
+              style: appTheme.textTheme.headlineSmall,
+            ),
           ),
           const Gap(8),
-          Text(experienceModel.description),
-          const Gap(8),
+          Text(
+            experienceModel.description,
+            overflow: TextOverflow.ellipsis,
+            maxLines: descriptionMaxLines,
+          ),
+          const Gap(2),
           if (includeBulletPoints)
             Builder(
               builder: (context) {
@@ -102,6 +110,7 @@ class _BigExperienceTile extends ExperienceTile {
   }) : super(
           logoHeight: 80,
           includeBulletPoints: true,
+          descriptionMaxLines: 9999,
         );
 }
 
@@ -111,5 +120,6 @@ class _SmallExperienceTile extends ExperienceTile {
   }) : super(
           logoHeight: 30,
           includeBulletPoints: false,
+          descriptionMaxLines: 3,
         );
 }

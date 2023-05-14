@@ -54,11 +54,6 @@ class ProfileHeader extends StatelessWidget {
                       state.user?.name ?? '',
                       style: appTheme.textTheme.headlineMedium,
                     ),
-                    const Gap(8),
-                    Text(
-                      'Username:',
-                      style: appTheme.textTheme.labelSmall,
-                    ),
                     Text(
                       state.user?.login ?? '',
                       style: appTheme.textTheme.titleMedium,
@@ -105,6 +100,6 @@ class _TabletProfileHeader extends ProfileHeader {
 class _MobileProfileHeader extends ProfileHeader {
   const _MobileProfileHeader()
       : super._(
-          height: 150,
+          height: 100,
         );
 }

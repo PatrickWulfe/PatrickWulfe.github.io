@@ -17,6 +17,12 @@ class TabletExperienceView extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
+          Text(
+            'Experience',
+            style: appTheme.textTheme.displayMedium,
+          ),
+          const Divider(),
+          const Gap(8),
           Expanded(
             child: ExperienceTile.small(
               experienceModel: experienceModels[0],

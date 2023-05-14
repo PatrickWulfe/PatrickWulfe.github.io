@@ -17,6 +17,12 @@ class MobileExperienceView extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: Column(
         children: [
+          Text(
+            'Experience',
+            style: appTheme.textTheme.displaySmall,
+          ),
+          const Divider(),
+          const Gap(8),
           Expanded(
             child: ExperienceTile.small(
               experienceModel: experienceModels[0],
