@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -37,7 +38,7 @@ class ListSection extends StatelessWidget {
                     constraints: const BoxConstraints(maxHeight: 48),
                     child: Row(
                       children: [
-                        const SizedBox(width: 16),
+                        const Gap(16),
                         Text(
                           'Sort By: ',
                           style: appTheme.textTheme.labelMedium,

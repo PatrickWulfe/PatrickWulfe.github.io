@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
 class DesktopExperienceView extends StatelessWidget {
@@ -22,7 +23,7 @@ class DesktopExperienceView extends StatelessWidget {
             style: appTheme.textTheme.displayMedium,
           ),
           const Divider(),
-          const SizedBox.square(dimension: 16),
+          const Gap(16),
           Expanded(
             child: Row(
               children: [
@@ -31,7 +32,7 @@ class DesktopExperienceView extends StatelessWidget {
                     experienceModel: experienceModels[0],
                   ),
                 ),
-                const SizedBox.square(dimension: 16),
+                const Gap(16),
                 Expanded(
                   child: ExperienceTile.big(
                     experienceModel: experienceModels[1],

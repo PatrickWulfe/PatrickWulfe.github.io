@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
 class TabletExperienceView extends StatelessWidget {
@@ -21,7 +22,7 @@ class TabletExperienceView extends StatelessWidget {
               experienceModel: experienceModels[0],
             ),
           ),
-          const SizedBox.square(dimension: 8),
+          const Gap(8),
           Expanded(
             child: ExperienceTile.small(
               experienceModel: experienceModels[1],

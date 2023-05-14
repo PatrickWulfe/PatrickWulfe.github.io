@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -33,7 +34,7 @@ class ProfileHeader extends StatelessWidget {
                     state.user?.avatarUrl ?? '',
                   ),
                 ),
-                const SizedBox.square(dimension: 8),
+                const Gap(8),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -53,7 +54,7 @@ class ProfileHeader extends StatelessWidget {
                       state.user?.name ?? '',
                       style: appTheme.textTheme.headlineMedium,
                     ),
-                    const SizedBox.square(dimension: 8),
+                    const Gap(8),
                     Text(
                       'Username:',
                       style: appTheme.textTheme.labelSmall,

@@ -1,5 +1,6 @@
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class HomeCard extends StatelessWidget {
   const HomeCard({
@@ -32,17 +33,17 @@ class HomeCard extends StatelessWidget {
               cardIcon,
               size: 64,
             ),
-            const SizedBox.square(dimension: 16),
+            const Gap(16),
             Text(
               title,
               style: appTheme.textTheme.titleMedium,
             ),
-            const SizedBox.square(dimension: 32),
+            const Gap(32),
             Text(
               description,
               style: appTheme.textTheme.bodyLarge,
             ),
-            const SizedBox.square(dimension: 16),
+            const Gap(16),
             Expanded(
               child: BottomRight(
                 child: FilledButton(

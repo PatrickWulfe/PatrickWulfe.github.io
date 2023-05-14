@@ -38,7 +38,7 @@ class DesktopAboutMeView extends HookWidget {
                 ),
               ),
               const Divider(),
-              const SizedBox.square(dimension: 32),
+              const Gap(32),
               Expanded(
                 child: SingleChildScrollView(
                   child: Text(

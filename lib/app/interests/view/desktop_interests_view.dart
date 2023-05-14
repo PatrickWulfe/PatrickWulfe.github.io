@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_project/app/app_index.dart';
 
 class DesktopInterestsView extends StatelessWidget {
-  const DesktopInterestsView({super.key});
+  const DesktopInterestsView({
+    super.key,
+    required this.interestModels,
+  });
+
+  final List<InterestModel> interestModels;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [],
+    return Center(
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: interestModels.length,
+        itemBuilder: (BuildContext context, int index) {
+          return InterestTile(interestModel: interestModels[index]);
+        },
       ),
     );
   }

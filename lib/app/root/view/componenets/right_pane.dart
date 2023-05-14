@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RightPane extends StatelessWidget {
@@ -18,14 +19,14 @@ class RightPane extends StatelessWidget {
               style: appTheme.textTheme.bodyLarge,
             ),
           ),
-          const SizedBox(height: 16),
+          const Gap(16),
           IconButton(
             onPressed: () {
               _launchUrl(Uri.parse('mailto:wulfep@gmail.com'));
             },
             icon: const Icon(Icons.email),
           ),
-          const SizedBox(height: 16),
+          const Gap(16),
           Expanded(
             child: Container(
               width: 1,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -24,7 +25,7 @@ class DesktopHomeView extends StatelessWidget {
                   flex: 3,
                   child: AnimatedLogo(),
                 ),
-                SizedBox.square(dimension: 16),
+                Gap(16),
                 Expanded(
                   flex: 3,
                   child: AvatarImage(),

@@ -1,5 +1,6 @@
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
 class ExperienceTile extends StatelessWidget {
@@ -44,7 +45,7 @@ class ExperienceTile extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox.square(dimension: 32),
+          const Gap(32),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,9 +68,9 @@ class ExperienceTile extends StatelessWidget {
             experienceModel.jobTitle,
             style: appTheme.textTheme.headlineSmall,
           ),
-          const SizedBox.square(dimension: 8),
+          const Gap(8),
           Text(experienceModel.description),
-          const SizedBox.square(dimension: 8),
+          const Gap(8),
           if (includeBulletPoints)
             Builder(
               builder: (context) {

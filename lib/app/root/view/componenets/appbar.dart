@@ -1,6 +1,7 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:gap/gap.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ActionBar extends StatelessWidget implements PreferredSizeWidget {
@@ -59,7 +60,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                                 Icons.home_rounded,
                                 size: 18,
                               ),
-                              const SizedBox(width: 8),
+                              const Gap(8),
                               Text(
                                 'Home',
                                 style: appTheme.textTheme.labelMedium,
@@ -75,7 +76,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                                 Icons.account_circle_rounded,
                                 size: 18,
                               ),
-                              const SizedBox(width: 8),
+                              const Gap(8),
                               Text(
                                 'About Me',
                                 style: appTheme.textTheme.labelMedium,
@@ -91,7 +92,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                                 Icons.assignment_rounded,
                                 size: 18,
                               ),
-                              const SizedBox(width: 8),
+                              const Gap(8),
                               Text(
                                 'Experience',
                                 style: appTheme.textTheme.labelMedium,
@@ -107,7 +108,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                                 CommunityMaterialIcons.github,
                                 size: 18,
                               ),
-                              const SizedBox(width: 8),
+                              const Gap(8),
                               Text(
                                 'Projects',
                                 style: appTheme.textTheme.labelMedium,
@@ -123,7 +124,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                                 Icons.lightbulb_rounded,
                                 size: 18,
                               ),
-                              const SizedBox(width: 8),
+                              const Gap(8),
                               Text(
                                 'Interests',
                                 style: appTheme.textTheme.labelMedium,
@@ -134,7 +135,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                       ],
                       child: const Icon(Icons.menu_rounded, size: 24),
                     ),
-                    const SizedBox(width: 32),
+                    const Gap(32),
                   ],
                 ),
               ),
@@ -145,7 +146,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
         final buttonStyle = appTheme.textTheme.labelLarge;
         return Row(
           children: [
-            const SizedBox.square(dimension: 16),
+            const Gap(16),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(
@@ -173,7 +174,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                     icon: const Icon(Icons.home_rounded),
                     label: const Text('Home'),
                   ),
-                  const SizedBox.square(dimension: 8),
+                  const Gap(8),
                   TextButton.icon(
                     onPressed: () => controller.animateToPage(
                       1,
@@ -183,7 +184,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                     icon: const Icon(Icons.info),
                     label: const Text('About Me'),
                   ),
-                  const SizedBox.square(dimension: 8),
+                  const Gap(8),
                   TextButton.icon(
                     onPressed: () => controller.animateToPage(
                       2,
@@ -193,7 +194,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                     icon: const Icon(Icons.book_rounded),
                     label: const Text('Experience'),
                   ),
-                  const SizedBox.square(dimension: 8),
+                  const Gap(8),
                   TextButton.icon(
                     onPressed: () => controller.animateToPage(
                       3,
@@ -203,7 +204,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                     icon: const Icon(CommunityMaterialIcons.github),
                     label: const Text('Projects'),
                   ),
-                  const SizedBox.square(dimension: 8),
+                  const Gap(8),
                   TextButton.icon(
                     onPressed: () => controller.animateToPage(
                       4,
@@ -216,7 +217,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                 ],
               ),
             ),
-            const SizedBox(width: 128),
+            const Gap(128),
           ],
         );
       },

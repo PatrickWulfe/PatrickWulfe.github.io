@@ -1,6 +1,7 @@
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
 class TabletProjectsView extends StatelessWidget {
@@ -32,7 +33,7 @@ class TabletProjectsView extends StatelessWidget {
               const ProfileHeader.tablet(),
               const Divider(),
               const Expanded(child: ListSection()),
-              const SizedBox.square(dimension: 16),
+              const Gap(16),
             ],
           ),
         );

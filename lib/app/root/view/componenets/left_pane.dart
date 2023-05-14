@@ -1,5 +1,6 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LeftPane extends StatelessWidget {
@@ -24,7 +25,7 @@ class LeftPane extends StatelessWidget {
                 },
                 icon: const Icon(CommunityMaterialIcons.github),
               ),
-              const SizedBox(height: 16),
+              const Gap(16),
               IconButton(
                 onPressed: () {
                   _launchUrl(
@@ -35,8 +36,7 @@ class LeftPane extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 16),
-          const SizedBox(height: 16),
+          const Gap(16),
           Expanded(
             child: Container(
               width: 1,
