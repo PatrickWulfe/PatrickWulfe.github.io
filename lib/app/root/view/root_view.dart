@@ -1,3 +1,4 @@
+import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -92,10 +93,12 @@ class RootView extends HookWidget {
                           _LeftPaneWA(isMobile: sizingInformation.isMobile),
                           Expanded(
                             flex: 10,
-                            child: PageView(
-                              scrollDirection: Axis.vertical,
-                              controller: pageController,
-                              children: pages,
+                            child: FadingEdgeScrollView.fromPageView(
+                              child: PageView(
+                                scrollDirection: Axis.vertical,
+                                controller: pageController,
+                                children: pages,
+                              ),
                             ),
                           ),
                           _RightPaneWA(isMobile: sizingInformation.isMobile),
