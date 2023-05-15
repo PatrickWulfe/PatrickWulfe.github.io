@@ -29,7 +29,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "14711fac8c5e7984aa10281692ee2145
 "assets/assets/images/soundcloud-logo.svg": "87810e65fca3fd8d49f5d124375ec665",
 "assets/FontManifest.json": "3f768ae705296be001f7819d2895cc30",
 "assets/fonts/MaterialIcons-Regular.otf": "29a312630c610f2e21611d988acbd86d",
-"assets/NOTICES": "0809c971b4f983a975e31ab5a30167d4",
+"assets/NOTICES": "7008db6201a188de387151c608ef4ee2",
 "assets/packages/community_material_icon/fonts/materialdesignicons-webfont.ttf": "84c7bd136590da0a6ed2c21df180c354",
 "assets/shaders/ink_sparkle.frag": "f8b80e740d33eb157090be4e995febdf",
 "canvaskit/canvaskit.js": "76f7d822f42397160c5dfc69cbc9b2de",
@@ -44,9 +44,11 @@ const RESOURCES = {"assets/AssetManifest.bin": "14711fac8c5e7984aa10281692ee2145
 "favicon.png": "7a26ea9d4e61122fc023b84e5acdb148",
 "flutter.js": "6b515e434cea20006b3ef1726d2c8894",
 "icons/favicon.png": "7a26ea9d4e61122fc023b84e5acdb148",
-"index.html": "cfabcc775207754377cdbef72459ba7f",
-"/": "cfabcc775207754377cdbef72459ba7f",
-"main.dart.js": "0f50547c4c02d3664489b7cdb5cb495f",
+"icons/icon-192.png": "b8e32d57d5a1328dd6394a505774fc94",
+"icons/icon-512.png": "21d30b014d3eaf1547b3ccb4b5655e3b",
+"index.html": "0d632ede818acec740d94d88ec8a755a",
+"/": "0d632ede818acec740d94d88ec8a755a",
+"main.dart.js": "c96683e9d42f962050066708a7df83dd",
 "manifest.json": "8f5426026303f2d7239f1a6aae20eb40",
 "version.json": "5cc9695ee3e8c1f86234c524152ea8f8"};
 // The application shell files that are downloaded before a service worker can
