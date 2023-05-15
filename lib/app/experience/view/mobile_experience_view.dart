@@ -14,8 +14,7 @@ class MobileExperienceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(mobileScreenPadding),
+    return PageContainer.mobile(
       child: Column(
         children: [
           CenterLeft(
@@ -25,15 +24,15 @@ class MobileExperienceView extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const Gap(8),
+          const Gap(16),
           Expanded(
-            child: ExperienceTile.small(
+            child: ExperienceTile.mobile(
               experienceModel: experienceModels[0],
             ),
           ),
           const Gap(8),
           Expanded(
-            child: ExperienceTile.small(
+            child: ExperienceTile.mobile(
               experienceModel: experienceModels[1],
             ),
           ),

@@ -15,51 +15,50 @@ class InterestTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    return Expanded(
-      child: Center(
-        child: Container(
-          constraints: const BoxConstraints(maxWidth: 1000),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: appTheme.colorScheme.outline,
-            ),
-            borderRadius: BorderRadius.circular(16),
-          ),
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+    return Container(
+      constraints: const BoxConstraints(
+        maxWidth: 1000,
+        maxHeight: 1000,
+      ),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: appTheme.colorScheme.outline,
+        ),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  Text(
-                    interestModel.title,
-                    style: appTheme.textTheme.headlineMedium,
-                  ),
-                  Expanded(
-                    child: Container(
-                      constraints: const BoxConstraints(maxHeight: 80),
-                      // child: FittedBox(
-                      //   child: (interestModel.imageAssetName.endsWith('.svg'))
-                      //       ? SvgPicture.asset(interestModel.imageAssetName)
-                      //       : Image.asset(interestModel.imageAssetName),
-                      // ),
-                    ),
-                  ),
-                ],
+              Text(
+                interestModel.title,
+                style: appTheme.textTheme.headlineMedium,
               ),
-              const Gap(8),
-              Text(interestModel.description),
-              BottomRight(
-                child: FilledButton(
-                  onPressed: () {
-                    _launchUrl(Uri.parse(interestModel.linkUrl));
-                  },
-                  child: Text(interestModel.buttonText),
+              Expanded(
+                child: Container(
+                  constraints: const BoxConstraints(maxHeight: 80),
+                  // child: FittedBox(
+                  //   child: (interestModel.imageAssetName.endsWith('.svg'))
+                  //       ? SvgPicture.asset(interestModel.imageAssetName)
+                  //       : Image.asset(interestModel.imageAssetName),
+                  // ),
                 ),
               ),
             ],
           ),
-        ),
+          const Gap(8),
+          Text(interestModel.description),
+          BottomRight(
+            child: FilledButton(
+              onPressed: () {
+                _launchUrl(Uri.parse(interestModel.linkUrl));
+              },
+              child: Text(interestModel.buttonText),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -27,8 +27,7 @@ class MobileAboutMeView extends HookWidget {
     final appTheme = Theme.of(context);
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
-        return Padding(
-          padding: const EdgeInsets.all(mobileScreenPadding),
+        return PageContainer.mobile(
           child: Column(
             children: [
               CenterLeft(
@@ -38,7 +37,7 @@ class MobileAboutMeView extends HookWidget {
                 ),
               ),
               const Divider(),
-              const Gap(32),
+              const Gap(16),
               Expanded(
                 child: SingleChildScrollView(
                   child: AnimatedOpacity(

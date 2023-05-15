@@ -75,12 +75,13 @@ class RootView extends HookWidget {
                     BlocBuilder<ScrollCubit, ScrollDirection>(
                       builder: (context, state) {
                         final isScrollingUp = state == ScrollDirection.reverse;
-                        return AnimatedOpacity(
-                          opacity: isScrollingUp ? 1 : 0,
-                          duration: .4.seconds,
-                          child: ActionBar(
-                            controller: pageController,
-                          ),
+                        return Animate(
+                          effects: [
+                            FadeEffect(duration: .3.seconds),
+                            const SlideEffect()
+                          ],
+                          target: isScrollingUp ? 0 : 1,
+                          child: ActionBar(controller: pageController),
                         );
                       },
                     ),

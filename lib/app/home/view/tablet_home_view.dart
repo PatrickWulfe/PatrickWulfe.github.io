@@ -9,8 +9,7 @@ class TabletHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Padding(
-        padding: EdgeInsets.all(tabletScreenPadding),
+      child: PageContainer.tablet(
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,

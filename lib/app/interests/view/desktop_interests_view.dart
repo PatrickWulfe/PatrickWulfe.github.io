@@ -14,19 +14,19 @@ class DesktopInterestsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(desktopScreenPadding),
-      child: Center(
-        child: Column(
-          children: [
-            CenterLeft(
-              child: Text(
-                'Interests',
-                style: appTheme.textTheme.displayMedium,
-              ),
+    return PageContainer.desktop(
+      child: Column(
+        children: [
+          CenterLeft(
+            child: Text(
+              'Interests',
+              style: appTheme.textTheme.displayMedium,
             ),
-            const Divider(),
-            SingleChildScrollView(
+          ),
+          const Divider(),
+          const Gap(32),
+          Expanded(
+            child: SingleChildScrollView(
               child: ListView.separated(
                 shrinkWrap: true,
                 itemCount: interestModels.length,
@@ -36,8 +36,8 @@ class DesktopInterestsView extends StatelessWidget {
                 },
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

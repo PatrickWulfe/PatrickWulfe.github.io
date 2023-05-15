@@ -19,8 +19,7 @@ class TabletProjectsView extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        return Container(
-          margin: const EdgeInsets.all(tabletScreenPadding),
+        return PageContainer.tablet(
           child: Column(
             children: [
               CenterLeft(
@@ -30,10 +29,10 @@ class TabletProjectsView extends StatelessWidget {
                 ),
               ),
               const Divider(),
+              const Gap(32),
               const ProfileHeader.tablet(),
               const Divider(),
               const Expanded(child: ListSection()),
-              const Gap(16),
             ],
           ),
         );

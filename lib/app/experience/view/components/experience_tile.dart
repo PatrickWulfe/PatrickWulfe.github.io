@@ -12,13 +12,17 @@ class ExperienceTile extends StatelessWidget {
     required this.descriptionMaxLines,
   });
 
-  const factory ExperienceTile.big({
+  const factory ExperienceTile.desktop({
     required ExperienceModel experienceModel,
-  }) = _BigExperienceTile;
+  }) = _DesktopExperienceTile;
 
-  const factory ExperienceTile.small({
+  const factory ExperienceTile.tablet({
     required ExperienceModel experienceModel,
-  }) = _SmallExperienceTile;
+  }) = _TabletExperienceTile;
+
+  const factory ExperienceTile.mobile({
+    required ExperienceModel experienceModel,
+  }) = _MobileExperienceTile;
 
   final ExperienceModel experienceModel;
   final double logoHeight;
@@ -55,9 +59,12 @@ class ExperienceTile extends StatelessWidget {
               Expanded(
                 child: Text(
                   experienceModel.companyName,
+                  softWrap: false,
+                  overflow: TextOverflow.fade,
                   style: appTheme.textTheme.headlineMedium,
                 ),
               ),
+              const Gap(8),
               Padding(
                 padding: const EdgeInsets.only(top: 8),
                 child: Text(
@@ -104,8 +111,8 @@ class ExperienceTile extends StatelessWidget {
   }
 }
 
-class _BigExperienceTile extends ExperienceTile {
-  const _BigExperienceTile({
+class _DesktopExperienceTile extends ExperienceTile {
+  const _DesktopExperienceTile({
     required super.experienceModel,
   }) : super(
           logoHeight: 80,
@@ -114,8 +121,18 @@ class _BigExperienceTile extends ExperienceTile {
         );
 }
 
-class _SmallExperienceTile extends ExperienceTile {
-  const _SmallExperienceTile({
+class _TabletExperienceTile extends ExperienceTile {
+  const _TabletExperienceTile({
+    required super.experienceModel,
+  }) : super(
+          logoHeight: 60,
+          includeBulletPoints: true,
+          descriptionMaxLines: 8,
+        );
+}
+
+class _MobileExperienceTile extends ExperienceTile {
+  const _MobileExperienceTile({
     required super.experienceModel,
   }) : super(
           logoHeight: 30,

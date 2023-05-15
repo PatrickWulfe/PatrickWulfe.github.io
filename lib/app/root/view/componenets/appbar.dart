@@ -172,7 +172,10 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                       curve: pageAnimationCurve,
                     ),
                     icon: const Icon(Icons.home_rounded),
-                    label: const Text('Home'),
+                    label: Text(
+                      'Home',
+                      style: buttonStyle,
+                    ),
                   ),
                   const Gap(8),
                   TextButton.icon(
@@ -182,7 +185,10 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                       curve: pageAnimationCurve,
                     ),
                     icon: const Icon(Icons.info),
-                    label: const Text('About Me'),
+                    label: Text(
+                      'About Me',
+                      style: buttonStyle,
+                    ),
                   ),
                   const Gap(8),
                   TextButton.icon(
@@ -192,7 +198,10 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                       curve: pageAnimationCurve,
                     ),
                     icon: const Icon(Icons.book_rounded),
-                    label: const Text('Experience'),
+                    label: Text(
+                      'Experience',
+                      style: buttonStyle,
+                    ),
                   ),
                   const Gap(8),
                   TextButton.icon(
@@ -202,7 +211,10 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                       curve: pageAnimationCurve,
                     ),
                     icon: const Icon(CommunityMaterialIcons.github),
-                    label: const Text('Projects'),
+                    label: Text(
+                      'Projects',
+                      style: buttonStyle,
+                    ),
                   ),
                   const Gap(8),
                   TextButton.icon(
@@ -212,7 +224,10 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                       curve: pageAnimationCurve,
                     ),
                     icon: const Icon(Icons.lightbulb_circle_rounded),
-                    label: const Text('Interests'),
+                    label: Text(
+                      'Interests',
+                      style: buttonStyle,
+                    ),
                   ),
                 ],
               ),

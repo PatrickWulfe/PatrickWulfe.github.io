@@ -19,8 +19,7 @@ class MobileProjectsView extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        return Container(
-          margin: const EdgeInsets.all(mobileScreenPadding),
+        return PageContainer.mobile(
           child: Column(
             children: [
               CenterLeft(
@@ -30,10 +29,10 @@ class MobileProjectsView extends StatelessWidget {
                 ),
               ),
               const Divider(),
+              const Gap(8),
               const ProfileHeader.mobile(),
               const Divider(),
               const Expanded(child: ListSection()),
-              const Gap(16),
             ],
           ),
         );

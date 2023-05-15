@@ -27,8 +27,7 @@ class TabletAboutMeView extends HookWidget {
     final appTheme = Theme.of(context);
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
-        return Padding(
-          padding: const EdgeInsets.all(tabletScreenPadding),
+        return PageContainer.tablet(
           child: Column(
             children: [
               CenterLeft(

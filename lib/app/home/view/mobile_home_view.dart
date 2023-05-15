@@ -9,8 +9,7 @@ class MobileHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Padding(
-        padding: EdgeInsets.all(mobileScreenPadding),
+      child: PageContainer.mobile(
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,

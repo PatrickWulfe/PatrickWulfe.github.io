@@ -19,8 +19,7 @@ class DesktopProjectsView extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        return Container(
-          margin: const EdgeInsets.all(desktopScreenPadding),
+        return PageContainer.desktop(
           child: Column(
             children: [
               CenterLeft(
@@ -30,10 +29,10 @@ class DesktopProjectsView extends StatelessWidget {
                 ),
               ),
               const Divider(),
+              const Gap(16),
               const ProfileHeader.desktop(),
               const Divider(),
               const Expanded(child: ListSection()),
-              const Gap(16),
             ],
           ),
         );

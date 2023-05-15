@@ -27,8 +27,7 @@ class DesktopAboutMeView extends HookWidget {
     final appTheme = Theme.of(context);
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
-        return Padding(
-          padding: const EdgeInsets.all(desktopScreenPadding),
+        return PageContainer.desktop(
           child: Column(
             children: [
               CenterLeft(

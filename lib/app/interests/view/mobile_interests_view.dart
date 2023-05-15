@@ -14,32 +14,30 @@ class MobileInterestsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(mobileScreenPadding),
-      child: Center(
-        child: Column(
-          children: [
-            CenterLeft(
-              child: Text(
-                'Interests',
-                style: appTheme.textTheme.displaySmall,
+    return PageContainer.mobile(
+      child: Column(
+        children: [
+          CenterLeft(
+            child: Text(
+              'Interests',
+              style: appTheme.textTheme.displaySmall,
+            ),
+          ),
+          const Divider(),
+          const Gap(16),
+          Expanded(
+            child: SingleChildScrollView(
+              child: ListView.separated(
+                shrinkWrap: true,
+                itemCount: interestModels.length,
+                separatorBuilder: (_, __) => const Gap(8),
+                itemBuilder: (BuildContext context, int index) {
+                  return InterestTile(interestModel: interestModels[index]);
+                },
               ),
             ),
-            const Divider(),
-            Expanded(
-              child: SingleChildScrollView(
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  itemCount: interestModels.length,
-                  separatorBuilder: (_, __) => const Gap(8),
-                  itemBuilder: (BuildContext context, int index) {
-                    return InterestTile(interestModel: interestModels[index]);
-                  },
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

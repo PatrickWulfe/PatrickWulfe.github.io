@@ -1,6 +1,7 @@
 export 'about_me/about_me_index.dart';
 export 'app.dart';
 export 'bloc/bloc_index.dart';
+export 'components/components_index.dart';
 export 'experience/experience_index.dart';
 export 'home/home_index.dart';
 export 'interests/interests_index.dart';
