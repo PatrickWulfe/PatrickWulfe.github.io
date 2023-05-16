@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,49 +29,57 @@ class ProfileHeader extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    state.user?.avatarUrl ?? '',
+                Flexible(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        state.user?.avatarUrl ?? '',
+                      ),
+                    ),
                   ),
                 ),
                 const Gap(8),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        text: state.user?.htmlUrl,
-                        style: appTheme.textTheme.labelMedium?.copyWith(
-                          color: appTheme.colorScheme.secondary,
+                Flexible(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          text: state.user?.htmlUrl,
+                          style: appTheme.textTheme.labelMedium?.copyWith(
+                            color: appTheme.colorScheme.secondary,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => pageLaunchUrl(
+                                  Uri.parse(state.user?.htmlUrl ?? ''),
+                                ),
                         ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () => pageLaunchUrl(
-                                Uri.parse(state.user?.htmlUrl ?? ''),
-                              ),
                       ),
-                    ),
-                    Text(
-                      state.user?.name ?? '',
-                      style: appTheme.textTheme.headlineMedium,
-                    ),
-                    Text(
-                      state.user?.login ?? '',
-                      style: appTheme.textTheme.titleMedium,
-                    ),
-                    const Expanded(child: SizedBox()),
-                    if (state.user?.hirable ?? true)
-                      Text(
-                        'Ready for work!',
-                        style: appTheme.textTheme.bodySmall,
+                      AutoSizeText(
+                        state.user?.name ?? '',
+                        style: appTheme.textTheme.headlineMedium,
                       ),
-                    if (!(state.user?.hirable ?? true) &&
-                        state.user?.company != null)
-                      Text(
-                        'Currently working at ${state.user?.company ?? ''}',
-                        style: appTheme.textTheme.bodySmall,
+                      AutoSizeText(
+                        state.user?.login ?? '',
+                        style: appTheme.textTheme.titleMedium,
                       ),
-                  ],
+                      const Expanded(child: SizedBox()),
+                      if (state.user?.hirable ?? true)
+                        AutoSizeText(
+                          'Ready for work!',
+                          style: appTheme.textTheme.bodySmall,
+                        ),
+                      if (!(state.user?.hirable ?? true) &&
+                          state.user?.company != null)
+                        AutoSizeText(
+                          'Currently working at ${state.user?.company ?? ''}',
+                          style: appTheme.textTheme.bodySmall,
+                        ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -93,7 +102,7 @@ class _DesktopProfileHeader extends ProfileHeader {
 class _TabletProfileHeader extends ProfileHeader {
   const _TabletProfileHeader()
       : super._(
-          height: 250,
+          height: 230,
         );
 }
 

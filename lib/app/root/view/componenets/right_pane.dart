@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,7 +15,7 @@ class RightPane extends StatelessWidget {
           Expanded(child: Container()),
           RotatedBox(
             quarterTurns: 1,
-            child: Text(
+            child: AutoSizeText(
               'wulfep@gmail.com',
               style: appTheme.textTheme.bodyLarge,
             ),

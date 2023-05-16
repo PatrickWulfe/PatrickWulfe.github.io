@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:portfolio_project/l10n/l10n.dart';
 
@@ -12,7 +13,7 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AppBloc(),
+          create: (context) => GetIt.I.get<AppBloc>(),
         ),
       ],
       child: const AppView(),

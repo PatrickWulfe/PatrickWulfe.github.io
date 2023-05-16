@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -32,7 +33,7 @@ class InterestTile extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(
+              AutoSizeText(
                 interestModel.title,
                 style: appTheme.textTheme.headlineMedium,
               ),
@@ -49,13 +50,13 @@ class InterestTile extends StatelessWidget {
             ],
           ),
           const Gap(8),
-          Text(interestModel.description),
+          AutoSizeText(interestModel.description),
           BottomRight(
             child: FilledButton(
               onPressed: () {
                 _launchUrl(Uri.parse(interestModel.linkUrl));
               },
-              child: Text(interestModel.buttonText),
+              child: AutoSizeText(interestModel.buttonText),
             ),
           ),
         ],

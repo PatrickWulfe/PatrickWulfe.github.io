@@ -31,7 +31,7 @@ class DesktopAboutMeView extends HookWidget {
           child: Column(
             children: [
               CenterLeft(
-                child: Text(
+                child: AutoSizeText(
                   'About Me',
                   style: appTheme.textTheme.displayMedium,
                 ),
@@ -40,7 +40,7 @@ class DesktopAboutMeView extends HookWidget {
               const Gap(32),
               Expanded(
                 child: SingleChildScrollView(
-                  child: Text(
+                  child: AutoSizeText(
                     aboutMe,
                     style: appTheme.textTheme.bodyLarge,
                   ).animate().fadeIn(

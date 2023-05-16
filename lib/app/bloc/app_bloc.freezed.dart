@@ -20,6 +20,7 @@ mixin _$AppEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(ThemeName themeName) themeChanged,
+    required TResult Function(ScrollDirection scrollDirection) pageScroll,
     required TResult Function(int pageIndex) pageChanged,
     required TResult Function() themeSwapped,
   }) =>
@@ -28,6 +29,7 @@ mixin _$AppEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(ThemeName themeName)? themeChanged,
+    TResult? Function(ScrollDirection scrollDirection)? pageScroll,
     TResult? Function(int pageIndex)? pageChanged,
     TResult? Function()? themeSwapped,
   }) =>
@@ -36,6 +38,7 @@ mixin _$AppEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(ThemeName themeName)? themeChanged,
+    TResult Function(ScrollDirection scrollDirection)? pageScroll,
     TResult Function(int pageIndex)? pageChanged,
     TResult Function()? themeSwapped,
     required TResult orElse(),
@@ -45,6 +48,7 @@ mixin _$AppEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_ThemeChanged value) themeChanged,
+    required TResult Function(_PageScroll value) pageScroll,
     required TResult Function(_PageChanged value) pageChanged,
     required TResult Function(_ThemeSwapped value) themeSwapped,
   }) =>
@@ -53,6 +57,7 @@ mixin _$AppEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_ThemeChanged value)? themeChanged,
+    TResult? Function(_PageScroll value)? pageScroll,
     TResult? Function(_PageChanged value)? pageChanged,
     TResult? Function(_ThemeSwapped value)? themeSwapped,
   }) =>
@@ -61,6 +66,7 @@ mixin _$AppEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_ThemeChanged value)? themeChanged,
+    TResult Function(_PageScroll value)? pageScroll,
     TResult Function(_PageChanged value)? pageChanged,
     TResult Function(_ThemeSwapped value)? themeSwapped,
     required TResult orElse(),
@@ -124,6 +130,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(ThemeName themeName) themeChanged,
+    required TResult Function(ScrollDirection scrollDirection) pageScroll,
     required TResult Function(int pageIndex) pageChanged,
     required TResult Function() themeSwapped,
   }) {
@@ -135,6 +142,7 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(ThemeName themeName)? themeChanged,
+    TResult? Function(ScrollDirection scrollDirection)? pageScroll,
     TResult? Function(int pageIndex)? pageChanged,
     TResult? Function()? themeSwapped,
   }) {
@@ -146,6 +154,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(ThemeName themeName)? themeChanged,
+    TResult Function(ScrollDirection scrollDirection)? pageScroll,
     TResult Function(int pageIndex)? pageChanged,
     TResult Function()? themeSwapped,
     required TResult orElse(),
@@ -161,6 +170,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_ThemeChanged value) themeChanged,
+    required TResult Function(_PageScroll value) pageScroll,
     required TResult Function(_PageChanged value) pageChanged,
     required TResult Function(_ThemeSwapped value) themeSwapped,
   }) {
@@ -172,6 +182,7 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_ThemeChanged value)? themeChanged,
+    TResult? Function(_PageScroll value)? pageScroll,
     TResult? Function(_PageChanged value)? pageChanged,
     TResult? Function(_ThemeSwapped value)? themeSwapped,
   }) {
@@ -183,6 +194,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_ThemeChanged value)? themeChanged,
+    TResult Function(_PageScroll value)? pageScroll,
     TResult Function(_PageChanged value)? pageChanged,
     TResult Function(_ThemeSwapped value)? themeSwapped,
     required TResult orElse(),
@@ -265,6 +277,7 @@ class _$_ThemeChanged implements _ThemeChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(ThemeName themeName) themeChanged,
+    required TResult Function(ScrollDirection scrollDirection) pageScroll,
     required TResult Function(int pageIndex) pageChanged,
     required TResult Function() themeSwapped,
   }) {
@@ -276,6 +289,7 @@ class _$_ThemeChanged implements _ThemeChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(ThemeName themeName)? themeChanged,
+    TResult? Function(ScrollDirection scrollDirection)? pageScroll,
     TResult? Function(int pageIndex)? pageChanged,
     TResult? Function()? themeSwapped,
   }) {
@@ -287,6 +301,7 @@ class _$_ThemeChanged implements _ThemeChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(ThemeName themeName)? themeChanged,
+    TResult Function(ScrollDirection scrollDirection)? pageScroll,
     TResult Function(int pageIndex)? pageChanged,
     TResult Function()? themeSwapped,
     required TResult orElse(),
@@ -302,6 +317,7 @@ class _$_ThemeChanged implements _ThemeChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_ThemeChanged value) themeChanged,
+    required TResult Function(_PageScroll value) pageScroll,
     required TResult Function(_PageChanged value) pageChanged,
     required TResult Function(_ThemeSwapped value) themeSwapped,
   }) {
@@ -313,6 +329,7 @@ class _$_ThemeChanged implements _ThemeChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_ThemeChanged value)? themeChanged,
+    TResult? Function(_PageScroll value)? pageScroll,
     TResult? Function(_PageChanged value)? pageChanged,
     TResult? Function(_ThemeSwapped value)? themeSwapped,
   }) {
@@ -324,6 +341,7 @@ class _$_ThemeChanged implements _ThemeChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_ThemeChanged value)? themeChanged,
+    TResult Function(_PageScroll value)? pageScroll,
     TResult Function(_PageChanged value)? pageChanged,
     TResult Function(_ThemeSwapped value)? themeSwapped,
     required TResult orElse(),
@@ -342,6 +360,159 @@ abstract class _ThemeChanged implements AppEvent {
   ThemeName get themeName;
   @JsonKey(ignore: true)
   _$$_ThemeChangedCopyWith<_$_ThemeChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PageScrollCopyWith<$Res> {
+  factory _$$_PageScrollCopyWith(
+          _$_PageScroll value, $Res Function(_$_PageScroll) then) =
+      __$$_PageScrollCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ScrollDirection scrollDirection});
+}
+
+/// @nodoc
+class __$$_PageScrollCopyWithImpl<$Res>
+    extends _$AppEventCopyWithImpl<$Res, _$_PageScroll>
+    implements _$$_PageScrollCopyWith<$Res> {
+  __$$_PageScrollCopyWithImpl(
+      _$_PageScroll _value, $Res Function(_$_PageScroll) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? scrollDirection = null,
+  }) {
+    return _then(_$_PageScroll(
+      scrollDirection: null == scrollDirection
+          ? _value.scrollDirection
+          : scrollDirection // ignore: cast_nullable_to_non_nullable
+              as ScrollDirection,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PageScroll implements _PageScroll {
+  const _$_PageScroll({required this.scrollDirection});
+
+  @override
+  final ScrollDirection scrollDirection;
+
+  @override
+  String toString() {
+    return 'AppEvent.pageScroll(scrollDirection: $scrollDirection)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PageScroll &&
+            (identical(other.scrollDirection, scrollDirection) ||
+                other.scrollDirection == scrollDirection));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, scrollDirection);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PageScrollCopyWith<_$_PageScroll> get copyWith =>
+      __$$_PageScrollCopyWithImpl<_$_PageScroll>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(ThemeName themeName) themeChanged,
+    required TResult Function(ScrollDirection scrollDirection) pageScroll,
+    required TResult Function(int pageIndex) pageChanged,
+    required TResult Function() themeSwapped,
+  }) {
+    return pageScroll(scrollDirection);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(ThemeName themeName)? themeChanged,
+    TResult? Function(ScrollDirection scrollDirection)? pageScroll,
+    TResult? Function(int pageIndex)? pageChanged,
+    TResult? Function()? themeSwapped,
+  }) {
+    return pageScroll?.call(scrollDirection);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(ThemeName themeName)? themeChanged,
+    TResult Function(ScrollDirection scrollDirection)? pageScroll,
+    TResult Function(int pageIndex)? pageChanged,
+    TResult Function()? themeSwapped,
+    required TResult orElse(),
+  }) {
+    if (pageScroll != null) {
+      return pageScroll(scrollDirection);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_ThemeChanged value) themeChanged,
+    required TResult Function(_PageScroll value) pageScroll,
+    required TResult Function(_PageChanged value) pageChanged,
+    required TResult Function(_ThemeSwapped value) themeSwapped,
+  }) {
+    return pageScroll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_ThemeChanged value)? themeChanged,
+    TResult? Function(_PageScroll value)? pageScroll,
+    TResult? Function(_PageChanged value)? pageChanged,
+    TResult? Function(_ThemeSwapped value)? themeSwapped,
+  }) {
+    return pageScroll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_ThemeChanged value)? themeChanged,
+    TResult Function(_PageScroll value)? pageScroll,
+    TResult Function(_PageChanged value)? pageChanged,
+    TResult Function(_ThemeSwapped value)? themeSwapped,
+    required TResult orElse(),
+  }) {
+    if (pageScroll != null) {
+      return pageScroll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PageScroll implements AppEvent {
+  const factory _PageScroll({required final ScrollDirection scrollDirection}) =
+      _$_PageScroll;
+
+  ScrollDirection get scrollDirection;
+  @JsonKey(ignore: true)
+  _$$_PageScrollCopyWith<_$_PageScroll> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -412,6 +583,7 @@ class _$_PageChanged implements _PageChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(ThemeName themeName) themeChanged,
+    required TResult Function(ScrollDirection scrollDirection) pageScroll,
     required TResult Function(int pageIndex) pageChanged,
     required TResult Function() themeSwapped,
   }) {
@@ -423,6 +595,7 @@ class _$_PageChanged implements _PageChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(ThemeName themeName)? themeChanged,
+    TResult? Function(ScrollDirection scrollDirection)? pageScroll,
     TResult? Function(int pageIndex)? pageChanged,
     TResult? Function()? themeSwapped,
   }) {
@@ -434,6 +607,7 @@ class _$_PageChanged implements _PageChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(ThemeName themeName)? themeChanged,
+    TResult Function(ScrollDirection scrollDirection)? pageScroll,
     TResult Function(int pageIndex)? pageChanged,
     TResult Function()? themeSwapped,
     required TResult orElse(),
@@ -449,6 +623,7 @@ class _$_PageChanged implements _PageChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_ThemeChanged value) themeChanged,
+    required TResult Function(_PageScroll value) pageScroll,
     required TResult Function(_PageChanged value) pageChanged,
     required TResult Function(_ThemeSwapped value) themeSwapped,
   }) {
@@ -460,6 +635,7 @@ class _$_PageChanged implements _PageChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_ThemeChanged value)? themeChanged,
+    TResult? Function(_PageScroll value)? pageScroll,
     TResult? Function(_PageChanged value)? pageChanged,
     TResult? Function(_ThemeSwapped value)? themeSwapped,
   }) {
@@ -471,6 +647,7 @@ class _$_PageChanged implements _PageChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_ThemeChanged value)? themeChanged,
+    TResult Function(_PageScroll value)? pageScroll,
     TResult Function(_PageChanged value)? pageChanged,
     TResult Function(_ThemeSwapped value)? themeSwapped,
     required TResult orElse(),
@@ -531,6 +708,7 @@ class _$_ThemeSwapped implements _ThemeSwapped {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(ThemeName themeName) themeChanged,
+    required TResult Function(ScrollDirection scrollDirection) pageScroll,
     required TResult Function(int pageIndex) pageChanged,
     required TResult Function() themeSwapped,
   }) {
@@ -542,6 +720,7 @@ class _$_ThemeSwapped implements _ThemeSwapped {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(ThemeName themeName)? themeChanged,
+    TResult? Function(ScrollDirection scrollDirection)? pageScroll,
     TResult? Function(int pageIndex)? pageChanged,
     TResult? Function()? themeSwapped,
   }) {
@@ -553,6 +732,7 @@ class _$_ThemeSwapped implements _ThemeSwapped {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(ThemeName themeName)? themeChanged,
+    TResult Function(ScrollDirection scrollDirection)? pageScroll,
     TResult Function(int pageIndex)? pageChanged,
     TResult Function()? themeSwapped,
     required TResult orElse(),
@@ -568,6 +748,7 @@ class _$_ThemeSwapped implements _ThemeSwapped {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_ThemeChanged value) themeChanged,
+    required TResult Function(_PageScroll value) pageScroll,
     required TResult Function(_PageChanged value) pageChanged,
     required TResult Function(_ThemeSwapped value) themeSwapped,
   }) {
@@ -579,6 +760,7 @@ class _$_ThemeSwapped implements _ThemeSwapped {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_ThemeChanged value)? themeChanged,
+    TResult? Function(_PageScroll value)? pageScroll,
     TResult? Function(_PageChanged value)? pageChanged,
     TResult? Function(_ThemeSwapped value)? themeSwapped,
   }) {
@@ -590,6 +772,7 @@ class _$_ThemeSwapped implements _ThemeSwapped {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_ThemeChanged value)? themeChanged,
+    TResult Function(_PageScroll value)? pageScroll,
     TResult Function(_PageChanged value)? pageChanged,
     TResult Function(_ThemeSwapped value)? themeSwapped,
     required TResult orElse(),
@@ -609,19 +792,24 @@ abstract class _ThemeSwapped implements AppEvent {
 mixin _$AppState {
   ThemeName get themeName => throw _privateConstructorUsedError;
   int get pageIndex => throw _privateConstructorUsedError;
+  bool get isScrollingDown => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ThemeName themeName, int pageIndex) normal,
+    required TResult Function(
+            ThemeName themeName, int pageIndex, bool isScrollingDown)
+        normal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ThemeName themeName, int pageIndex)? normal,
+    TResult? Function(ThemeName themeName, int pageIndex, bool isScrollingDown)?
+        normal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ThemeName themeName, int pageIndex)? normal,
+    TResult Function(ThemeName themeName, int pageIndex, bool isScrollingDown)?
+        normal,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -652,7 +840,7 @@ abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
-  $Res call({ThemeName themeName, int pageIndex});
+  $Res call({ThemeName themeName, int pageIndex, bool isScrollingDown});
 }
 
 /// @nodoc
@@ -670,6 +858,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   $Res call({
     Object? themeName = null,
     Object? pageIndex = null,
+    Object? isScrollingDown = null,
   }) {
     return _then(_value.copyWith(
       themeName: null == themeName
@@ -680,6 +869,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      isScrollingDown: null == isScrollingDown
+          ? _value.isScrollingDown
+          : isScrollingDown // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -690,7 +883,7 @@ abstract class _$$_NormalCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       __$$_NormalCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ThemeName themeName, int pageIndex});
+  $Res call({ThemeName themeName, int pageIndex, bool isScrollingDown});
 }
 
 /// @nodoc
@@ -705,6 +898,7 @@ class __$$_NormalCopyWithImpl<$Res>
   $Res call({
     Object? themeName = null,
     Object? pageIndex = null,
+    Object? isScrollingDown = null,
   }) {
     return _then(_$_Normal(
       themeName: null == themeName
@@ -715,6 +909,10 @@ class __$$_NormalCopyWithImpl<$Res>
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      isScrollingDown: null == isScrollingDown
+          ? _value.isScrollingDown
+          : isScrollingDown // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -722,16 +920,21 @@ class __$$_NormalCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Normal implements _Normal {
-  const _$_Normal({required this.themeName, required this.pageIndex});
+  const _$_Normal(
+      {required this.themeName,
+      required this.pageIndex,
+      required this.isScrollingDown});
 
   @override
   final ThemeName themeName;
   @override
   final int pageIndex;
+  @override
+  final bool isScrollingDown;
 
   @override
   String toString() {
-    return 'AppState.normal(themeName: $themeName, pageIndex: $pageIndex)';
+    return 'AppState.normal(themeName: $themeName, pageIndex: $pageIndex, isScrollingDown: $isScrollingDown)';
   }
 
   @override
@@ -742,11 +945,14 @@ class _$_Normal implements _Normal {
             (identical(other.themeName, themeName) ||
                 other.themeName == themeName) &&
             (identical(other.pageIndex, pageIndex) ||
-                other.pageIndex == pageIndex));
+                other.pageIndex == pageIndex) &&
+            (identical(other.isScrollingDown, isScrollingDown) ||
+                other.isScrollingDown == isScrollingDown));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, themeName, pageIndex);
+  int get hashCode =>
+      Object.hash(runtimeType, themeName, pageIndex, isScrollingDown);
 
   @JsonKey(ignore: true)
   @override
@@ -757,27 +963,31 @@ class _$_Normal implements _Normal {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ThemeName themeName, int pageIndex) normal,
+    required TResult Function(
+            ThemeName themeName, int pageIndex, bool isScrollingDown)
+        normal,
   }) {
-    return normal(themeName, pageIndex);
+    return normal(themeName, pageIndex, isScrollingDown);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ThemeName themeName, int pageIndex)? normal,
+    TResult? Function(ThemeName themeName, int pageIndex, bool isScrollingDown)?
+        normal,
   }) {
-    return normal?.call(themeName, pageIndex);
+    return normal?.call(themeName, pageIndex, isScrollingDown);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ThemeName themeName, int pageIndex)? normal,
+    TResult Function(ThemeName themeName, int pageIndex, bool isScrollingDown)?
+        normal,
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(themeName, pageIndex);
+      return normal(themeName, pageIndex, isScrollingDown);
     }
     return orElse();
   }
@@ -814,12 +1024,15 @@ class _$_Normal implements _Normal {
 abstract class _Normal implements AppState {
   const factory _Normal(
       {required final ThemeName themeName,
-      required final int pageIndex}) = _$_Normal;
+      required final int pageIndex,
+      required final bool isScrollingDown}) = _$_Normal;
 
   @override
   ThemeName get themeName;
   @override
   int get pageIndex;
+  @override
+  bool get isScrollingDown;
   @override
   @JsonKey(ignore: true)
   _$$_NormalCopyWith<_$_Normal> get copyWith =>

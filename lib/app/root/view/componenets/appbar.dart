@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -10,11 +11,10 @@ class ActionBar extends HookWidget implements PreferredSizeWidget {
     super.key,
     required this.controller,
   });
+  final PageController controller;
 
   @override
   Size get preferredSize => const Size.fromHeight(80);
-
-  final PageController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -236,7 +236,7 @@ class ActionBar extends HookWidget implements PreferredSizeWidget {
                 ],
               ),
             ),
-            const Gap(128),
+            const Gap(64),
           ],
         );
       },
@@ -278,7 +278,7 @@ class _DesktopAppbarButton extends StatelessWidget {
         leading,
         color: pageNumber == pageId ? selectedColor : notSelectedColor,
       ),
-      label: Text(
+      label: AutoSizeText(
         label,
         style: buttonStyle?.copyWith(
           color: pageNumber == pageId ? selectedColor : notSelectedColor,

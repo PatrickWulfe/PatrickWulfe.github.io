@@ -1,6 +1,5 @@
 class ExperienceModel {
   ExperienceModel({
-    required this.logoAssetName,
     required this.companyName,
     required this.jobTitle,
     required this.dateRange,
@@ -8,7 +7,6 @@ class ExperienceModel {
     required this.bulletPoints,
   });
 
-  final String logoAssetName;
   final String companyName;
   final String jobTitle;
   final String dateRange;

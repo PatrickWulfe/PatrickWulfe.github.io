@@ -5,5 +5,6 @@ class AppState with _$AppState {
   const factory AppState.normal({
     required ThemeName themeName,
     required int pageIndex,
+    required bool isScrollingDown,
   }) = _Normal;
 }

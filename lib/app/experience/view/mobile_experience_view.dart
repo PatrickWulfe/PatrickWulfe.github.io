@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -18,7 +19,7 @@ class MobileExperienceView extends StatelessWidget {
       child: Column(
         children: [
           CenterLeft(
-            child: Text(
+            child: AutoSizeText(
               'Experience',
               style: appTheme.textTheme.displaySmall,
             ),
@@ -26,16 +27,27 @@ class MobileExperienceView extends StatelessWidget {
           const Divider(),
           const Gap(16),
           Flexible(
-            child: ExperienceTile.mobile(
-              experienceModel: experienceModels[0],
+            child: ListView.separated(
+              itemCount: experienceModels.length,
+              separatorBuilder: (_, __) => const Gap(8),
+              itemBuilder: (BuildContext context, int index) {
+                return ExperienceTile.mobile(
+                  experienceModel: experienceModels[index],
+                );
+              },
             ),
           ),
-          const Gap(8),
-          Flexible(
-            child: ExperienceTile.mobile(
-              experienceModel: experienceModels[1],
-            ),
-          ),
+          // Flexible(
+          //   child: ExperienceTile.mobile(
+          //     experienceModel: experienceModels[0],
+          //   ),
+          // ),
+          // const Gap(8),
+          // Flexible(
+          //   child: ExperienceTile.mobile(
+          //     experienceModel: experienceModels[1],
+          //   ),
+          // ),
         ],
       ),
     );

@@ -6,6 +6,9 @@ class AppEvent with _$AppEvent {
   const factory AppEvent.themeChanged({
     required ThemeName themeName,
   }) = _ThemeChanged;
+  const factory AppEvent.pageScroll({
+    required ScrollDirection scrollDirection,
+  }) = _PageScroll;
   const factory AppEvent.pageChanged({
     required int pageIndex,
   }) = _PageChanged;

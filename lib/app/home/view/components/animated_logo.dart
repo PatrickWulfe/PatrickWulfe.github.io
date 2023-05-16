@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -42,7 +43,7 @@ class AnimatedLogo extends HookWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
+          AutoSizeText(
             'Hey I am',
             style: appTheme.textTheme.headlineLarge,
           ),
@@ -84,7 +85,7 @@ class AnimatedLogo extends HookWidget {
               ),
             ),
           ),
-          Text(
+          AutoSizeText(
             'Software Engineer',
             style: appTheme.textTheme.displayMedium,
           ),

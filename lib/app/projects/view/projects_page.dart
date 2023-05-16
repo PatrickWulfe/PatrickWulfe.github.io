@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,8 +44,8 @@ class ProjectTile extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       leading: const Icon(CommunityMaterialIcons.github),
-      title: Text(title),
-      subtitle: Text(
+      title: AutoSizeText(title),
+      subtitle: AutoSizeText(
         subtitle ?? '',
         softWrap: true,
       ),

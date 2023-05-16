@@ -1,14 +1,14 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
 class ExperienceTile extends StatelessWidget {
-  const ExperienceTile({
+  const ExperienceTile._({
     super.key,
     required this.experienceModel,
     required this.logoHeight,
-    required this.includeBulletPoints,
     required this.descriptionMaxLines,
   });
 
@@ -26,8 +26,81 @@ class ExperienceTile extends StatelessWidget {
 
   final ExperienceModel experienceModel;
   final double logoHeight;
-  final bool includeBulletPoints;
   final int descriptionMaxLines;
+
+  @override
+  Widget build(BuildContext context) {
+    final appTheme = Theme.of(context);
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: appTheme.colorScheme.outline),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.all(32),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                child: AutoSizeText(
+                  experienceModel.companyName,
+                  softWrap: false,
+                  overflow: TextOverflow.fade,
+                  style: appTheme.textTheme.headlineMedium,
+                ),
+              ),
+              const Gap(16),
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: AutoSizeText(
+                  experienceModel.dateRange,
+                ),
+              ),
+            ],
+          ),
+          const Gap(16),
+          AutoSizeText(
+            experienceModel.jobTitle,
+            style: appTheme.textTheme.headlineSmall
+                ?.copyWith(color: appTheme.colorScheme.tertiary),
+          ),
+          const Gap(8),
+          AutoSizeText(
+            experienceModel.description,
+            overflow: TextOverflow.ellipsis,
+            maxLines: descriptionMaxLines,
+          ),
+          Flexible(
+            child: AutoSizeText(
+              experienceModel.bulletPoints,
+              softWrap: true,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DesktopExperienceTile extends ExperienceTile {
+  const _DesktopExperienceTile({
+    required super.experienceModel,
+  }) : super._(
+          logoHeight: 80,
+          descriptionMaxLines: 9999,
+        );
+}
+
+class _TabletExperienceTile extends ExperienceTile {
+  const _TabletExperienceTile({
+    required super.experienceModel,
+  }) : super._(
+          logoHeight: 60,
+          descriptionMaxLines: 8,
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -40,110 +113,61 @@ class ExperienceTile extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          // Header section
-          SizedBox(
-            height: logoHeight * 1.5,
-            child: Center(
-              child: Image.asset(
-                experienceModel.logoAssetName,
-                height: logoHeight,
-              ),
-            ),
-          ),
           const Gap(8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: Text(
+              Flexible(
+                child: AutoSizeText(
                   experienceModel.companyName,
                   softWrap: false,
-                  overflow: TextOverflow.fade,
                   style: appTheme.textTheme.headlineMedium,
                 ),
               ),
               const Gap(8),
               Padding(
                 padding: const EdgeInsets.only(top: 8),
-                child: Text(
+                child: AutoSizeText(
                   experienceModel.dateRange,
                 ),
               ),
             ],
           ),
-          FittedBox(
-            child: Text(
-              experienceModel.jobTitle,
-              style: appTheme.textTheme.headlineSmall,
+          AutoSizeText(
+            experienceModel.jobTitle,
+            style: appTheme.textTheme.headlineSmall
+                ?.copyWith(color: appTheme.colorScheme.tertiary),
+          ),
+          const Gap(8),
+          Flexible(
+            child: AutoSizeText(
+              experienceModel.description,
+              overflow: TextOverflow.fade,
+              style: appTheme.textTheme.bodySmall,
             ),
           ),
           const Gap(8),
-          if (!includeBulletPoints)
-            Expanded(
-              child: Text(
-                experienceModel.description,
-                overflow: TextOverflow.fade,
-                maxLines: descriptionMaxLines,
-              ),
-            )
-          else
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Text(
-                experienceModel.description,
-                overflow: TextOverflow.ellipsis,
-                maxLines: descriptionMaxLines,
-              ),
+          Flexible(
+            child: AutoSizeText(
+              experienceModel.bulletPoints,
+              overflow: TextOverflow.fade,
+              style: appTheme.textTheme.bodySmall,
             ),
-          if (includeBulletPoints)
-            Expanded(
-              child: Text(
-                experienceModel.bulletPoints,
-                softWrap: true,
-              ),
-            ),
-          if (!includeBulletPoints) const Expanded(child: SizedBox()),
-          if (!includeBulletPoints)
-            BottomRight(
-              child: FilledButton(
-                onPressed: () {},
-                child: const Text('View More...'),
-              ),
-            ),
+          ),
         ],
       ),
     );
   }
 }
 
-class _DesktopExperienceTile extends ExperienceTile {
-  const _DesktopExperienceTile({
-    required super.experienceModel,
-  }) : super(
-          logoHeight: 80,
-          includeBulletPoints: true,
-          descriptionMaxLines: 9999,
-        );
-}
-
-class _TabletExperienceTile extends ExperienceTile {
-  const _TabletExperienceTile({
-    required super.experienceModel,
-  }) : super(
-          logoHeight: 60,
-          includeBulletPoints: true,
-          descriptionMaxLines: 8,
-        );
-}
-
 class _MobileExperienceTile extends ExperienceTile {
   const _MobileExperienceTile({
     required super.experienceModel,
-  }) : super(
+  }) : super._(
           logoHeight: 20,
-          includeBulletPoints: false,
           descriptionMaxLines: 3,
         );
 
@@ -158,78 +182,49 @@ class _MobileExperienceTile extends ExperienceTile {
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          // Header section
-          SizedBox(
-            height: logoHeight,
-            child: Center(
-              child: Image.asset(
-                experienceModel.logoAssetName,
-                height: logoHeight,
-              ),
-            ),
-          ),
           const Gap(8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: Text(
+              Flexible(
+                child: AutoSizeText(
                   experienceModel.companyName,
                   softWrap: false,
-                  overflow: TextOverflow.fade,
-                  style: appTheme.textTheme.headlineMedium,
+                  style: appTheme.textTheme.headlineSmall,
                 ),
               ),
               const Gap(8),
               Padding(
                 padding: const EdgeInsets.only(top: 8),
-                child: Text(
+                child: AutoSizeText(
                   experienceModel.dateRange,
                 ),
               ),
             ],
           ),
-          FittedBox(
-            child: Text(
-              experienceModel.jobTitle,
-              style: appTheme.textTheme.headlineSmall,
+          AutoSizeText(
+            experienceModel.jobTitle,
+            style: appTheme.textTheme.labelLarge
+                ?.copyWith(color: appTheme.colorScheme.tertiary),
+          ),
+          const Gap(8),
+          Flexible(
+            child: AutoSizeText(
+              experienceModel.description,
+              overflow: TextOverflow.fade,
+              style: appTheme.textTheme.bodySmall,
             ),
           ),
           const Gap(8),
-          if (!includeBulletPoints)
-            Expanded(
-              child: Text(
-                experienceModel.description,
-                overflow: TextOverflow.fade,
-                maxLines: descriptionMaxLines,
-              ),
-            )
-          else
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Text(
-                experienceModel.description,
-                overflow: TextOverflow.ellipsis,
-                maxLines: descriptionMaxLines,
-              ),
+          BottomRight(
+            child: FilledButton(
+              onPressed: () {},
+              child: const AutoSizeText('View More...'),
             ),
-          if (includeBulletPoints)
-            Expanded(
-              child: Text(
-                experienceModel.bulletPoints,
-                softWrap: true,
-              ),
-            ),
-          if (!includeBulletPoints) const Expanded(child: SizedBox()),
-          if (!includeBulletPoints)
-            BottomRight(
-              child: FilledButton(
-                onPressed: () {},
-                child: const Text('View More...'),
-              ),
-            ),
+          ),
         ],
       ),
     );

@@ -31,7 +31,7 @@ class MobileAboutMeView extends HookWidget {
           child: Column(
             children: [
               CenterLeft(
-                child: Text(
+                child: AutoSizeText(
                   'About Me',
                   style: appTheme.textTheme.displaySmall,
                 ),
@@ -43,7 +43,7 @@ class MobileAboutMeView extends HookWidget {
                   child: AnimatedOpacity(
                     opacity: opacity.value,
                     duration: .4.seconds,
-                    child: Text(
+                    child: AutoSizeText(
                       aboutMe,
                       style: appTheme.textTheme.bodyMedium,
                     ),

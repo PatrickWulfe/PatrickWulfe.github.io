@@ -10,7 +10,6 @@ part 'projects_state.dart';
 
 @Injectable()
 class ProjectsBloc extends Bloc<ProjectsEvent, ProjectsState> {
-  @factoryMethod
   ProjectsBloc({
     required this.githubRepo,
   }) : super(const _ProjectsState()) {

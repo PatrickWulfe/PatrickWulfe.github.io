@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -26,7 +27,7 @@ class ListSection extends HookWidget {
                 .map<DropdownMenuItem<RepoSort>>(
                   (e) => DropdownMenuItem<RepoSort>(
                     value: e,
-                    child: Text(e.name),
+                    child: AutoSizeText(e.name),
                   ),
                 )
                 .toList();
@@ -42,7 +43,7 @@ class ListSection extends HookWidget {
                     child: Row(
                       children: [
                         const Gap(16),
-                        Text(
+                        AutoSizeText(
                           'Sort By: ',
                           style: appTheme.textTheme.labelLarge,
                         ),

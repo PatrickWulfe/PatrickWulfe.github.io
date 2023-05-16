@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +24,7 @@ class MobileProjectsView extends StatelessWidget {
           child: Column(
             children: [
               CenterLeft(
-                child: Text(
+                child: AutoSizeText(
                   'Project Tracker',
                   style: appTheme.textTheme.displaySmall,
                 ),

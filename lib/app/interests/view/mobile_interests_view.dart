@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -18,7 +19,7 @@ class MobileInterestsView extends StatelessWidget {
       child: Column(
         children: [
           CenterLeft(
-            child: Text(
+            child: AutoSizeText(
               'Interests',
               style: appTheme.textTheme.displaySmall,
             ),

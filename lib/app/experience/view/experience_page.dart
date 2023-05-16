@@ -9,12 +9,8 @@ class ExperiencePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = Theme.of(context);
     final experienceModels = [
       ExperienceModel(
-        logoAssetName: appTheme.brightness == Brightness.light
-            ? 'assets/images/evosus-logo-dark.png'
-            : 'assets/images/evosus-logo-light.png',
         companyName: 'Evosus',
         jobTitle: 'Mobile Application Developer',
         dateRange: "Aug '21 - Mar '23",
@@ -36,14 +32,11 @@ class ExperiencePage extends StatelessWidget {
 •Participated in feature design and brainstorming for efficient feature delivery with highly optimized user experience.''',
       ),
       ExperienceModel(
-        logoAssetName: appTheme.brightness == Brightness.light
-            ? 'assets/images/isoft-logo-dark.png'
-            : 'assets/images/isoft-logo-light.png',
         companyName: 'iSoft Systems, LLC',
         jobTitle: 'Software Developer',
         dateRange: '2015 - 2017',
         description:
-            'Worked as a software developer customizing the AccountMate software for the companies various clients.  Mostly worked in Visual Fox Pro, Excel, and Crystal Reports',
+            'Worked as a software developer customizing the AccountMate software for the companies various clients.  Mostly worked in Visual Fox Pro, Excel, and Crystal Reports.',
         bulletPoints: '''
 •Customizing AccountMate software for over a dozen clients using Visual FoxPro, Crystal Reports, and Microsoft SQL Server on a per-client basis, resulting in efficient and effective solutions for each individual client.
 •Creating an Excel spreadsheet for iSOFT Systems that automated the data import process into AccountMate, resulting in significant time savings for accounting and payroll functions.''',

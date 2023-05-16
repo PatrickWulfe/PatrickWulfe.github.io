@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
@@ -23,7 +24,7 @@ class _InfoSection extends StatelessWidget {
           onPressed: () {
             pageLaunchUrl(Uri.parse(url ?? ''));
           },
-          child: Text(buttonText),
+          child: AutoSizeText(buttonText),
         ),
       ],
     );

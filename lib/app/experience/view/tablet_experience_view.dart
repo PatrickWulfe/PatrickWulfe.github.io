@@ -1,7 +1,9 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class TabletExperienceView extends StatelessWidget {
   const TabletExperienceView({
@@ -14,11 +16,25 @@ class TabletExperienceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    return PageContainer.tablet(
+    final children = [
+      Expanded(
+        child: ExperienceTile.desktop(
+          experienceModel: experienceModels[0],
+        ),
+      ),
+      const Gap(16),
+      Expanded(
+        child: ExperienceTile.desktop(
+          experienceModel: experienceModels[1],
+        ),
+      ),
+    ];
+    return PageContainer.desktop(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CenterLeft(
-            child: Text(
+            child: AutoSizeText(
               'Experience',
               style: appTheme.textTheme.displayMedium,
             ),
@@ -26,14 +42,21 @@ class TabletExperienceView extends StatelessWidget {
           const Divider(),
           const Gap(32),
           Expanded(
-            child: ExperienceTile.mobile(
-              experienceModel: experienceModels[0],
-            ),
-          ),
-          const Gap(8),
-          Expanded(
-            child: ExperienceTile.mobile(
-              experienceModel: experienceModels[1],
+            child: ResponsiveBuilder(
+              builder: (context, sizingInformation) {
+                if (sizingInformation.screenSize.aspectRatio > 1) {
+                  return Row(children: children);
+                }
+                return ListView.separated(
+                  itemCount: experienceModels.length,
+                  separatorBuilder: (_, __) => const Gap(16),
+                  itemBuilder: (BuildContext context, int index) {
+                    return ExperienceTile.tablet(
+                      experienceModel: experienceModels[index],
+                    );
+                  },
+                );
+              },
             ),
           ),
         ],

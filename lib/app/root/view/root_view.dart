@@ -31,7 +31,9 @@ class RootView extends HookWidget {
     ];
     final appBloc = context.read<AppBloc>();
 
-    final pageController = usePageController();
+    final pageController = usePageController(
+      initialPage: appBloc.state.pageIndex,
+    );
     final isScrollingDown = useState(false);
 
     return SafeArea(
@@ -44,22 +46,6 @@ class RootView extends HookWidget {
             } else {
               isScrollingDown.value = false;
             }
-            // if (scrollDirection == ScrollDirection.reverse) {
-            //   isScrollingUp = false;
-            //   scrollCubit.scrollBack();
-            //   appBloc.add(
-            //     AppEvent.pageChanged(
-            //       pageIndex: max(0, appBloc.state.pageIndex - 1),
-            //     ),
-            //   );
-            // } else if (scrollDirection == ScrollDirection.forward) {
-            //   scrollCubit.scrollForward();
-            //   appBloc.add(
-            //     AppEvent.pageChanged(
-            //       pageIndex: min(pages.length, appBloc.state.pageIndex + 1),
-            //     ),
-            //   );
-            // }
             return true;
           },
           child: ResponsiveBuilder(
@@ -101,6 +87,9 @@ class RootView extends HookWidget {
                             flex: 10,
                             child: FadingEdgeScrollView.fromPageView(
                               child: PageView(
+                                onPageChanged: (pageIndex) => appBloc.add(
+                                  AppEvent.pageChanged(pageIndex: pageIndex),
+                                ),
                                 scrollDirection: Axis.vertical,
                                 controller: pageController,
                                 children: pages,

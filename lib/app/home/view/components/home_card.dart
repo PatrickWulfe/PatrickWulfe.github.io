@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -34,12 +35,12 @@ class HomeCard extends StatelessWidget {
               size: 64,
             ),
             const Gap(16),
-            Text(
+            AutoSizeText(
               title,
               style: appTheme.textTheme.titleMedium,
             ),
             const Gap(32),
-            Text(
+            AutoSizeText(
               description,
               style: appTheme.textTheme.bodyLarge,
             ),
@@ -48,7 +49,7 @@ class HomeCard extends StatelessWidget {
               child: BottomRight(
                 child: FilledButton(
                   onPressed: onButtonPress,
-                  child: Text(buttonText),
+                  child: AutoSizeText(buttonText),
                 ),
               ),
             ),
