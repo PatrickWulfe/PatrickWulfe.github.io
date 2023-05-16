@@ -1,10 +1,11 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class ActionBar extends StatelessWidget implements PreferredSizeWidget {
+class ActionBar extends HookWidget implements PreferredSizeWidget {
   const ActionBar({
     super.key,
     required this.controller,
@@ -13,7 +14,6 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(80);
 
-  // final AutoScrollController controller;
   final PageController controller;
 
   @override
@@ -21,9 +21,24 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
     final appTheme = Theme.of(context);
     final pageAnimationDuration = .4.seconds;
     const pageAnimationCurve = Curves.ease;
+    final selectedColor = appTheme.colorScheme.secondary;
+    final notSelectedColor = appTheme.colorScheme.primary;
+
+    final homeIcon = Icons.home_rounded;
+    final aboutMeIcon = Icons.account_circle_rounded;
+    final experienceIcon = Icons.book_rounded;
+    final projectsIcon = CommunityMaterialIcons.github;
+    final interestsIcon = Icons.info_rounded;
+
+    // Set up state for selected page
+    final pageNumber = useState<double>(0);
+    controller.addListener(() {
+      pageNumber.value = controller.page!;
+    });
 
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
+        // MOBILE/TABLET
         if (sizingInformation.isMobile || sizingInformation.isTablet) {
           return Row(
             children: [
@@ -52,13 +67,16 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                         curve: pageAnimationCurve,
                       ),
                       itemBuilder: (c) => <PopupMenuEntry<int>>[
-                        PopupMenuItem<int>(
+                        PopupMenuItem(
                           value: 0,
                           child: Row(
                             children: [
-                              const Icon(
-                                Icons.home_rounded,
+                              Icon(
+                                homeIcon,
                                 size: 18,
+                                color: pageNumber.value == 0
+                                    ? selectedColor
+                                    : notSelectedColor,
                               ),
                               const Gap(8),
                               Text(
@@ -72,9 +90,12 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                           value: 1,
                           child: Row(
                             children: [
-                              const Icon(
-                                Icons.account_circle_rounded,
+                              Icon(
+                                aboutMeIcon,
                                 size: 18,
+                                color: pageNumber.value == 1
+                                    ? selectedColor
+                                    : notSelectedColor,
                               ),
                               const Gap(8),
                               Text(
@@ -88,9 +109,12 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                           value: 2,
                           child: Row(
                             children: [
-                              const Icon(
-                                Icons.assignment_rounded,
+                              Icon(
+                                experienceIcon,
                                 size: 18,
+                                color: pageNumber.value == 2
+                                    ? selectedColor
+                                    : notSelectedColor,
                               ),
                               const Gap(8),
                               Text(
@@ -104,9 +128,12 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                           value: 3,
                           child: Row(
                             children: [
-                              const Icon(
-                                CommunityMaterialIcons.github,
+                              Icon(
+                                projectsIcon,
                                 size: 18,
+                                color: pageNumber.value == 3
+                                    ? selectedColor
+                                    : notSelectedColor,
                               ),
                               const Gap(8),
                               Text(
@@ -120,9 +147,12 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
                           value: 4,
                           child: Row(
                             children: [
-                              const Icon(
-                                Icons.lightbulb_rounded,
+                              Icon(
+                                interestsIcon,
                                 size: 18,
+                                color: pageNumber.value == 4
+                                    ? selectedColor
+                                    : notSelectedColor,
                               ),
                               const Gap(8),
                               Text(
@@ -142,8 +172,7 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
             ],
           );
         }
-        // ELSE
-        final buttonStyle = appTheme.textTheme.labelLarge;
+        // DESKTOP
         return Row(
           children: [
             const Gap(16),
@@ -165,69 +194,44 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  TextButton.icon(
-                    onPressed: () => controller.animateToPage(
-                      0,
-                      duration: pageAnimationDuration,
-                      curve: pageAnimationCurve,
-                    ),
-                    icon: const Icon(Icons.home_rounded),
-                    label: Text(
-                      'Home',
-                      style: buttonStyle,
-                    ),
+                  _DesktopAppbarButton(
+                    label: 'Home',
+                    leading: homeIcon,
+                    pageId: 0,
+                    controller: controller,
+                    pageNumber: pageNumber.value,
                   ),
                   const Gap(8),
-                  TextButton.icon(
-                    onPressed: () => controller.animateToPage(
-                      1,
-                      duration: pageAnimationDuration,
-                      curve: pageAnimationCurve,
-                    ),
-                    icon: const Icon(Icons.info),
-                    label: Text(
-                      'About Me',
-                      style: buttonStyle,
-                    ),
+                  _DesktopAppbarButton(
+                    label: 'About Me',
+                    leading: aboutMeIcon,
+                    pageId: 1,
+                    controller: controller,
+                    pageNumber: pageNumber.value,
                   ),
                   const Gap(8),
-                  TextButton.icon(
-                    onPressed: () => controller.animateToPage(
-                      2,
-                      duration: pageAnimationDuration,
-                      curve: pageAnimationCurve,
-                    ),
-                    icon: const Icon(Icons.book_rounded),
-                    label: Text(
-                      'Experience',
-                      style: buttonStyle,
-                    ),
+                  _DesktopAppbarButton(
+                    label: 'Experience',
+                    leading: experienceIcon,
+                    pageId: 2,
+                    controller: controller,
+                    pageNumber: pageNumber.value,
                   ),
                   const Gap(8),
-                  TextButton.icon(
-                    onPressed: () => controller.animateToPage(
-                      3,
-                      duration: pageAnimationDuration,
-                      curve: pageAnimationCurve,
-                    ),
-                    icon: const Icon(CommunityMaterialIcons.github),
-                    label: Text(
-                      'Projects',
-                      style: buttonStyle,
-                    ),
+                  _DesktopAppbarButton(
+                    label: 'Projects',
+                    leading: projectsIcon,
+                    pageId: 3,
+                    controller: controller,
+                    pageNumber: pageNumber.value,
                   ),
                   const Gap(8),
-                  TextButton.icon(
-                    onPressed: () => controller.animateToPage(
-                      4,
-                      duration: pageAnimationDuration,
-                      curve: pageAnimationCurve,
-                    ),
-                    icon: const Icon(Icons.lightbulb_circle_rounded),
-                    label: Text(
-                      'Interests',
-                      style: buttonStyle,
-                    ),
+                  _DesktopAppbarButton(
+                    label: 'Interests',
+                    leading: interestsIcon,
+                    pageId: 4,
+                    controller: controller,
+                    pageNumber: pageNumber.value,
                   ),
                 ],
               ),
@@ -236,6 +240,51 @@ class ActionBar extends StatelessWidget implements PreferredSizeWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class _DesktopAppbarButton extends StatelessWidget {
+  const _DesktopAppbarButton({
+    super.key,
+    required this.label,
+    required this.leading,
+    required this.controller,
+    required this.pageId,
+    required this.pageNumber,
+  });
+
+  final String label;
+  final IconData leading;
+  final PageController controller;
+  final int pageId;
+  final double pageNumber;
+
+  @override
+  Widget build(BuildContext context) {
+    final appTheme = Theme.of(context);
+    final pageAnimationDuration = .4.seconds;
+    const pageAnimationCurve = Curves.ease;
+    final selectedColor = appTheme.colorScheme.secondary;
+    final notSelectedColor = appTheme.colorScheme.primary;
+    final buttonStyle = appTheme.textTheme.labelLarge;
+
+    return TextButton.icon(
+      onPressed: () => controller.animateToPage(
+        pageId,
+        duration: pageAnimationDuration,
+        curve: pageAnimationCurve,
+      ),
+      icon: Icon(
+        leading,
+        color: pageNumber == pageId ? selectedColor : notSelectedColor,
+      ),
+      label: Text(
+        label,
+        style: buttonStyle?.copyWith(
+          color: pageNumber == pageId ? selectedColor : notSelectedColor,
+        ),
+      ),
     );
   }
 }
