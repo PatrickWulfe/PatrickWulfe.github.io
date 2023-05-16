@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
@@ -7,7 +8,13 @@ part 'app_event.dart';
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc() : super(const _Normal(themeName: ThemeName.dark)) {
+  AppBloc()
+      : super(
+          const _Normal(
+            themeName: ThemeName.dark,
+            pageIndex: 0,
+          ),
+        ) {
     on<AppEvent>((event, emit) {
       event.when(
         started: () {},
@@ -18,7 +25,10 @@ class AppBloc extends Bloc<AppEvent, AppState> {
               ? emit(state.copyWith(themeName: ThemeName.dark))
               : emit(state.copyWith(themeName: ThemeName.light));
         },
+        pageChanged: (pageIndex) => emit(state.copyWith(pageIndex: pageIndex)),
       );
     });
   }
+
+  late final PageController pageController;
 }

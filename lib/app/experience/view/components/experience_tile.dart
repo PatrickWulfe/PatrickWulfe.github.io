@@ -51,7 +51,7 @@ class ExperienceTile extends StatelessWidget {
               ),
             ),
           ),
-          const Gap(32),
+          const Gap(8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,22 +80,29 @@ class ExperienceTile extends StatelessWidget {
             ),
           ),
           const Gap(8),
-          Text(
-            experienceModel.description,
-            overflow: TextOverflow.ellipsis,
-            maxLines: descriptionMaxLines,
-          ),
-          const Gap(2),
+          if (!includeBulletPoints)
+            Expanded(
+              child: Text(
+                experienceModel.description,
+                overflow: TextOverflow.fade,
+                maxLines: descriptionMaxLines,
+              ),
+            )
+          else
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text(
+                experienceModel.description,
+                overflow: TextOverflow.ellipsis,
+                maxLines: descriptionMaxLines,
+              ),
+            ),
           if (includeBulletPoints)
-            Builder(
-              builder: (context) {
-                return Expanded(
-                  child: Text(
-                    experienceModel.bulletPoints,
-                    softWrap: true,
-                  ),
-                );
-              },
+            Expanded(
+              child: Text(
+                experienceModel.bulletPoints,
+                softWrap: true,
+              ),
             ),
           if (!includeBulletPoints) const Expanded(child: SizedBox()),
           if (!includeBulletPoints)
@@ -135,8 +142,96 @@ class _MobileExperienceTile extends ExperienceTile {
   const _MobileExperienceTile({
     required super.experienceModel,
   }) : super(
-          logoHeight: 30,
+          logoHeight: 20,
           includeBulletPoints: false,
           descriptionMaxLines: 3,
         );
+
+  @override
+  Widget build(BuildContext context) {
+    final appTheme = Theme.of(context);
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: appTheme.colorScheme.outline),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header section
+          SizedBox(
+            height: logoHeight,
+            child: Center(
+              child: Image.asset(
+                experienceModel.logoAssetName,
+                height: logoHeight,
+              ),
+            ),
+          ),
+          const Gap(8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Text(
+                  experienceModel.companyName,
+                  softWrap: false,
+                  overflow: TextOverflow.fade,
+                  style: appTheme.textTheme.headlineMedium,
+                ),
+              ),
+              const Gap(8),
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Text(
+                  experienceModel.dateRange,
+                ),
+              ),
+            ],
+          ),
+          FittedBox(
+            child: Text(
+              experienceModel.jobTitle,
+              style: appTheme.textTheme.headlineSmall,
+            ),
+          ),
+          const Gap(8),
+          if (!includeBulletPoints)
+            Expanded(
+              child: Text(
+                experienceModel.description,
+                overflow: TextOverflow.fade,
+                maxLines: descriptionMaxLines,
+              ),
+            )
+          else
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text(
+                experienceModel.description,
+                overflow: TextOverflow.ellipsis,
+                maxLines: descriptionMaxLines,
+              ),
+            ),
+          if (includeBulletPoints)
+            Expanded(
+              child: Text(
+                experienceModel.bulletPoints,
+                softWrap: true,
+              ),
+            ),
+          if (!includeBulletPoints) const Expanded(child: SizedBox()),
+          if (!includeBulletPoints)
+            BottomRight(
+              child: FilledButton(
+                onPressed: () {},
+                child: const Text('View More...'),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
 }

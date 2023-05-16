@@ -26,16 +26,16 @@ class DesktopExperienceView extends StatelessWidget {
           ),
           const Divider(),
           const Gap(32),
-          Expanded(
+          Flexible(
             child: Row(
               children: [
-                Expanded(
+                Flexible(
                   child: ExperienceTile.desktop(
                     experienceModel: experienceModels[0],
                   ),
                 ),
                 const Gap(16),
-                Expanded(
+                Flexible(
                   child: ExperienceTile.desktop(
                     experienceModel: experienceModels[1],
                   ),

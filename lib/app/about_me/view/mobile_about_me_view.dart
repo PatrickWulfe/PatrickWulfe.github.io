@@ -37,7 +37,7 @@ class MobileAboutMeView extends HookWidget {
                 ),
               ),
               const Divider(),
-              const Gap(16),
+              const Gap(8),
               Expanded(
                 child: SingleChildScrollView(
                   child: AnimatedOpacity(

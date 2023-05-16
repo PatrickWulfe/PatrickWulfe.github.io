@@ -14,9 +14,6 @@ class App extends StatelessWidget {
         BlocProvider(
           create: (context) => AppBloc(),
         ),
-        BlocProvider(
-          create: (context) => ScrollCubit(),
-        ),
       ],
       child: const AppView(),
     );

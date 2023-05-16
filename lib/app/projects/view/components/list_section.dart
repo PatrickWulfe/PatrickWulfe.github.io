@@ -16,7 +16,7 @@ class ListSection extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<ProjectsBloc>();
-    final _controller = useScrollController();
+    final controller = useScrollController();
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         return BlocBuilder<ProjectsBloc, ProjectsState>(
@@ -60,7 +60,7 @@ class ListSection extends HookWidget {
                   Expanded(
                     child: FadingEdgeScrollView.fromSingleChildScrollView(
                       child: SingleChildScrollView(
-                        controller: _controller,
+                        controller: controller,
                         child: Column(
                           children: AnimateList(
                             autoPlay: true,
@@ -88,25 +88,6 @@ class ListSection extends HookWidget {
                       ),
                     ),
                   ),
-                  // Expanded(
-                  //   child: ListView.separated(
-                  //     itemCount: (state.repositories ?? []).length,
-                  //     separatorBuilder: (_, __) =>
-                  //         const SizedBox.square(dimension: 2),
-                  //     itemBuilder: (BuildContext context, int index) {
-                  //       final element = state.repositories![index];
-                  //       return ProjectTile(
-                  //         title: element.name,
-                  //         subtitle: element.description,
-                  //         onTap: () => _launchUrl(
-                  //           Uri.parse(state.repositories![index].htmlUrl),
-                  //         ),
-                  //       ).animate().fade(
-                  //             delay: (.2 * index).seconds,
-                  //           );
-                  //     },
-                  //   ),
-                  // ),
                 ],
               ),
             );

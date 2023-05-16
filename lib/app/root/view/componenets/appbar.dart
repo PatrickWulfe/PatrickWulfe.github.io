@@ -24,11 +24,11 @@ class ActionBar extends HookWidget implements PreferredSizeWidget {
     final selectedColor = appTheme.colorScheme.secondary;
     final notSelectedColor = appTheme.colorScheme.primary;
 
-    final homeIcon = Icons.home_rounded;
-    final aboutMeIcon = Icons.account_circle_rounded;
-    final experienceIcon = Icons.book_rounded;
-    final projectsIcon = CommunityMaterialIcons.github;
-    final interestsIcon = Icons.info_rounded;
+    const homeIcon = Icons.home_rounded;
+    const aboutMeIcon = Icons.account_circle_rounded;
+    const experienceIcon = Icons.book_rounded;
+    const projectsIcon = CommunityMaterialIcons.github;
+    const interestsIcon = Icons.info_rounded;
 
     // Set up state for selected page
     final pageNumber = useState<double>(0);
@@ -246,7 +246,6 @@ class ActionBar extends HookWidget implements PreferredSizeWidget {
 
 class _DesktopAppbarButton extends StatelessWidget {
   const _DesktopAppbarButton({
-    super.key,
     required this.label,
     required this.leading,
     required this.controller,

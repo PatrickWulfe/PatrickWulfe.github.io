@@ -4,7 +4,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get_it/get_it.dart';
 import 'package:portfolio_project/app/app_index.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -13,10 +12,7 @@ class RootPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ScrollCubit>(
-      create: (context) => ScrollCubit(),
-      child: const RootView(),
-    );
+    return const RootView();
   }
 }
 
@@ -33,11 +29,10 @@ class RootView extends HookWidget {
       const ProjectsPage(),
       const InterestsPage(),
     ];
-    final scrollCubit = context.read<ScrollCubit>();
-    // init projects cubit to prevent load times when moving to page.
-    GetIt.I.get<ProjectsBloc>().add(const ProjectsEvent.started());
+    final appBloc = context.read<AppBloc>();
 
     final pageController = usePageController();
+    final isScrollingDown = useState(false);
 
     return SafeArea(
       child: Scaffold(
@@ -45,10 +40,26 @@ class RootView extends HookWidget {
           onNotification: (notification) {
             final scrollDirection = notification.direction;
             if (scrollDirection == ScrollDirection.reverse) {
-              scrollCubit.scrollBack();
-            } else if (scrollDirection == ScrollDirection.forward) {
-              scrollCubit.scrollForward();
+              isScrollingDown.value = true;
+            } else {
+              isScrollingDown.value = false;
             }
+            // if (scrollDirection == ScrollDirection.reverse) {
+            //   isScrollingUp = false;
+            //   scrollCubit.scrollBack();
+            //   appBloc.add(
+            //     AppEvent.pageChanged(
+            //       pageIndex: max(0, appBloc.state.pageIndex - 1),
+            //     ),
+            //   );
+            // } else if (scrollDirection == ScrollDirection.forward) {
+            //   scrollCubit.scrollForward();
+            //   appBloc.add(
+            //     AppEvent.pageChanged(
+            //       pageIndex: min(pages.length, appBloc.state.pageIndex + 1),
+            //     ),
+            //   );
+            // }
             return true;
           },
           child: ResponsiveBuilder(
@@ -73,18 +84,13 @@ class RootView extends HookWidget {
                 child: Column(
                   children: [
                     // AppBar
-                    BlocBuilder<ScrollCubit, ScrollDirection>(
-                      builder: (context, state) {
-                        final isScrollingUp = state == ScrollDirection.reverse;
-                        return Animate(
-                          effects: [
-                            FadeEffect(duration: .3.seconds),
-                            const SlideEffect()
-                          ],
-                          target: isScrollingUp ? 0 : 1,
-                          child: ActionBar(controller: pageController),
-                        );
-                      },
+                    Animate(
+                      effects: [
+                        FadeEffect(duration: .3.seconds),
+                        const SlideEffect()
+                      ],
+                      target: isScrollingDown.value ? 0 : 1,
+                      child: ActionBar(controller: pageController),
                     ),
                     // Body
                     Expanded(

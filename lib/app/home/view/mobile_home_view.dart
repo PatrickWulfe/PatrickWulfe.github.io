@@ -10,18 +10,26 @@ class MobileHomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: PageContainer.mobile(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AvatarImage(
-                width: 300,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Flexible(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: AvatarImage(
+                  width: 300,
+                ),
               ),
-              AnimatedLogo(
-                height: 200,
+            ),
+            Flexible(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: AnimatedLogo(
+                  height: 200,
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

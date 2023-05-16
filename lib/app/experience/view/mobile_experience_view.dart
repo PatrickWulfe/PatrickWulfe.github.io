@@ -25,13 +25,13 @@ class MobileExperienceView extends StatelessWidget {
           ),
           const Divider(),
           const Gap(16),
-          Expanded(
+          Flexible(
             child: ExperienceTile.mobile(
               experienceModel: experienceModels[0],
             ),
           ),
           const Gap(8),
-          Expanded(
+          Flexible(
             child: ExperienceTile.mobile(
               experienceModel: experienceModels[1],
             ),
