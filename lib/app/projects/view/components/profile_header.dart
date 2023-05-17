@@ -46,16 +46,19 @@ class ProfileHeader extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      RichText(
-                        text: TextSpan(
-                          text: state.user?.htmlUrl,
-                          style: appTheme.textTheme.labelMedium?.copyWith(
-                            color: appTheme.colorScheme.secondary,
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: RichText(
+                          text: TextSpan(
+                            text: state.user?.htmlUrl,
+                            style: appTheme.textTheme.labelMedium?.copyWith(
+                              color: appTheme.colorScheme.secondary,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => pageLaunchUrl(
+                                    Uri.parse(state.user?.htmlUrl ?? ''),
+                                  ),
                           ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () => pageLaunchUrl(
-                                  Uri.parse(state.user?.htmlUrl ?? ''),
-                                ),
                         ),
                       ),
                       AutoSizeText(

@@ -221,8 +221,18 @@ class _MobileExperienceTile extends ExperienceTile {
           const Gap(8),
           BottomRight(
             child: FilledButton(
-              onPressed: () {},
-              child: const AutoSizeText('View More...'),
+              onPressed: () => showDialog<String>(
+                context: context,
+                builder: (BuildContext context) {
+                  return Dialog(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(experienceModel.bulletPoints),
+                    ),
+                  );
+                },
+              ),
+              child: const Text('View More...'),
             ),
           ),
         ],

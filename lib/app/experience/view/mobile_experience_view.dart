@@ -37,17 +37,6 @@ class MobileExperienceView extends StatelessWidget {
               },
             ),
           ),
-          // Flexible(
-          //   child: ExperienceTile.mobile(
-          //     experienceModel: experienceModels[0],
-          //   ),
-          // ),
-          // const Gap(8),
-          // Flexible(
-          //   child: ExperienceTile.mobile(
-          //     experienceModel: experienceModels[1],
-          //   ),
-          // ),
         ],
       ),
     );
