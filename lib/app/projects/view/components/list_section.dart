@@ -43,7 +43,7 @@ class ListSection extends HookWidget {
                     child: Row(
                       children: [
                         const Gap(16),
-                        AutoSizeText(
+                        Text(
                           'Sort By: ',
                           style: appTheme.textTheme.labelLarge,
                         ),

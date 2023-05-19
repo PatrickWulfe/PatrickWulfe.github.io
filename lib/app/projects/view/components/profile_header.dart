@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/gestures.dart';
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -30,57 +30,57 @@ class ProfileHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Flexible(
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        state.user?.avatarUrl ?? '',
-                      ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      state.user?.avatarUrl ?? '',
                     ),
                   ),
                 ),
                 const Gap(8),
-                Flexible(
+                Expanded(
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: RichText(
-                          text: TextSpan(
-                            text: state.user?.htmlUrl,
-                            style: appTheme.textTheme.labelMedium?.copyWith(
-                              color: appTheme.colorScheme.secondary,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => pageLaunchUrl(
-                                    Uri.parse(state.user?.htmlUrl ?? ''),
-                                  ),
-                          ),
-                        ),
-                      ),
                       AutoSizeText(
                         state.user?.name ?? '',
                         style: appTheme.textTheme.headlineMedium,
                       ),
-                      AutoSizeText(
-                        state.user?.login ?? '',
-                        style: appTheme.textTheme.titleMedium,
+                      Row(
+                        children: [
+                          Flexible(
+                            child: AutoSizeText(
+                              'Username:',
+                              style: appTheme.textTheme.titleSmall,
+                              maxLines: 1,
+                            ),
+                          ),
+                          const Gap(2),
+                          Flexible(
+                            child: AutoSizeText(
+                              state.user?.login ?? '',
+                              style: appTheme.textTheme.titleSmall?.copyWith(
+                                color: appTheme.colorScheme.secondary,
+                              ),
+                              maxLines: 1,
+                            ),
+                          ),
+                        ],
                       ),
-                      const Expanded(child: SizedBox()),
-                      if (state.user?.hirable ?? true)
-                        AutoSizeText(
-                          'Ready for work!',
-                          style: appTheme.textTheme.bodySmall,
+                      _HirableWidget(
+                        hirable: state.user?.hirable ?? true,
+                        company: state.user?.company ?? '',
+                      ),
+                      // const Gap(16),
+                      Expanded(child: Container()),
+                      FilledButton.icon(
+                        onPressed: () => pageLaunchUrl(
+                          Uri.parse(state.user?.htmlUrl ?? ''),
                         ),
-                      if (!(state.user?.hirable ?? true) &&
-                          state.user?.company != null)
-                        AutoSizeText(
-                          'Currently working at ${state.user?.company ?? ''}',
-                          style: appTheme.textTheme.bodySmall,
-                        ),
+                        icon: const Icon(CommunityMaterialIcons.github),
+                        label: const Text('My Github'),
+                      ),
+                      const Gap(4),
                     ],
                   ),
                 ),
@@ -91,6 +91,32 @@ class ProfileHeader extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
       },
+    );
+  }
+}
+
+class _HirableWidget extends StatelessWidget {
+  const _HirableWidget({
+    super.key,
+    required this.hirable,
+    required this.company,
+  });
+
+  final bool hirable;
+  final String company;
+
+  @override
+  Widget build(BuildContext context) {
+    final appTheme = Theme.of(context);
+    if (hirable) {
+      return Text(
+        'Is Hirable: Ready for work!',
+        style: appTheme.textTheme.bodySmall,
+      );
+    }
+    return Text(
+      'Is Hirable: Currently working at $company',
+      style: appTheme.textTheme.bodySmall,
     );
   }
 }
@@ -112,6 +138,6 @@ class _TabletProfileHeader extends ProfileHeader {
 class _MobileProfileHeader extends ProfileHeader {
   const _MobileProfileHeader()
       : super._(
-          height: 100,
+          height: 120,
         );
 }
