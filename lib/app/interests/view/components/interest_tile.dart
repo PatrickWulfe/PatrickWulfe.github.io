@@ -18,7 +18,7 @@ class InterestTile extends StatelessWidget {
     final appTheme = Theme.of(context);
     return Container(
       constraints: const BoxConstraints(
-        maxWidth: 1000,
+        maxWidth: 1200,
         maxHeight: 1000,
       ),
       decoration: BoxDecoration(

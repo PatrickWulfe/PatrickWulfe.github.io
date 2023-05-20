@@ -27,14 +27,17 @@ class DesktopInterestsView extends StatelessWidget {
           const Divider(),
           const Gap(32),
           Expanded(
-            child: SingleChildScrollView(
-              child: ListView.separated(
-                shrinkWrap: true,
-                itemCount: interestModels.length,
-                separatorBuilder: (_, __) => const Gap(8),
-                itemBuilder: (BuildContext context, int index) {
-                  return InterestTile(interestModel: interestModels[index]);
-                },
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 1200),
+              child: SingleChildScrollView(
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemCount: interestModels.length,
+                  separatorBuilder: (_, __) => const Gap(8),
+                  itemBuilder: (BuildContext context, int index) {
+                    return InterestTile(interestModel: interestModels[index]);
+                  },
+                ),
               ),
             ),
           ),

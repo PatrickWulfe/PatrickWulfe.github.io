@@ -227,7 +227,24 @@ class _MobileExperienceTile extends ExperienceTile {
                   return Dialog(
                     child: Padding(
                       padding: const EdgeInsets.all(16),
-                      child: Text(experienceModel.bulletPoints),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Flexible(
+                            child: SingleChildScrollView(
+                              child: Text(
+                                experienceModel.bulletPoints,
+                              ),
+                            ),
+                          ),
+                          const Gap(8),
+                          FilledButton.icon(
+                            onPressed: () => Navigator.of(context).pop(),
+                            icon: const Icon(Icons.arrow_back),
+                            label: const Text('Back'),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },

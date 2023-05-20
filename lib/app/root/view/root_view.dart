@@ -35,6 +35,9 @@ class RootView extends HookWidget {
       initialPage: appBloc.state.pageIndex,
     );
     final isScrollingDown = useState(false);
+    final animationController = useAnimationController(
+      duration: .3.seconds,
+    )..forward();
 
     return SafeArea(
       child: Scaffold(
@@ -43,8 +46,10 @@ class RootView extends HookWidget {
             final scrollDirection = notification.direction;
             if (scrollDirection == ScrollDirection.reverse) {
               isScrollingDown.value = true;
+              animationController.animateTo(1);
             } else {
               isScrollingDown.value = false;
+              animationController.animateTo(0);
             }
             return true;
           },
@@ -86,6 +91,8 @@ class RootView extends HookWidget {
                           Expanded(
                             flex: 10,
                             child: FadingEdgeScrollView.fromPageView(
+                              gradientFractionOnStart: .05,
+                              gradientFractionOnEnd: .05,
                               child: PageView(
                                 onPageChanged: (pageIndex) => appBloc.add(
                                   AppEvent.pageChanged(pageIndex: pageIndex),

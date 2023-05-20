@@ -16,9 +16,24 @@ class AvatarImage extends StatelessWidget {
       ),
       constraints: BoxConstraints(maxWidth: width ?? 400),
       clipBehavior: Clip.antiAlias,
-      child: Image.asset(
-        'assets/images/avatar_pic.jpg',
-        fit: BoxFit.fitWidth,
+      child: ShaderMask(
+        shaderCallback: (bounds) {
+          return const LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.black,
+              Colors.black,
+              Colors.black,
+              Colors.transparent,
+            ],
+          ).createShader(Rect.fromLTRB(0, 0, bounds.width, bounds.height));
+        },
+        blendMode: BlendMode.dstIn,
+        child: Image.asset(
+          'assets/images/avatar_pic.png',
+          fit: BoxFit.fitWidth,
+        ),
       ),
     );
   }
