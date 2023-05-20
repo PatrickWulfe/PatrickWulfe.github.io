@@ -263,6 +263,8 @@ class _DesktopActionBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pageAnimationDuration = .4.seconds;
+    const pageAnimationCurve = Curves.ease;
     return Row(
       children: [
         const Gap(16),
@@ -287,41 +289,56 @@ class _DesktopActionBar extends StatelessWidget {
               _DesktopAppbarButton(
                 label: 'Home',
                 leading: homeIcon,
-                pageId: 0,
-                controller: controller,
-                pageNumber: pageNumber.value,
+                onPressed: () => controller.animateToPage(
+                  0,
+                  duration: pageAnimationDuration,
+                  curve: pageAnimationCurve,
+                ),
+                isSelected: pageNumber.value == 0,
               ),
               const Gap(8),
               _DesktopAppbarButton(
                 label: 'About Me',
                 leading: aboutMeIcon,
-                pageId: 1,
-                controller: controller,
-                pageNumber: pageNumber.value,
+                onPressed: () => controller.animateToPage(
+                  1,
+                  duration: pageAnimationDuration,
+                  curve: pageAnimationCurve,
+                ),
+                isSelected: pageNumber.value == 1,
               ),
               const Gap(8),
               _DesktopAppbarButton(
                 label: 'Experience',
                 leading: experienceIcon,
-                pageId: 2,
-                controller: controller,
-                pageNumber: pageNumber.value,
+                onPressed: () => controller.animateToPage(
+                  2,
+                  duration: pageAnimationDuration,
+                  curve: pageAnimationCurve,
+                ),
+                isSelected: pageNumber.value == 2,
               ),
               const Gap(8),
               _DesktopAppbarButton(
                 label: 'Projects',
                 leading: projectsIcon,
-                pageId: 3,
-                controller: controller,
-                pageNumber: pageNumber.value,
+                onPressed: () => controller.animateToPage(
+                  3,
+                  duration: pageAnimationDuration,
+                  curve: pageAnimationCurve,
+                ),
+                isSelected: pageNumber.value == 3,
               ),
               const Gap(8),
               _DesktopAppbarButton(
                 label: 'Interests',
                 leading: interestsIcon,
-                pageId: 4,
-                controller: controller,
-                pageNumber: pageNumber.value,
+                onPressed: () => controller.animateToPage(
+                  4,
+                  duration: pageAnimationDuration,
+                  curve: pageAnimationCurve,
+                ),
+                isSelected: pageNumber.value == 4,
               ),
             ],
           ),
@@ -336,40 +353,48 @@ class _DesktopAppbarButton extends StatelessWidget {
   const _DesktopAppbarButton({
     required this.label,
     required this.leading,
-    required this.controller,
-    required this.pageId,
-    required this.pageNumber,
+    required this.onPressed,
+    required this.isSelected,
   });
 
   final String label;
   final IconData leading;
-  final PageController controller;
-  final int pageId;
-  final double pageNumber;
+  final VoidCallback onPressed;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    final pageAnimationDuration = .4.seconds;
-    const pageAnimationCurve = Curves.ease;
-    final selectedColor = appTheme.colorScheme.secondary;
-    final notSelectedColor = appTheme.colorScheme.primary;
     final buttonStyle = appTheme.textTheme.labelLarge;
 
-    return TextButton.icon(
-      onPressed: () => controller.animateToPage(
-        pageId,
-        duration: pageAnimationDuration,
-        curve: pageAnimationCurve,
+    return AnimatedCrossFade(
+      crossFadeState:
+          isSelected ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+      duration: .4.seconds,
+      firstChild: TextButton.icon(
+        onPressed: onPressed,
+        icon: Icon(
+          leading,
+          color: appTheme.colorScheme.secondary,
+        ),
+        label: Text(
+          label,
+          style: buttonStyle?.copyWith(
+            color: appTheme.colorScheme.secondary,
+          ),
+        ),
       ),
-      icon: Icon(
-        leading,
-        color: pageNumber == pageId ? selectedColor : notSelectedColor,
-      ),
-      label: Text(
-        label,
-        style: buttonStyle?.copyWith(
-          color: pageNumber == pageId ? selectedColor : notSelectedColor,
+      secondChild: TextButton.icon(
+        onPressed: onPressed,
+        icon: Icon(
+          leading,
+          color: appTheme.colorScheme.primary,
+        ),
+        label: Text(
+          label,
+          style: buttonStyle?.copyWith(
+            color: appTheme.colorScheme.primary,
+          ),
         ),
       ),
     );
