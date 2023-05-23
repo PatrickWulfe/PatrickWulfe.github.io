@@ -31,24 +31,18 @@ class AboutMePage extends HookWidget {
 }
 
 const aboutMe = '''
-Highly skilled mobile app developer with expertise in the Flutter framework, Dart, and other programming
-languages, with experience developing high-quality, user-friendly mobile applications. Proven ability to
-design and implement software solutions to meet client needs, and consistently deliver projects on time.
-Extensive experience using Figma and other design tools to create intuitive and visually appealing
-interfaces. Holds a Master of Science in Computer Science with a focus on Programming and
-Languages, as well as a Bachelor of Science in Computer Science. Ready to take on new challenges
-and contribute to the success of a dynamic and innovative team.
-''';
+Hello, and welcome to my portfolio website! I'm Patrick Wulfe, an experienced mobile app developer specializing in the Flutter framework, Dart, and various programming languages. With a Master's Degree in Computer Science and a focus on Programming and Languages, I bring a strong foundation and expertise to create exceptional and user-friendly mobile applications.
 
-const _aboutMe = '''
-I was born in a city of magic and technology, where wizards and engineers worked together to create wonders and innovations. I had a talent for both fields, and I dreamed of becoming a software developer, a person who could create programs and applications that ran on magical devices.
+Throughout my career, I have demonstrated a knack for crafting high-quality software solutions that meet client needs and exceed expectations. I have a proven track record of delivering projects on time while ensuring attention to detail and a commitment to excellence.
 
-I studied hard and learned the basics of coding and magic, but I also had a rebellious streak and a thirst for adventure. I often hacked into the city’s network and explored the hidden corners of the digital world. I also joined a group of hackers who called themselves the Codebreakers, and who used their skills to expose corruption and injustice in the city.
+My passion lies in designing intuitive interfaces that not only captivate users but also provide seamless experiences. I leverage my skills in Figma and other design tools to create visually appealing and user-centric mobile app interfaces that leave a lasting impression.
 
-One day, I received a mysterious message from an unknown sender, who claimed to have a secret that could change the world. I followed the instructions and met the sender in an abandoned warehouse, where I discovered a device that looked like a portal to another dimension. The sender told me that it was a prototype of a new technology that could connect the digital world with the physical world, and that he needed my help to test it.
+In my previous role at Evosus, I played a key role in building a robust design system for mobile applications, enabling efficient prototyping and maintaining consistency across products and platforms. Additionally, I established standards for documentation, code formatting, and architecture, contributing to a streamlined development process.
 
-I agreed, and stepped into the portal, not knowing what awaited me on the other side. I found myself in a land of fantasy and wonder, where dragons flew in the sky and elves lived in the forests. I also realized that I had a new power: I could manipulate the code of reality with my mind.
+During my time at iSoft Systems, LLC, I customized AccountMate software for diverse clients, tailoring solutions to their specific needs. This experience honed my problem-solving skills and deepened my understanding of client-oriented development.
 
-I decided to explore this new world and use my power for good, but I also faced dangers and enemies along the way. I became a software developer in a fantasy world, and my adventure had just begun.
+Beyond my technical expertise, I possess a strong grasp of agile methodologies and have actively participated in bi-weekly sprints, sprint planning meetings, and stand-ups. I believe in fostering collaborative environments that encourage teamwork, innovation, and open communication.
 
---Written by ChatGPT as a placeholder.''';
+My broad skill set includes proficiency in Flutter, Dart, Figma, Git, Java, Python, JavaScript, C/C++/C#, HTML, CSS, Rust, Haskell, and various databases. As an enthusiastic learner, I am currently expanding my knowledge by exploring Golang.
+
+If you're seeking a dedicated mobile app developer who can bring your ideas to life with creativity and precision, please take a moment to explore my portfolio. I would love to collaborate on your next exciting project and contribute to your team's success.''';
