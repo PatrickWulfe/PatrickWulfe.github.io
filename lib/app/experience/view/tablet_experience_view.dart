@@ -29,7 +29,7 @@ class TabletExperienceView extends StatelessWidget {
         ),
       ),
     ];
-    return PageContainer.desktop(
+    return PageContainer.tablet(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

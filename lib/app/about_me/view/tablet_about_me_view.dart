@@ -45,7 +45,7 @@ class TabletAboutMeView extends HookWidget {
                     duration: .4.seconds,
                     child: AutoSizeText(
                       aboutMe,
-                      style: appTheme.textTheme.bodyMedium,
+                      style: appTheme.textTheme.bodyLarge,
                     ),
                   ),
                 ),

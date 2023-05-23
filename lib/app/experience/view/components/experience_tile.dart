@@ -32,10 +32,10 @@ class ExperienceTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: appTheme.colorScheme.outline),
-        borderRadius: BorderRadius.circular(12),
-      ),
+      // decoration: BoxDecoration(
+      //     // border: Border.all(color: appTheme.colorScheme.outline),
+      //     // borderRadius: BorderRadius.circular(12),
+      //     ),
       padding: const EdgeInsets.all(32),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,10 +106,10 @@ class _TabletExperienceTile extends ExperienceTile {
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: appTheme.colorScheme.outline),
-        borderRadius: BorderRadius.circular(12),
-      ),
+      // decoration: BoxDecoration(
+      //   border: Border.all(color: appTheme.colorScheme.outline),
+      //   borderRadius: BorderRadius.circular(12),
+      // ),
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +146,7 @@ class _TabletExperienceTile extends ExperienceTile {
             child: AutoSizeText(
               experienceModel.description,
               overflow: TextOverflow.fade,
-              style: appTheme.textTheme.bodySmall,
+              style: appTheme.textTheme.bodyLarge,
             ),
           ),
           const Gap(8),
@@ -154,7 +154,7 @@ class _TabletExperienceTile extends ExperienceTile {
             child: AutoSizeText(
               experienceModel.bulletPoints,
               overflow: TextOverflow.fade,
-              style: appTheme.textTheme.bodySmall,
+              style: appTheme.textTheme.bodyMedium,
             ),
           ),
         ],
@@ -175,10 +175,10 @@ class _MobileExperienceTile extends ExperienceTile {
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: appTheme.colorScheme.outline),
-        borderRadius: BorderRadius.circular(12),
-      ),
+      // decoration: BoxDecoration(
+      //   border: Border.all(color: appTheme.colorScheme.outline),
+      //   borderRadius: BorderRadius.circular(12),
+      // ),
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -228,6 +228,7 @@ class _MobileExperienceTile extends ExperienceTile {
                     child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Column(
+                        mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Flexible(
