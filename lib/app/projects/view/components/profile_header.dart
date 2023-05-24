@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -23,65 +24,89 @@ class ProfileHeader extends StatelessWidget {
           final appTheme = Theme.of(context);
           return SizedBox(
             height: 250,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Stack(
               children: [
-                Flexible(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      state.user?.avatarUrl ?? '',
-                    ),
-                  ),
-                ),
-                const Gap(8),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        state.user?.name ?? '',
-                        style: appTheme.textTheme.displaySmall,
-                        maxLines: 1,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.network(
+                          state.user?.avatarUrl ?? '',
+                        ),
                       ),
-                      const Gap(8),
-                      Row(
+                    ),
+                    const Gap(8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Flexible(
-                            child: AutoSizeText(
-                              'Username:',
-                              style: appTheme.textTheme.headlineSmall,
-                              maxLines: 1,
-                            ),
+                          Text(
+                            state.user?.name ?? '',
+                            style: appTheme.textTheme.displaySmall,
+                            maxLines: 1,
                           ),
-                          const Gap(2),
-                          Flexible(
-                            child: AutoSizeText(
-                              state.user?.login ?? '',
-                              style: appTheme.textTheme.headlineSmall?.copyWith(
-                                color: appTheme.colorScheme.secondary,
+                          const Gap(8),
+                          Row(
+                            children: [
+                              Flexible(
+                                child: AutoSizeText(
+                                  'Username:',
+                                  style: appTheme.textTheme.headlineSmall,
+                                  maxLines: 1,
+                                ),
                               ),
-                              maxLines: 1,
-                            ),
+                              const Gap(2),
+                              Flexible(
+                                child: AutoSizeText(
+                                  state.user?.login ?? '',
+                                  style: appTheme.textTheme.headlineSmall
+                                      ?.copyWith(
+                                    color: appTheme.colorScheme.secondary,
+                                  ),
+                                  maxLines: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                          _HirableWidget(
+                            hirable: state.user?.hirable ?? true,
+                            company: state.user?.company ?? '',
+                            hirableStyle: appTheme.textTheme.labelLarge!,
                           ),
                         ],
                       ),
-                      _HirableWidget(
-                        hirable: state.user?.hirable ?? true,
-                        company: state.user?.company ?? '',
-                        hirableStyle: appTheme.textTheme.labelLarge!,
-                      ),
-                      // const Gap(16),
-                      Expanded(child: Container()),
-                      FilledButton.icon(
-                        onPressed: () => pageLaunchUrl(
-                          Uri.parse(state.user?.htmlUrl ?? ''),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.bottomRight,
+                    constraints: const BoxConstraints(maxWidth: 1000),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        FilledButton.icon(
+                          onPressed: () => pageLaunchUrl(
+                            Uri.parse(state.user?.htmlUrl ?? ''),
+                          ),
+                          icon: const Icon(CommunityMaterialIcons.github),
+                          label: const Text('My Github'),
                         ),
-                        icon: const Icon(CommunityMaterialIcons.github),
-                        label: const Text('My Github'),
-                      ),
-                      const Gap(4),
-                    ],
+                        const Gap(8),
+                        OutlinedButton.icon(
+                          onPressed: () => pageLaunchUrl(
+                            Uri.parse(
+                              'https://github.com/PatrickWulfe/PatrickWulfe.github.io',
+                            ),
+                          ),
+                          icon: const Icon(Icons.code),
+                          label: const Text('Source Code'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -146,67 +171,71 @@ class _MobileProfileHeader extends ProfileHeader {
           final appTheme = Theme.of(context);
           return SizedBox(
             height: 120,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Stack(
               children: [
-                Flexible(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      state.user?.avatarUrl ?? '',
-                    ),
-                  ),
-                ),
-                const Gap(8),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AutoSizeText(
-                        state.user?.name ?? '',
-                        style: appTheme.textTheme.headlineMedium,
-                        maxLines: 1,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.network(
+                          state.user?.avatarUrl ?? '',
+                        ),
                       ),
-                      Row(
+                    ),
+                    const Gap(8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Flexible(
-                            child: AutoSizeText(
-                              'Username:',
-                              style: appTheme.textTheme.titleSmall,
-                              maxLines: 1,
-                            ),
+                          AutoSizeText(
+                            state.user?.name ?? '',
+                            style: appTheme.textTheme.headlineMedium,
+                            maxLines: 1,
+                          ),
+                          Row(
+                            children: [
+                              Flexible(
+                                child: AutoSizeText(
+                                  'Username:',
+                                  style: appTheme.textTheme.titleSmall,
+                                  maxLines: 1,
+                                ),
+                              ),
+                              const Gap(2),
+                              Flexible(
+                                child: AutoSizeText(
+                                  state.user?.login ?? '',
+                                  style:
+                                      appTheme.textTheme.titleSmall?.copyWith(
+                                    color: appTheme.colorScheme.secondary,
+                                  ),
+                                  maxLines: 1,
+                                ),
+                              ),
+                            ],
                           ),
                           const Gap(2),
-                          Flexible(
-                            child: AutoSizeText(
-                              state.user?.login ?? '',
-                              style: appTheme.textTheme.titleSmall?.copyWith(
-                                color: appTheme.colorScheme.secondary,
-                              ),
-                              maxLines: 1,
-                            ),
+                          _HirableWidget(
+                            hirable: state.user?.hirable ?? true,
+                            company: state.user?.company ?? '',
+                            hirableStyle: appTheme.textTheme.labelLarge!,
                           ),
                         ],
                       ),
-                      const Gap(2),
-                      _HirableWidget(
-                        hirable: state.user?.hirable ?? true,
-                        company: state.user?.company ?? '',
-                        hirableStyle: appTheme.textTheme.labelLarge!,
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: BottomRight(
+                    child: FilledButton.icon(
+                      onPressed: () => pageLaunchUrl(
+                        Uri.parse(state.user?.htmlUrl ?? ''),
                       ),
-                      Expanded(
-                        child: Container(
-                          alignment: Alignment.bottomLeft,
-                          child: FilledButton.icon(
-                            onPressed: () => pageLaunchUrl(
-                              Uri.parse(state.user?.htmlUrl ?? ''),
-                            ),
-                            icon: const Icon(CommunityMaterialIcons.github),
-                            label: const Text('My Github'),
-                          ),
-                        ),
-                      ),
-                    ],
+                      icon: const Icon(CommunityMaterialIcons.github),
+                      label: const Text('My Github'),
+                    ),
                   ),
                 ),
               ],
@@ -231,69 +260,88 @@ class _TabletProfileHeader extends ProfileHeader {
           final appTheme = Theme.of(context);
           return SizedBox(
             height: 230,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Stack(
               children: [
-                Flexible(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      state.user?.avatarUrl ?? '',
-                    ),
-                  ),
-                ),
-                const Gap(8),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        state.user?.name ?? '',
-                        style: appTheme.textTheme.headlineLarge,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        state.user?.avatarUrl ?? '',
                       ),
-                      Row(
+                    ),
+                    const Gap(8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Flexible(
-                            child: Text(
-                              'Username:',
-                              style: appTheme.textTheme.headlineSmall,
-                              maxLines: 1,
-                            ),
+                          Text(
+                            state.user?.name ?? '',
+                            style: appTheme.textTheme.headlineLarge,
                           ),
-                          const Gap(2),
-                          Flexible(
-                            child: AutoSizeText(
-                              state.user?.login ?? '',
-                              style: appTheme.textTheme.headlineSmall?.copyWith(
-                                color: appTheme.colorScheme.secondary,
+                          Row(
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  'Username:',
+                                  style: appTheme.textTheme.titleMedium,
+                                  maxLines: 1,
+                                ),
                               ),
-                              maxLines: 1,
+                              const Gap(2),
+                              Flexible(
+                                child: Text(
+                                  state.user?.login ?? '',
+                                  style:
+                                      appTheme.textTheme.titleMedium?.copyWith(
+                                    color: appTheme.colorScheme.secondary,
+                                  ),
+                                  maxLines: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Gap(16),
+                          _HirableWidget(
+                            hirable: state.user?.hirable ?? true,
+                            company: state.user?.company ?? '',
+                            hirableStyle: appTheme.textTheme.labelLarge!,
+                          ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.bottomRight,
+                              child: Wrap(
+                                runAlignment: WrapAlignment.end,
+                                alignment: WrapAlignment.end,
+                                spacing: 4,
+                                runSpacing: 8,
+                                children: [
+                                  FilledButton.icon(
+                                    onPressed: () => pageLaunchUrl(
+                                      Uri.parse(state.user?.htmlUrl ?? ''),
+                                    ),
+                                    icon: const Icon(
+                                        CommunityMaterialIcons.github),
+                                    label: const Text('My Github'),
+                                  ),
+                                  const Gap(8),
+                                  OutlinedButton.icon(
+                                    onPressed: () => pageLaunchUrl(
+                                      Uri.parse(
+                                          'https://github.com/PatrickWulfe/PatrickWulfe.github.io'),
+                                    ),
+                                    icon: const Icon(Icons.code),
+                                    label: const Text('Source Code'),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
                       ),
-                      const Gap(16),
-                      _HirableWidget(
-                        hirable: state.user?.hirable ?? true,
-                        company: state.user?.company ?? '',
-                        hirableStyle: appTheme.textTheme.labelLarge!,
-                      ),
-                      // const Gap(16),
-                      Expanded(
-                        child: Container(
-                          alignment: Alignment.bottomLeft,
-                          child: FilledButton.icon(
-                            onPressed: () => pageLaunchUrl(
-                              Uri.parse(state.user?.htmlUrl ?? ''),
-                            ),
-                            icon: const Icon(CommunityMaterialIcons.github),
-                            label: const Text('My Github'),
-                          ),
-                        ),
-                      ),
-                      // const Gap(4),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),

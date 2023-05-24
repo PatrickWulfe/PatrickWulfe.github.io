@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 import 'package:portfolio_project/app/app_index.dart';
 
 class DesktopProjectsView extends StatelessWidget {
@@ -30,7 +29,6 @@ class DesktopProjectsView extends StatelessWidget {
                 ),
               ),
               const Divider(),
-              const Gap(16),
               const ProfileHeader.desktop(),
               const Divider(),
               const Expanded(child: ListSection()),
