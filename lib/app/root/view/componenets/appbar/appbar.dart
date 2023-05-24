@@ -20,7 +20,7 @@ class ActionBar extends HookWidget implements PreferredSizeWidget {
     final appTheme = Theme.of(context);
     final pageAnimationDuration = .4.seconds;
     const pageAnimationCurve = Curves.ease;
-    final selectedColor = appTheme.colorScheme.secondary;
+    final selectedColor = appTheme.colorScheme.tertiary;
     final notSelectedColor = appTheme.colorScheme.primary;
 
     const homeIcon = Icons.home_rounded;
@@ -375,12 +375,12 @@ class _DesktopAppbarButton extends StatelessWidget {
         onPressed: onPressed,
         icon: Icon(
           leading,
-          color: appTheme.colorScheme.secondary,
+          color: appTheme.colorScheme.tertiary,
         ),
         label: Text(
           label,
           style: buttonStyle?.copyWith(
-            color: appTheme.colorScheme.secondary,
+            color: appTheme.colorScheme.tertiary,
           ),
         ),
       ),

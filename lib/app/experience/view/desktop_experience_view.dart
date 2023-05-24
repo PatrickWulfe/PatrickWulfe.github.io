@@ -22,7 +22,7 @@ class DesktopExperienceView extends StatelessWidget {
           experienceModel: experienceModels[0],
         ),
       ),
-      const Gap(16),
+      const Gap(64),
       Expanded(
         child: ExperienceTile.desktop(
           experienceModel: experienceModels[1],
@@ -49,7 +49,7 @@ class DesktopExperienceView extends StatelessWidget {
                 }
                 return ListView.separated(
                   itemCount: experienceModels.length,
-                  separatorBuilder: (_, __) => const Gap(16),
+                  separatorBuilder: (_, __) => const Gap(64),
                   itemBuilder: (BuildContext context, int index) {
                     return ExperienceTile.tablet(
                       experienceModel: experienceModels[index],

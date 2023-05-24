@@ -21,15 +21,9 @@ class InterestTile extends StatelessWidget {
         maxWidth: 1200,
         maxHeight: 1000,
       ),
-      // decoration: BoxDecoration(
-      //   border: Border.all(
-      //     color: appTheme.colorScheme.outline,
-      //   ),
-      //   borderRadius: BorderRadius.circular(16),
-      // ),
-      padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [

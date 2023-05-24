@@ -31,56 +31,52 @@ class ExperienceTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    return Container(
-      // decoration: BoxDecoration(
-      //     // border: Border.all(color: appTheme.colorScheme.outline),
-      //     // borderRadius: BorderRadius.circular(12),
-      //     ),
-      padding: const EdgeInsets.all(32),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Flexible(
-                child: AutoSizeText(
-                  experienceModel.companyName,
-                  softWrap: false,
-                  overflow: TextOverflow.fade,
-                  style: appTheme.textTheme.headlineMedium,
-                ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              child: AutoSizeText(
+                experienceModel.companyName,
+                softWrap: false,
+                overflow: TextOverflow.fade,
+                style: appTheme.textTheme.headlineLarge,
               ),
-              const Gap(16),
-              Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: AutoSizeText(
-                  experienceModel.dateRange,
-                ),
-              ),
-            ],
-          ),
-          const Gap(16),
-          AutoSizeText(
-            experienceModel.jobTitle,
-            style: appTheme.textTheme.headlineSmall
-                ?.copyWith(color: appTheme.colorScheme.tertiary),
-          ),
-          const Gap(8),
-          AutoSizeText(
-            experienceModel.description,
-            overflow: TextOverflow.ellipsis,
-            maxLines: descriptionMaxLines,
-          ),
-          Flexible(
-            child: AutoSizeText(
-              experienceModel.bulletPoints,
-              softWrap: true,
             ),
+            const Gap(16),
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: AutoSizeText(
+                experienceModel.dateRange,
+              ),
+            ),
+          ],
+        ),
+        const Gap(16),
+        AutoSizeText(
+          experienceModel.jobTitle,
+          style: appTheme.textTheme.headlineMedium
+              ?.copyWith(color: appTheme.colorScheme.tertiary),
+        ),
+        const Divider(),
+        Text(
+          experienceModel.description,
+          overflow: TextOverflow.ellipsis,
+          maxLines: descriptionMaxLines,
+          style: appTheme.textTheme.bodyLarge,
+        ),
+        const Gap(16),
+        Flexible(
+          child: AutoSizeText(
+            experienceModel.bulletPoints,
+            softWrap: true,
+            style: appTheme.textTheme.bodyMedium,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -105,60 +101,53 @@ class _TabletExperienceTile extends ExperienceTile {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    return Container(
-      // decoration: BoxDecoration(
-      //   border: Border.all(color: appTheme.colorScheme.outline),
-      //   borderRadius: BorderRadius.circular(12),
-      // ),
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Gap(8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Flexible(
-                child: AutoSizeText(
-                  experienceModel.companyName,
-                  softWrap: false,
-                  style: appTheme.textTheme.headlineMedium,
-                ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Gap(8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              child: AutoSizeText(
+                experienceModel.companyName,
+                softWrap: false,
+                style: appTheme.textTheme.headlineMedium,
               ),
-              const Gap(8),
-              Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: AutoSizeText(
-                  experienceModel.dateRange,
-                ),
+            ),
+            const Gap(8),
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: AutoSizeText(
+                experienceModel.dateRange,
               ),
-            ],
-          ),
-          AutoSizeText(
-            experienceModel.jobTitle,
-            style: appTheme.textTheme.headlineSmall
-                ?.copyWith(color: appTheme.colorScheme.tertiary),
-          ),
-          const Gap(8),
-          Flexible(
-            child: AutoSizeText(
-              experienceModel.description,
-              overflow: TextOverflow.fade,
-              style: appTheme.textTheme.bodyLarge,
             ),
+          ],
+        ),
+        AutoSizeText(
+          experienceModel.jobTitle,
+          style: appTheme.textTheme.headlineSmall
+              ?.copyWith(color: appTheme.colorScheme.tertiary),
+        ),
+        const Gap(8),
+        Flexible(
+          child: AutoSizeText(
+            experienceModel.description,
+            overflow: TextOverflow.fade,
+            style: appTheme.textTheme.bodyLarge,
           ),
-          const Gap(8),
-          Flexible(
-            child: AutoSizeText(
-              experienceModel.bulletPoints,
-              overflow: TextOverflow.fade,
-              style: appTheme.textTheme.bodyMedium,
-            ),
+        ),
+        const Gap(8),
+        Flexible(
+          child: AutoSizeText(
+            experienceModel.bulletPoints,
+            overflow: TextOverflow.fade,
+            style: appTheme.textTheme.bodyMedium,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -174,87 +163,80 @@ class _MobileExperienceTile extends ExperienceTile {
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context);
-    return Container(
-      // decoration: BoxDecoration(
-      //   border: Border.all(color: appTheme.colorScheme.outline),
-      //   borderRadius: BorderRadius.circular(12),
-      // ),
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Gap(8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Flexible(
-                child: AutoSizeText(
-                  experienceModel.companyName,
-                  softWrap: false,
-                  style: appTheme.textTheme.headlineSmall,
-                ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Gap(8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              child: AutoSizeText(
+                experienceModel.companyName,
+                softWrap: false,
+                style: appTheme.textTheme.headlineSmall,
               ),
-              const Gap(8),
-              Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: AutoSizeText(
-                  experienceModel.dateRange,
-                ),
-              ),
-            ],
-          ),
-          AutoSizeText(
-            experienceModel.jobTitle,
-            style: appTheme.textTheme.labelLarge
-                ?.copyWith(color: appTheme.colorScheme.tertiary),
-          ),
-          const Gap(8),
-          Flexible(
-            child: AutoSizeText(
-              experienceModel.description,
-              overflow: TextOverflow.fade,
-              style: appTheme.textTheme.bodySmall,
             ),
+            const Gap(8),
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: AutoSizeText(
+                experienceModel.dateRange,
+              ),
+            ),
+          ],
+        ),
+        AutoSizeText(
+          experienceModel.jobTitle,
+          style: appTheme.textTheme.labelLarge
+              ?.copyWith(color: appTheme.colorScheme.tertiary),
+        ),
+        const Gap(8),
+        Flexible(
+          child: AutoSizeText(
+            experienceModel.description,
+            overflow: TextOverflow.fade,
+            style: appTheme.textTheme.bodySmall,
           ),
-          const Gap(8),
-          BottomRight(
-            child: FilledButton(
-              onPressed: () => showDialog<String>(
-                context: context,
-                builder: (BuildContext context) {
-                  return Dialog(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Flexible(
-                            child: SingleChildScrollView(
-                              child: Text(
-                                experienceModel.bulletPoints,
-                              ),
+        ),
+        const Gap(8),
+        BottomRight(
+          child: FilledButton(
+            onPressed: () => showDialog<String>(
+              context: context,
+              builder: (BuildContext context) {
+                return Dialog(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: SingleChildScrollView(
+                            child: Text(
+                              experienceModel.bulletPoints,
                             ),
                           ),
-                          const Gap(8),
-                          FilledButton.icon(
-                            onPressed: () => Navigator.of(context).pop(),
-                            icon: const Icon(Icons.arrow_back),
-                            label: const Text('Back'),
-                          ),
-                        ],
-                      ),
+                        ),
+                        const Gap(8),
+                        FilledButton.icon(
+                          onPressed: () => Navigator.of(context).pop(),
+                          icon: const Icon(Icons.arrow_back),
+                          label: const Text('Back'),
+                        ),
+                      ],
                     ),
-                  );
-                },
-              ),
-              child: const Text('View More...'),
+                  ),
+                );
+              },
             ),
+            child: const Text('View More...'),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
