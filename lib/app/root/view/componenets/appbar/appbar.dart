@@ -146,7 +146,11 @@ class _MobileActionBar extends StatelessWidget {
                         const Gap(8),
                         Text(
                           'Home',
-                          style: appTheme.textTheme.labelMedium,
+                          style: appTheme.textTheme.labelMedium?.copyWith(
+                            color: pageNumber.value == 0
+                                ? selectedColor
+                                : notSelectedColor,
+                          ),
                         )
                       ],
                     ),
@@ -165,7 +169,11 @@ class _MobileActionBar extends StatelessWidget {
                         const Gap(8),
                         Text(
                           'About Me',
-                          style: appTheme.textTheme.labelMedium,
+                          style: appTheme.textTheme.labelMedium?.copyWith(
+                            color: pageNumber.value == 1
+                                ? selectedColor
+                                : notSelectedColor,
+                          ),
                         )
                       ],
                     ),
@@ -184,7 +192,11 @@ class _MobileActionBar extends StatelessWidget {
                         const Gap(8),
                         Text(
                           'Experience',
-                          style: appTheme.textTheme.labelMedium,
+                          style: appTheme.textTheme.labelMedium?.copyWith(
+                            color: pageNumber.value == 2
+                                ? selectedColor
+                                : notSelectedColor,
+                          ),
                         )
                       ],
                     ),
@@ -203,7 +215,11 @@ class _MobileActionBar extends StatelessWidget {
                         const Gap(8),
                         Text(
                           'Projects',
-                          style: appTheme.textTheme.labelMedium,
+                          style: appTheme.textTheme.labelMedium?.copyWith(
+                            color: pageNumber.value == 3
+                                ? selectedColor
+                                : notSelectedColor,
+                          ),
                         )
                       ],
                     ),
@@ -222,7 +238,11 @@ class _MobileActionBar extends StatelessWidget {
                         const Gap(8),
                         Text(
                           'Interests',
-                          style: appTheme.textTheme.labelMedium,
+                          style: appTheme.textTheme.labelMedium?.copyWith(
+                            color: pageNumber.value == 4
+                                ? selectedColor
+                                : notSelectedColor,
+                          ),
                         )
                       ],
                     ),
